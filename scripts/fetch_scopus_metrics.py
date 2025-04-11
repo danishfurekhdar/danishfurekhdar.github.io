@@ -1,5 +1,5 @@
 from pybliometrics.scopus import AuthorRetrieval, ScopusSearch
-from pybliometrics.scopus.utils import create_config
+from pybliometrics.scopus.utils.create_config import create_config
 import os
 import json
 
@@ -7,8 +7,8 @@ import json
 AUTHOR_ID = "57219532607"
 API_KEY = os.getenv("SCOPUS_API_KEY")
 
-# Initialize configuration (works in GitHub Actions)
-create_config(keys=[API_KEY], 
+# Initialize configuration
+create_config(keys=[API_KEY],
               path="/tmp/pybliometrics.cfg",
               dirs={
                   "AbstractRetrieval": "/tmp/pybliometrics/abstract_retrieval",
@@ -56,4 +56,4 @@ try:
 
 except Exception as e:
     print(f"❌ Error: {str(e)}")
-    raise  # This will make the workflow fail visibly
+    raise
