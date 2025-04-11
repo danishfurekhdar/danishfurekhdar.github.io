@@ -1,36 +1,18 @@
 from pybliometrics.scopus import AuthorRetrieval, ScopusSearch
+from pybliometrics.utils import create_config
 import os, json
 
-# Your Scopus Author ID
-AUTHOR_ID = "57219532607"
+# Get API key from GitHub secret
 API_KEY = os.getenv("SCOPUS_API_KEY")
+AUTHOR_ID = "57219532607"
 
-# Manually create the config.ini file
-home_dir = os.path.expanduser("~")
-config_dir = os.path.join(home_dir, ".pybliometrics")
-os.makedirs(config_dir, exist_ok=True)
+# Create pybliometrics config the official way
+create_config(api_key=API_KEY, inst_token="", view="STANDARD")
 
-config_path = os.path.join(config_dir, "config.ini")
-with open(config_path, "w") as f:
-    f.write(f"""[Authentication]
-APIKey = {API_KEY}
-InstToken =
-
-[Directories]
-AbstractRetrieval = {config_dir}/abstract_retrieval
-AffiliationRetrieval = {config_dir}/affiliation_retrieval
-AuthorRetrieval = {config_dir}/author_retrieval
-CitationOverview = {config_dir}/citation_overview
-ScopusSearch = {config_dir}/scopus_search
-SerialTitle = {config_dir}/serial_title
-SubjectClassifications = {config_dir}/subject_classifications
-DownloadFolder = {config_dir}/download
-""")
-
-# Create _data folder
+# Make _data folder
 os.makedirs("_data", exist_ok=True)
 
-# Fetch author info
+# Retrieve author metrics
 author = AuthorRetrieval(AUTHOR_ID)
 
 metrics = {
@@ -47,7 +29,7 @@ with open("_data/scopus.json", "w") as f:
 
 print("✅ Scopus metrics saved to _data/scopus.json")
 
-# Fetch top 5 publications
+# Retrieve top 5 cited publications
 search = ScopusSearch(f"AU-ID({AUTHOR_ID})")
 results = search.results
 
