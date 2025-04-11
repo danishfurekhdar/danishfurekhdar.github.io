@@ -4,6 +4,7 @@ from elsapy.elssearch import ElsSearch
 import json
 import os
 
+# Get keys from environment
 API_KEY = os.getenv("SCOPUS_API_KEY")
 INST_TOKEN = os.getenv("SCOPUS_INST_TOKEN")  # Optional
 
@@ -12,13 +13,15 @@ client = ElsClient(API_KEY)
 if INST_TOKEN:
     client.inst_token = INST_TOKEN
 
-# Scopus Author URI (use your own ID here)
+# Author info
 AUTHOR_ID = "57219532607"
 author_uri = f"https://api.elsevier.com/content/author/author_id/{AUTHOR_ID}"
 author = ElsAuthor(uri=author_uri)
 
+# Ensure _data directory exists
 os.makedirs("_data", exist_ok=True)
 
+# Fetch author metrics
 if author.read(client):
     print("✅ Author data loaded:", author.full_name)
 
@@ -33,13 +36,13 @@ if author.read(client):
 
     with open("_data/scopus.json", "w") as f:
         json.dump(metrics, f, indent=2)
-    print("✅ Scopus metrics saved to _data/scopus.json")
 
+    print("✅ Metrics saved to _data/scopus.json")
 else:
     print("❌ Failed to read author data")
     exit(1)
 
-# Top 5 cited publications
+# Fetch top 5 publications
 print("🔎 Fetching publications...")
 search = ElsSearch(f"AU-ID({AUTHOR_ID})", "scopus")
 search.execute(client)
@@ -49,4 +52,14 @@ top_pubs = sorted(search.results, key=lambda x: int(x.get("citedby-count", 0)), 
 pubs = []
 for pub in top_pubs:
     pubs.append({
-        "title":
+        "title": pub.get("dc:title"),
+        "journal": pub.get("prism:publicationName"),
+        "year": pub.get("prism:coverDate", "")[:4],
+        "doi": pub.get("prism:doi", ""),
+        "citations": pub.get("citedby-count", "0")
+    })  # ✅ ← this closing brace was missing
+
+with open("_data/publications.json", "w") as f:
+    json.dump(pubs, f, indent=2)
+
+print("✅ Top publications saved to _data/publications.json")
