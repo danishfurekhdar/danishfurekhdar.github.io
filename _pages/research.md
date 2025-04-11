@@ -84,7 +84,7 @@ permalink: /research/
 
 <div class="card">
   <h2>📈 Citation Trend</h2>
-  <canvas id="citationChart"></canvas>
+  <canvas id="citationChart" style="height: 400px;"></canvas>
 </div>
 
 <!-- Load Chart.js -->
