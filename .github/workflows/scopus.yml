@@ -18,8 +18,9 @@ jobs:
       with:
         python-version: '3.10'  # ✅ Use supported version
 
-    - name: Install dependencies
-      run: pip install requests
+    - name: Install pybliometrics
+      run: pip install pybliometrics
+
 
     - name: Fetch Scopus Metrics
       env:
