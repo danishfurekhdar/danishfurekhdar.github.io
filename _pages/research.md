@@ -82,20 +82,30 @@ permalink: /research/
   {% endfor %}
 </div>
 
-<div class="card">
+<div class="citation-card">
   <h2>📈 Citation Trend</h2>
-  <canvas id="citChart" width="700" height="300"></canvas>
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  <script>
-    const ctx = document.getElementById('citChart');
+  <canvas id="citationChart" width="700" height="300"></canvas>
+</div>
 
-    const chart = new Chart(ctx, {
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const ctx = document.getElementById('citationChart');
+    
+    // Get data from Jekyll's data file
+    const citationData = {
+      {% for item in site.data.scholar_citations %}
+        "{{ item[0] }}": {{ item[1] }}{% unless forloop.last %},{% endunless %}
+      {% endfor %}
+    };
+
+    new Chart(ctx, {
       type: 'bar',
       data: {
-        labels: [{% for year in site.data.scholar_citations %}"{{ year }}"{% if forloop.last == false %}, {% endif %}{% endfor %}],
+        labels: Object.keys(citationData),
         datasets: [{
           label: 'Citations per Year',
-          data: [{% for year in site.data.scholar_citations %}{{ site.data.scholar_citations[year] }}{% if forloop.last == false %}, {% endif %}{% endfor %}],
+          data: Object.values(citationData),
           backgroundColor: 'rgba(0, 123, 255, 0.6)',
           borderColor: 'rgba(0, 123, 255, 1)',
           borderWidth: 1
@@ -103,17 +113,31 @@ permalink: /research/
       },
       options: {
         responsive: true,
+        plugins: {
+          legend: {
+            display: true,
+            position: 'top'
+          }
+        },
         scales: {
           y: {
             beginAtZero: true,
             title: {
               display: true,
-              text: 'Citations'
+              text: 'Number of Citations'
+            },
+            ticks: {
+              precision: 0
+            }
+          },
+          x: {
+            title: {
+              display: true,
+              text: 'Year'
             }
           }
         }
       }
     });
-  </script>
-</div>
-
+  });
+</script>
