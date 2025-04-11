@@ -82,30 +82,38 @@ permalink: /research/
   {% endfor %}
 </div>
 
-<div class="citation-card">
+<div class="card">  <!-- Changed from citation-card to card for consistency -->
   <h2>📈 Citation Trend</h2>
-  <canvas id="citationChart" width="700" height="300"></canvas>
+  <canvas id="citationChart"></canvas> <!-- Removed fixed width/height -->
 </div>
 
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.1"></script> <!-- Pinned version -->
 <script>
   document.addEventListener('DOMContentLoaded', function() {
-    const ctx = document.getElementById('citationChart');
-    
-    // Get data from Jekyll's data file
-    const citationData = {
+    // Debug: Check if data is loading
+    console.log("Citation data:", {
       {% for item in site.data.scholar_citations %}
         "{{ item[0] }}": {{ item[1] }}{% unless forloop.last %},{% endunless %}
       {% endfor %}
-    };
+    });
 
+    const ctx = document.getElementById('citationChart').getContext('2d');
+    
     new Chart(ctx, {
       type: 'bar',
       data: {
-        labels: Object.keys(citationData),
+        labels: [
+          {% for item in site.data.scholar_citations %}
+            "{{ item[0] }}"{% unless forloop.last %},{% endunless %}
+          {% endfor %}
+        ],
         datasets: [{
           label: 'Citations per Year',
-          data: Object.values(citationData),
+          data: [
+            {% for item in site.data.scholar_citations %}
+              {{ item[1] }}{% unless forloop.last %},{% endunless %}
+            {% endfor %}
+          ],
           backgroundColor: 'rgba(0, 123, 255, 0.6)',
           borderColor: 'rgba(0, 123, 255, 1)',
           borderWidth: 1
@@ -113,10 +121,10 @@ permalink: /research/
       },
       options: {
         responsive: true,
+        maintainAspectRatio: false,
         plugins: {
           legend: {
-            display: true,
-            position: 'top'
+            position: 'top',
           }
         },
         scales: {
@@ -127,7 +135,7 @@ permalink: /research/
               text: 'Number of Citations'
             },
             ticks: {
-              precision: 0
+              stepSize: 1
             }
           },
           x: {
