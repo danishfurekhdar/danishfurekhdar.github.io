@@ -1,56 +1,57 @@
-import os
-import requests
-import json
+from elsapy.elsclient import ElsClient
+from elsapy.elsauthor import ElsAuthor
+from elsapy.elssearch import ElsSearch
+import os, json
 
+# Get API key from environment (set in GitHub Secrets)
 API_KEY = os.getenv("SCOPUS_API_KEY")
 if not API_KEY:
-    print("❌ Error: SCOPUS_API_KEY environment variable not set")
+    print("❌ Missing SCOPUS_API_KEY environment variable")
     exit(1)
+
+client = ElsClient(API_KEY)
 
 AUTHOR_ID = "57219532607"
+author = ElsAuthor(AUTHOR_ID)
 
-# Alternative endpoint (try this if the first one fails)
-url = f"https://api.elsevier.com/content/author/author_id/{AUTHOR_ID}?apiKey={API_KEY}&httpAccept=application/json"
+# Create _data directory
+os.makedirs("_data", exist_ok=True)
 
-headers = {
-    "Accept": "application/json",
-    "X-ELS-APIKey": API_KEY,  # Some APIs require this instead of URL param
-}
-
-try:
-    response = requests.get(url, headers=headers)
-    print("Status Code:", response.status_code)
-    
-    if response.status_code != 200:
-        print("❌ Error: Failed to fetch data from Scopus API")
-        print("Raw response:", response.text)
-        exit(1)
-
-    data = response.json()
-    print("API Response:", json.dumps(data, indent=2))  # Debug: Print full response
-
-    # Extract data (adjust based on actual response structure)
-    author_data = data.get("author-retrieval-response", [{}])[0]
-    preferred_name = author_data.get("preferred-name", {})
-    
-    output = {
-        "name": f"{preferred_name.get('surname', '')}, {preferred_name.get('given-name', '')}",
-        "affiliation": author_data.get("affiliation-current", {}).get("affiliation-name", "N/A"),
-        "h_index": author_data.get("h-index", "N/A"),
-        "citation_count": author_data.get("citation-count", "N/A"),
-        "document_count": author_data.get("document-count", "N/A"),
-        "profile_url": f"https://www.scopus.com/authid/detail.uri?authorId={AUTHOR_ID}",
+# Fetch author metrics
+if author.read(client):
+    metrics = {
+        "name": author.full_name,
+        "affiliation": author.affiliation,
+        "h_index": author.h_index,
+        "citation_count": author.citation_count,
+        "document_count": author.document_count,
+        "profile_url": f"https://www.scopus.com/authid/detail.uri?authorId={AUTHOR_ID}"
     }
 
-    os.makedirs('_data', exist_ok=True)
-    with open('_data/scopus.json', 'w') as f:
-        json.dump(output, f, indent=2)
+    with open("_data/scopus.json", "w") as f:
+        json.dump(metrics, f, indent=2)
+    print("✅ Metrics saved to _data/scopus.json")
+else:
+    print("❌ Failed to fetch author data")
 
-    print("✅ Scopus data saved to _data/scopus.json")
+# Fetch top 5 publications
+search = ElsSearch(f"AU-ID({AUTHOR_ID})", "scopus")
+search.execute(client)
+results = search.results
 
-except Exception as e:
-    print("❌ Failed to process Scopus response")
-    print("Error:", e)
-    if 'response' in locals():
-        print("Raw response:", response.text)
-    exit(1)
+top_pubs = sorted(results, key=lambda x: int(x.get("citedby-count", 0)), reverse=True)[:5]
+pubs = []
+
+for pub in top_pubs:
+    pubs.append({
+        "title": pub.get("dc:title"),
+        "journal": pub.get("prism:publicationName"),
+        "year": pub.get("prism:coverDate", "")[:4],
+        "doi": pub.get("prism:doi", ""),
+        "citations": pub.get("citedby-count", "0")
+    })
+
+with open("_data/publications.json", "w") as f:
+    json.dump(pubs, f, indent=2)
+
+print("✅ Top publications saved to _data/publications.json")
