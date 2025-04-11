@@ -91,27 +91,32 @@ permalink: /research/
 
 <script>
   document.addEventListener('DOMContentLoaded', function () {
+    const citationData = {
+      {% assign citations = site.data.scholar_citations %}
+      {% for item in citations %}
+        "{{ item[0] }}": {{ item[1] }}{% unless forloop.last %},{% endunless %}
+      {% endfor %}
+    };
+    
+    console.log("Citation data:", citationData);
+
     const ctx = document.getElementById('citationChart').getContext('2d');
-
-    const labels = [
-      {% for year, count in site.data.scholar_citations %}
-        "{{ year }}"{% unless forloop.last %},{% endunless %}
-      {% endfor %}
-    ];
-
-    const data = [
-      {% for year, count in site.data.scholar_citations %}
-        {{ count }}{% unless forloop.last %},{% endunless %}
-      {% endfor %}
-    ];
 
     new Chart(ctx, {
       type: 'bar',
       data: {
-        labels: labels,
+        labels: [
+          {% for item in citations %}
+            "{{ item[0] }}"{% unless forloop.last %},{% endunless %}
+          {% endfor %}
+        ],
         datasets: [{
           label: 'Citations per Year',
-          data: data,
+          data: [
+            {% for item in citations %}
+              {{ item[1] }}{% unless forloop.last %},{% endunless %}
+            {% endfor %}
+          ],
           backgroundColor: 'rgba(0, 123, 255, 0.6)',
           borderColor: 'rgba(0, 123, 255, 1)',
           borderWidth: 1
