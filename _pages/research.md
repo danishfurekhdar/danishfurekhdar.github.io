@@ -4,90 +4,197 @@ title: "Research"
 permalink: /research/
 ---
 
-<!-- Inline styling for now; move to CSS file if needed -->
 <style>
-  .card {
-    background-color: #ffffff;
-    border-radius: 12px;
-    padding: 2rem;
-    margin-bottom: 2rem;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
-    max-width: 800px;
-    margin-left: auto;
-    margin-right: auto;
+  .scopus-container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+    color: #333;
   }
 
-  .card h2 {
-    margin-top: 0;
-    font-size: 1.6rem;
-    color: #004d99;
+  .scopus-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #e0e0e0;
   }
 
-  .card ul {
-    padding-left: 1.2rem;
-  }
-
-  .metric-item {
-    margin-bottom: 0.3rem;
-  }
-
-  .pub-item {
-    margin-bottom: 1.2rem;
-  }
-
-  .pub-title {
-    font-weight: 600;
-    font-size: 1.05rem;
-  }
-
-  .pub-meta {
-    font-size: 0.9rem;
-    color: #555;
-  }
-
-  .link {
-    font-weight: 600;
+  .scopus-title {
+    font-size: 24px;
+    font-weight: bold;
     color: #0066cc;
   }
 
-  canvas {
-    display: block;
-    margin: 0 auto;
+  .scopus-logo {
+    height: 40px;
+  }
+
+  .metrics-card {
+    background-color: #f8f9fa;
+    border-radius: 5px;
+    padding: 20px;
+    margin-bottom: 25px;
+    border-left: 4px solid #0066cc;
+  }
+
+  .metrics-title {
+    font-size: 18px;
+    font-weight: bold;
+    color: #0066cc;
+    margin-top: 0;
+    margin-bottom: 15px;
+  }
+
+  .metrics-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 15px;
+  }
+
+  .metric-item {
+    background-color: white;
+    padding: 12px;
+    border-radius: 4px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  }
+
+  .metric-label {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 5px;
+  }
+
+  .metric-value {
+    font-size: 20px;
+    font-weight: bold;
+    color: #0066cc;
+  }
+
+  .publications-list {
+    margin-top: 30px;
+  }
+
+  .pub-item {
+    padding: 15px 0;
+    border-bottom: 1px solid #e0e0e0;
+  }
+
+  .pub-title {
+    font-weight: bold;
+    font-size: 16px;
+    margin-bottom: 8px;
+    color: #0066cc;
+  }
+
+  .pub-authors {
+    font-size: 14px;
+    color: #555;
+    margin-bottom: 5px;
+  }
+
+  .pub-meta {
+    font-size: 13px;
+    color: #777;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+  }
+
+  .pub-meta span {
+    display: flex;
+    align-items: center;
+  }
+
+  .pub-meta i {
+    margin-right: 5px;
+    color: #0066cc;
+  }
+
+  .chart-container {
+    margin-top: 30px;
+    height: 400px;
+  }
+
+  .chart-title {
+    font-size: 18px;
+    font-weight: bold;
+    color: #0066cc;
+    margin-bottom: 15px;
+  }
+
+  .view-all {
+    text-align: right;
+    margin-top: 15px;
+  }
+
+  .view-all a {
+    color: #0066cc;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 14px;
   }
 </style>
 
-<div class="card">
-  <h2>📊 Google Scholar Metrics</h2>
-  <p class="metric-item"><strong>Name:</strong> {{ site.data.scholar.name }}</p>
-  <p class="metric-item"><strong>Affiliation:</strong> {{ site.data.scholar.affiliation }}</p>
-  <ul>
-    <li><strong>h-index:</strong> {{ site.data.scholar.h_index }}</li>
-    <li><strong>i10-index:</strong> {{ site.data.scholar.i10_index }}</li>
-    <li><strong>Total Citations:</strong> {{ site.data.scholar.citations }}</li>
-  </ul>
-  <p><a class="link" href="{{ site.data.scholar.url }}" target="_blank">🔗 View Google Scholar Profile</a></p>
-</div>
+<div class="scopus-container">
+  <div class="scopus-header">
+    <div class="scopus-title">Author Profile</div>
+    <img src="https://www.elsevier.com/__data/assets/image/0007/647507/Scopus_logo_icon.png" alt="Scopus" class="scopus-logo">
+  </div>
 
-<div class="card">
-  <h2>📄 Publications</h2>
-  {% for pub in site.data.scholar_publications %}
-    <div class="pub-item">
-      <div class="pub-title">{{ pub.title }}</div>
-      <div class="pub-meta">
-        {{ pub.venue }} ({{ pub.year }})  
-        <br>
-        Citations: {{ pub.citations }}{% if pub.url %} — <a href="{{ pub.url }}" class="link" target="_blank">View</a>{% endif %}
+  <div class="metrics-card">
+    <h2 class="metrics-title">Citation Metrics</h2>
+    <div class="metrics-grid">
+      <div class="metric-item">
+        <div class="metric-label">Documents</div>
+        <div class="metric-value">{{ site.data.scholar.documents | default: "N/A" }}</div>
+      </div>
+      <div class="metric-item">
+        <div class="metric-label">Citations</div>
+        <div class="metric-value">{{ site.data.scholar.citations }}</div>
+      </div>
+      <div class="metric-item">
+        <div class="metric-label">h-index</div>
+        <div class="metric-value">{{ site.data.scholar.h_index }}</div>
+      </div>
+      <div class="metric-item">
+        <div class="metric-label">Co-authors</div>
+        <div class="metric-value">{{ site.data.scholar.coauthors | default: "N/A" }}</div>
       </div>
     </div>
-  {% endfor %}
-</div>
+  </div>
 
-<div class="card" style="position: relative; height: 400px; width: 100%;">
-  <h2>📈 Citation Trend</h2>
-  <canvas id="citationChart"></canvas>
+  <div class="publications-list">
+    <h2 class="metrics-title">Publications</h2>
+    
+    {% for pub in site.data.scholar_publications %}
+    <div class="pub-item">
+      <div class="pub-title">{{ pub.title }}</div>
+      <div class="pub-authors">{{ pub.authors | default: site.data.scholar.name }}</div>
+      <div class="pub-meta">
+        <span><i class="fas fa-book"></i> {{ pub.venue }}</span>
+        <span><i class="fas fa-calendar"></i> {{ pub.year }}</span>
+        <span><i class="fas fa-quote-right"></i> {{ pub.citations }} citations</span>
+        {% if pub.url %}<span><i class="fas fa-external-link-alt"></i> <a href="{{ pub.url }}" target="_blank">View</a></span>{% endif %}
+      </div>
+    </div>
+    {% endfor %}
+
+    <div class="view-all">
+      <a href="{{ site.data.scholar.url }}" target="_blank">View all publications →</a>
+    </div>
+  </div>
+
+  <div class="chart-container">
+    <h2 class="chart-title">Citation Overview</h2>
+    <canvas id="citationChart"></canvas>
+  </div>
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.1"></script>
+<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 
 <script>
   document.addEventListener('DOMContentLoaded', function () {
@@ -98,12 +205,10 @@ permalink: /research/
       {% endfor %}
     };
     
-    console.log("Citation data:", citationData);
-
     const ctx = document.getElementById('citationChart').getContext('2d');
 
     new Chart(ctx, {
-      type: 'bar',
+      type: 'line',
       data: {
         labels: [
           {% for item in citations %}
@@ -117,9 +222,13 @@ permalink: /research/
               {{ item[1] }}{% unless forloop.last %},{% endunless %}
             {% endfor %}
           ],
-          backgroundColor: 'rgba(0, 123, 255, 0.6)',
-          borderColor: 'rgba(0, 123, 255, 1)',
-          borderWidth: 1
+          backgroundColor: 'rgba(0, 102, 204, 0.1)',
+          borderColor: '#0066cc',
+          borderWidth: 2,
+          tension: 0.3,
+          fill: true,
+          pointBackgroundColor: '#0066cc',
+          pointRadius: 4
         }]
       },
       options: {
@@ -127,7 +236,11 @@ permalink: /research/
         maintainAspectRatio: false,
         plugins: {
           legend: {
-            position: 'top',
+            display: false
+          },
+          tooltip: {
+            mode: 'index',
+            intersect: false
           }
         },
         scales: {
@@ -135,16 +248,21 @@ permalink: /research/
             beginAtZero: true,
             title: {
               display: true,
-              text: 'Number of Citations'
+              text: 'Number of Citations',
+              color: '#666'
             },
-            ticks: {
-              stepSize: 1
+            grid: {
+              color: 'rgba(0,0,0,0.05)'
             }
           },
           x: {
             title: {
               display: true,
-              text: 'Year'
+              text: 'Year',
+              color: '#666'
+            },
+            grid: {
+              display: false
             }
           }
         }
@@ -152,5 +270,3 @@ permalink: /research/
     });
   });
 </script>
-
-
