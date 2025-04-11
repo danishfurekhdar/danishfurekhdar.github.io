@@ -4,7 +4,7 @@ cd /d "C:\Users\furkh\Downloads\danishfurekhdar.github.io-1eec030f2db77b4a625bc7
 REM Initialize git only if .git doesn't exist
 IF NOT EXIST ".git" (
     git init
-    git remote add origin https://github.com/danishfurkh/Blog.git
+    git remote add origin https://github.com/danishfurekhdar/danishfurekhdar.github.io
 ) ELSE (
     echo Git repo already initialized.
 )
