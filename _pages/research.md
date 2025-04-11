@@ -94,14 +94,14 @@ permalink: /research/
     const ctx = document.getElementById('citationChart').getContext('2d');
 
     const labels = [
-      {% for year in site.data.scholar_citations %}
+      {% for year, count in site.data.scholar_citations %}
         "{{ year }}"{% unless forloop.last %},{% endunless %}
       {% endfor %}
     ];
 
     const data = [
-      {% for year in site.data.scholar_citations %}
-        {{ site.data.scholar_citations[year] }}{% unless forloop.last %},{% endunless %}
+      {% for year, count in site.data.scholar_citations %}
+        {{ count }}{% unless forloop.last %},{% endunless %}
       {% endfor %}
     ];
 
