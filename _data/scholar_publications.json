@@ -1,30 +1,34 @@
 [
   {
     "title": "Radiative transition properties of singly charged magnesium, calcium, strontium and barium ions",
+    "authors": "Mandeep Kaur and Danish Furekh Dar and BK Sahoo and Bindiya Arora",
     "year": 2021,
     "citations": 13,
-    "venue": "Atomic Data and Nuclear Data Tables",
+    "venue": "N/A",
     "url": "https://www.sciencedirect.com/science/article/pii/S0092640X20300449"
   },
   {
     "title": "Nondipole strong-field approximation for above-threshold ionization in a few-cycle pulse",
+    "authors": "Danish Furekh Dar and Bj\u00f6rn Minneker and Stephan Fritzsche",
     "year": 2023,
     "citations": 7,
-    "venue": "Physical Review A",
+    "venue": "N/A",
     "url": "https://journals.aps.org/pra/abstract/10.1103/PhysRevA.107.053102"
   },
   {
     "title": "Nonlinear interference and electron dynamics: Probing photoelectron momentum distributions in strong-field ionization",
+    "authors": "Danish Furekh Dar and Stephan Fritzsche",
     "year": 2024,
     "citations": 0,
-    "venue": "Physical Review A",
+    "venue": "N/A",
     "url": "https://journals.aps.org/pra/abstract/10.1103/PhysRevA.109.L041101"
   },
   {
     "title": "Pulse Cycle Dependent Nondipole Effects in Above-Threshold Ionization",
+    "authors": "Danish Furekh Dar and Stephan Fritzsche",
     "year": 2023,
     "citations": 0,
-    "venue": "Atoms",
+    "venue": "N/A",
     "url": "https://www.mdpi.com/2218-2004/11/6/97"
   }
 ]
