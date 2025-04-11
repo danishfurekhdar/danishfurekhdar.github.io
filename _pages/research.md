@@ -175,10 +175,6 @@ permalink: /research/
           <div class="metric-label">h-index</div>
           <div class="metric-value">{{ site.data.scholar.h_index }}</div>
         </div>
-        <div class="metric-item">
-          <div class="metric-label">Co-authors</div>
-          <div class="metric-value">{{ site.data.scholar.coauthors | default: "N/A" }}</div>
-        </div>
       </div>
     </div>
 
