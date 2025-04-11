@@ -82,35 +82,39 @@ permalink: /research/
   {% endfor %}
 </div>
 
-<div class="card">  <!-- Changed from citation-card to card for consistency -->
+<div class="card">
   <h2>📈 Citation Trend</h2>
-  <canvas id="citationChart"></canvas> <!-- Removed fixed width/height -->
+  <canvas id="citationChart"></canvas>
 </div>
 
-<script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.1"></script> <!-- Pinned version -->
+<!-- Load Chart.js -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.1"></script>
+
 <script>
-  document.addEventListener('DOMContentLoaded', function() {
-    // Debug: Check if data is loading
-    console.log("Citation data:", {
-      {% for item in site.data.scholar_citations %}
+  document.addEventListener('DOMContentLoaded', function () {
+    const citationData = {
+      {% assign citations = site.data.scholar_citations %}
+      {% for item in citations %}
         "{{ item[0] }}": {{ item[1] }}{% unless forloop.last %},{% endunless %}
       {% endfor %}
-    });
+    };
+    
+    console.log("Citation data:", citationData);
 
     const ctx = document.getElementById('citationChart').getContext('2d');
-    
+
     new Chart(ctx, {
       type: 'bar',
       data: {
         labels: [
-          {% for item in site.data.scholar_citations %}
+          {% for item in citations %}
             "{{ item[0] }}"{% unless forloop.last %},{% endunless %}
           {% endfor %}
         ],
         datasets: [{
           label: 'Citations per Year',
           data: [
-            {% for item in site.data.scholar_citations %}
+            {% for item in citations %}
               {{ item[1] }}{% unless forloop.last %},{% endunless %}
             {% endfor %}
           ],
