@@ -1,27 +1,27 @@
 ---
-layout: page
+layout: default
 title: "Research"
 permalink: /research/
 ---
 
-## 📊 Scopus Metrics
+## 📊 Google Scholar Metrics
 
-**Name:** {{ site.data.scopus.name }}  
-**Affiliation:** {{ site.data.scopus.affiliation }}
+**Name:** {{ site.data.scholar.name }}  
+**Affiliation:** {{ site.data.scholar.affiliation }}
 
-- **h-index:** {{ site.data.scopus.h_index }}
-- **Total Citations:** {{ site.data.scopus.citation_count }}
-- **Publications:** {{ site.data.scopus.document_count }}
+- **h-index:** {{ site.data.scholar.h_index }}
+- **i10-index:** {{ site.data.scholar.i10_index }}
+- **Total Citations:** {{ site.data.scholar.citations }}
 
-[🔗 View Scopus Profile]({{ site.data.scopus.profile_url }})
+[🔗 View Google Scholar Profile]({{ site.data.scholar.url }})
 
 ---
 
 ## 📄 Top 5 Publications
 
-{% for pub in site.data.publications %}
-- **{{ pub.title }}**, *{{ pub.journal }}* ({{ pub.year }})  
-  Citations: {{ pub.citations }}{% if pub.doi %} — [DOI](https://doi.org/{{ pub.doi }}){% endif %}
+{% for pub in site.data.scholar_publications %}
+- **{{ pub.title }}**, *{{ pub.venue }}* ({{ pub.year }})  
+  Citations: {{ pub.citations }}{% if pub.url %} — [View]({{ pub.url }}){% endif %}
 {% endfor %}
 
 ---
@@ -38,13 +38,18 @@ permalink: /research/
       labels: ['2020', '2021', '2022', '2023', '2024'],
       datasets: [{
         label: 'Citations per Year',
-        data: [4, 22, 34, 45, 19],
-        borderWidth: 1
+        data: [4, 22, 34, 45, 19], // Replace with real data when available
+        borderWidth: 1,
+        backgroundColor: 'rgba(54, 162, 235, 0.6)',
+        borderColor: 'rgba(54, 162, 235, 1)'
       }]
     },
     options: {
+      responsive: true,
       scales: {
-        y: { beginAtZero: true }
+        y: {
+          beginAtZero: true
+        }
       }
     }
   });
