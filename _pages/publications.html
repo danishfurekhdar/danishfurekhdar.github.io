@@ -7,150 +7,89 @@ author_profile: true
 
 <style>
   .scopus-container {
-    max-width: 900px;
+    max-width: 100%; /* Changed from fixed width */
     margin: 0 auto;
-    padding: 20px;
+    padding: 15px; /* Reduced padding for mobile */
     font-family: Arial, sans-serif;
     color: #333;
+    box-sizing: border-box; /* Important for padding calculations */
   }
 
   .scopus-header {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 30px;
-    padding-bottom: 15px;
+    flex-direction: column; /* Stack items vertically on mobile */
+    align-items: flex-start;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
     border-bottom: 1px solid #e0e0e0;
-  }
-
-  .scopus-title {
-    font-size: 24px;
-    font-weight: bold;
-    color: #0066cc;
-  }
-
-  .scopus-logo {
-    height: 40px;
   }
 
   .metrics-row {
-    display: flex;
-    gap: 20px;
-    margin-bottom: 25px;
+    flex-direction: column; /* Stack metrics vertically on mobile */
+    gap: 15px;
+    margin-bottom: 20px;
   }
 
-  .metrics-card {
-    background-color: #f8f9fa;
-    border-radius: 5px;
-    padding: 20px;
-    border-left: 4px solid #0066cc;
-    flex: 1;
-  }
-
-  .chart-card {
-    background-color: #f8f9fa;
-    border-radius: 5px;
-    padding: 20px;
-    border-left: 4px solid #0066cc;
-    flex: 2;
-    height: 100%;
-  }
-
-  .metrics-title {
-    font-size: 18px;
-    font-weight: bold;
-    color: #0066cc;
-    margin-top: 0;
-    margin-bottom: 15px;
+  .metrics-card, .chart-card {
+    width: 100%; /* Full width on mobile */
+    flex: none; /* Override flex settings */
+    padding: 15px; /* Reduced padding */
   }
 
   .metrics-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-    gap: 15px;
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); /* Smaller min width */
+    gap: 10px; /* Reduced gap */
   }
 
   .metric-item {
-    background-color: white;
-    padding: 12px;
-    border-radius: 4px;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-  }
-
-  .metric-label {
-    font-size: 14px;
-    color: #666;
-    margin-bottom: 5px;
+    padding: 10px; /* Reduced padding */
   }
 
   .metric-value {
-    font-size: 20px;
-    font-weight: bold;
-    color: #0066cc;
-  }
-
-  .publications-list {
-    margin-top: 20px;
+    font-size: 18px; /* Slightly smaller */
   }
 
   .pub-item {
-    padding: 15px 0;
-    border-bottom: 1px solid #e0e0e0;
-  }
-
-  .pub-title {
-    font-weight: bold;
-    font-size: 16px;
-    margin-bottom: 8px;
-    color: #0066cc;
-  }
-
-  .pub-authors {
-    font-size: 14px;
-    color: #555;
-    margin-bottom: 5px;
+    padding: 12px 0; /* Reduced padding */
   }
 
   .pub-meta {
-    font-size: 13px;
-    color: #777;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 15px;
+    flex-direction: column; /* Stack metadata vertically */
+    gap: 5px; /* Reduced gap */
   }
 
   .pub-meta span {
-    display: flex;
-    align-items: center;
+    margin-right: 0; /* Remove horizontal margin */
   }
 
-  .pub-meta i {
-    margin-right: 5px;
-    color: #0066cc;
-  }
-
-  .chart-container {
-    height: 250px;
-    position: relative;
-  }
-
-  .chart-title {
-    font-size: 18px;
-    font-weight: bold;
-    color: #0066cc;
-    margin-bottom: 15px;
-  }
-
-  .view-all {
-    text-align: right;
-    margin-top: 15px;
-  }
-
-  .view-all a {
-    color: #0066cc;
-    text-decoration: none;
-    font-weight: bold;
-    font-size: 14px;
+  /* Mobile-specific styles */
+  @media (min-width: 768px) {
+    .scopus-container {
+      padding: 20px;
+    }
+    
+    .scopus-header {
+      flex-direction: row; /* Horizontal layout on desktop */
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .metrics-row {
+      flex-direction: row; /* Horizontal layout on desktop */
+    }
+    
+    .metrics-card {
+      flex: 1;
+    }
+    
+    .chart-card {
+      flex: 2;
+    }
+    
+    .pub-meta {
+      flex-direction: row; /* Horizontal layout on desktop */
+      gap: 15px;
+    }
   }
 </style>
 
