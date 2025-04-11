@@ -69,7 +69,7 @@ permalink: /research/
 </div>
 
 <div class="card">
-  <h2>📄 Top 5 Publications</h2>
+  <h2>📄 Publications</h2>
   {% for pub in site.data.scholar_publications %}
     <div class="pub-item">
       <div class="pub-title">{{ pub.title }}</div>
@@ -88,25 +88,30 @@ permalink: /research/
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.1"></script>
+
 <script>
   document.addEventListener('DOMContentLoaded', function () {
     const ctx = document.getElementById('citationChart').getContext('2d');
 
+    const labels = [
+      {% for year in site.data.scholar_citations %}
+        "{{ year }}"{% unless forloop.last %},{% endunless %}
+      {% endfor %}
+    ];
+
+    const data = [
+      {% for year in site.data.scholar_citations %}
+        {{ site.data.scholar_citations[year] }}{% unless forloop.last %},{% endunless %}
+      {% endfor %}
+    ];
+
     new Chart(ctx, {
       type: 'bar',
       data: {
-        labels: [
-          {% for item in site.data.scholar_citations %}
-            "{{ item[0] }}"{% unless forloop.last %},{% endunless %}
-          {% endfor %}
-        ],
+        labels: labels,
         datasets: [{
           label: 'Citations per Year',
-          data: [
-            {% for item in site.data.scholar_citations %}
-              {{ item[1] }}{% unless forloop.last %},{% endunless %}
-            {% endfor %}
-          ],
+          data: data,
           backgroundColor: 'rgba(0, 123, 255, 0.6)',
           borderColor: 'rgba(0, 123, 255, 1)',
           borderWidth: 1
@@ -114,7 +119,7 @@ permalink: /research/
       },
       options: {
         responsive: true,
-        maintainAspectRatio: false, // Let us control height via CSS
+        maintainAspectRatio: false,
         plugins: {
           legend: {
             position: 'top',
@@ -142,4 +147,5 @@ permalink: /research/
     });
   });
 </script>
+
 
