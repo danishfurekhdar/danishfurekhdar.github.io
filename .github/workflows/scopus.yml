@@ -1,36 +1,36 @@
-name: Update Scopus Metrics
+name: Update Scopus Metrics via Elsapy
 
 on:
   schedule:
-    - cron: '0 0 * * 0'  # every Sunday at midnight UTC
-  workflow_dispatch:     # allows manual trigger from GitHub UI
+    - cron: '0 0 * * 0'  # every Sunday
+  workflow_dispatch:
 
 jobs:
   update-scopus:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout repo
-      uses: actions/checkout@v3
+      - name: Checkout code
+        uses: actions/checkout@v3
 
-    - name: Set up Python
-      uses: actions/setup-python@v4
-      with:
-        python-version: '3.10'  # ✅ Use supported version
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
 
-    - name: Install pybliometrics
-      run: pip install pybliometrics
+      - name: Install dependencies
+        run: pip install elsapy==0.5.0
 
+      - name: Fetch Scopus Metrics
+        env:
+          SCOPUS_API_KEY: ${{ secrets.SCOPUS_API_KEY }}
+          SCOPUS_INST_TOKEN: ${{ secrets.SCOPUS_INST_TOKEN }}
+        run: python scripts/fetch_scopus_metrics.py
 
-    - name: Fetch Scopus Metrics
-      env:
-        SCOPUS_API_KEY: ${{ secrets.SCOPUS_API_KEY }}
-      run: python scripts/fetch_scopus_metrics.py
-
-    - name: Commit and push updated data
-      run: |
-        git config user.name "github-actions"
-        git config user.email "actions@github.com"
-        git add _data/scopus.json
-        git commit -m "📊 Update Scopus metrics" || echo "No changes to commit"
-        git push
+      - name: Commit and push changes
+        run: |
+          git config user.name "github-actions"
+          git config user.email "actions@github.com"
+          git add _data/*.json
+          git commit -m "📊 Update Scopus metrics via Elsapy" || echo "No changes"
+          git push
