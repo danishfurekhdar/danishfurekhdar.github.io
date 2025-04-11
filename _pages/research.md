@@ -82,39 +82,28 @@ permalink: /research/
   {% endfor %}
 </div>
 
-<div class="card">
+<div class="card" style="position: relative; height: 400px; width: 100%;">
   <h2>📈 Citation Trend</h2>
-  <canvas id="citationChart" style="height: 400px;"></canvas>
+  <canvas id="citationChart"></canvas>
 </div>
 
-<!-- Load Chart.js -->
 <script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.1"></script>
-
 <script>
   document.addEventListener('DOMContentLoaded', function () {
-    const citationData = {
-      {% assign citations = site.data.scholar_citations %}
-      {% for item in citations %}
-        "{{ item[0] }}": {{ item[1] }}{% unless forloop.last %},{% endunless %}
-      {% endfor %}
-    };
-    
-    console.log("Citation data:", citationData);
-
     const ctx = document.getElementById('citationChart').getContext('2d');
 
     new Chart(ctx, {
       type: 'bar',
       data: {
         labels: [
-          {% for item in citations %}
+          {% for item in site.data.scholar_citations %}
             "{{ item[0] }}"{% unless forloop.last %},{% endunless %}
           {% endfor %}
         ],
         datasets: [{
           label: 'Citations per Year',
           data: [
-            {% for item in citations %}
+            {% for item in site.data.scholar_citations %}
               {{ item[1] }}{% unless forloop.last %},{% endunless %}
             {% endfor %}
           ],
@@ -125,7 +114,7 @@ permalink: /research/
       },
       options: {
         responsive: true,
-        maintainAspectRatio: false,
+        maintainAspectRatio: false, // Let us control height via CSS
         plugins: {
           legend: {
             position: 'top',
@@ -153,3 +142,4 @@ permalink: /research/
     });
   });
 </script>
+
