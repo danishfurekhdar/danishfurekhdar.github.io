@@ -1,12 +1,12 @@
-name: Fetch Scopus Metrics
+name: Update Scopus Metrics
 
 on:
-  workflow_dispatch:  # Allows manual triggering
+  workflow_dispatch:
   schedule:
     - cron: '0 1 * * *'  # Runs daily at 1 AM UTC
 
 jobs:
-  fetch-scopus:
+  update-metrics:
     runs-on: ubuntu-latest
 
     steps:
@@ -19,9 +19,15 @@ jobs:
           python-version: '3.10'
 
       - name: Install dependencies
-        run: pip install pybliometrics
+        run: pip install pybliometrics==2.6.0
 
-      - name: Run Scopus fetch script
+      - name: Create cache directories
+        run: |
+          mkdir -p /tmp/pybliometrics/abstract_retrieval
+          mkdir -p /tmp/pybliometrics/author_retrieval
+          mkdir -p /tmp/pybliometrics/scopus_search
+
+      - name: Run Scopus metrics script
         env:
           SCOPUS_API_KEY: ${{ secrets.SCOPUS_API_KEY }}
         run: python scripts/fetch_scopus_metrics.py
@@ -31,5 +37,5 @@ jobs:
           git config --global user.name "GitHub Actions"
           git config --global user.email "actions@github.com"
           git add _data/
-          git commit -m "Update Scopus metrics [skip ci]" || echo "No changes to commit"
+          git diff --quiet && git diff --staged --quiet || git commit -m "Update Scopus metrics [skip ci]"
           git push
