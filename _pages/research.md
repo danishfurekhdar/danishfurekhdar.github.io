@@ -32,12 +32,27 @@ permalink: /research/
     height: 40px;
   }
 
+  .metrics-row {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 25px;
+  }
+
   .metrics-card {
     background-color: #f8f9fa;
     border-radius: 5px;
     padding: 20px;
-    margin-bottom: 25px;
     border-left: 4px solid #0066cc;
+    flex: 1;
+  }
+
+  .chart-card {
+    background-color: #f8f9fa;
+    border-radius: 5px;
+    padding: 20px;
+    border-left: 4px solid #0066cc;
+    flex: 2;
+    height: 100%;
   }
 
   .metrics-title {
@@ -50,7 +65,7 @@ permalink: /research/
 
   .metrics-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
     gap: 15px;
   }
 
@@ -74,7 +89,7 @@ permalink: /research/
   }
 
   .publications-list {
-    margin-top: 30px;
+    margin-top: 20px;
   }
 
   .pub-item {
@@ -114,8 +129,8 @@ permalink: /research/
   }
 
   .chart-container {
-    margin-top: 30px;
-    height: 400px;
+    height: 250px;
+    position: relative;
   }
 
   .chart-title {
@@ -144,24 +159,33 @@ permalink: /research/
     <img src="https://www.elsevier.com/__data/assets/image/0007/647507/Scopus_logo_icon.png" alt="Scopus" class="scopus-logo">
   </div>
 
-  <div class="metrics-card">
-    <h2 class="metrics-title">Citation Metrics</h2>
-    <div class="metrics-grid">
-      <div class="metric-item">
-        <div class="metric-label">Documents</div>
-        <div class="metric-value">{{ site.data.scholar.documents | default: "N/A" }}</div>
+  <div class="metrics-row">
+    <div class="metrics-card">
+      <h2 class="metrics-title">Citation Metrics</h2>
+      <div class="metrics-grid">
+        <div class="metric-item">
+          <div class="metric-label">Documents</div>
+          <div class="metric-value">{{ site.data.scholar.documents | default: "N/A" }}</div>
+        </div>
+        <div class="metric-item">
+          <div class="metric-label">Citations</div>
+          <div class="metric-value">{{ site.data.scholar.citations }}</div>
+        </div>
+        <div class="metric-item">
+          <div class="metric-label">h-index</div>
+          <div class="metric-value">{{ site.data.scholar.h_index }}</div>
+        </div>
+        <div class="metric-item">
+          <div class="metric-label">Co-authors</div>
+          <div class="metric-value">{{ site.data.scholar.coauthors | default: "N/A" }}</div>
+        </div>
       </div>
-      <div class="metric-item">
-        <div class="metric-label">Citations</div>
-        <div class="metric-value">{{ site.data.scholar.citations }}</div>
-      </div>
-      <div class="metric-item">
-        <div class="metric-label">h-index</div>
-        <div class="metric-value">{{ site.data.scholar.h_index }}</div>
-      </div>
-      <div class="metric-item">
-        <div class="metric-label">Co-authors</div>
-        <div class="metric-value">{{ site.data.scholar.coauthors | default: "N/A" }}</div>
+    </div>
+
+    <div class="chart-card">
+      <h2 class="chart-title">Citation Overview</h2>
+      <div class="chart-container">
+        <canvas id="citationChart"></canvas>
       </div>
     </div>
   </div>
@@ -185,11 +209,6 @@ permalink: /research/
     <div class="view-all">
       <a href="{{ site.data.scholar.url }}" target="_blank">View all publications →</a>
     </div>
-  </div>
-
-  <div class="chart-container">
-    <h2 class="chart-title">Citation Overview</h2>
-    <canvas id="citationChart"></canvas>
   </div>
 </div>
 
@@ -248,7 +267,7 @@ permalink: /research/
             beginAtZero: true,
             title: {
               display: true,
-              text: 'Number of Citations',
+              text: 'Citations',
               color: '#666'
             },
             grid: {
