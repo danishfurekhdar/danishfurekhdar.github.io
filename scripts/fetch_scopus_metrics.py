@@ -1,59 +1,89 @@
-from pybliometrics.scopus import AuthorRetrieval, ScopusSearch
-from pybliometrics.scopus.utils.create_config import create_config
-import os
+from scholarly import scholarly
 import json
+import os
+import time
 
-# === CONFIG ===
-AUTHOR_ID = "57219532607"
-API_KEY = os.getenv("SCOPUS_API_KEY")
+def get_author_data(author_id):
+    try:
+        # Search for the author with all available sections
+        author = scholarly.search_author_id(author_id)
+        author_filled = scholarly.fill(author, sections=['basics', 'indices', 'counts', 'publications'])
+        
+        # Debug: Print full response to check available data
+        print("Full author data:", json.dumps(author_filled, indent=2)[:500] + "...")  # Print first 500 chars
+        
+        # Extract metrics - now checking multiple possible locations
+        h_index = (
+            author_filled.get("hindex") or                  # Try direct field
+            author_filled.get("indices", {}).get("hindex")  # Try indices section
+        )
+        
+        i10_index = (
+            author_filled.get("i10index") or                # Try direct field
+            author_filled.get("indices", {}).get("i10index") # Try indices section
+        )
+        
+        profile = {
+            "name": author_filled.get("name", "N/A"),
+            "affiliation": author_filled.get("affiliation", "N/A"),
+            "h_index": h_index if h_index is not None else 0,
+            "citations": author_filled.get("citedby", 0),
+            "i10_index": i10_index if i10_index is not None else 0,
+            "scholar_id": author_id,
+            "url": f"https://scholar.google.com/citations?user={author_id}"
+        }
+        
+        return profile, author_filled.get("publications", [])
+    except Exception as e:
+        print(f"Error fetching author data: {str(e)}")
+        return None, []
 
-# Initialize configuration
-create_config(keys=[API_KEY],
-              path="/tmp/pybliometrics.cfg",
-              dirs={
-                  "AbstractRetrieval": "/tmp/pybliometrics/abstract_retrieval",
-                  "AuthorRetrieval": "/tmp/pybliometrics/author_retrieval",
-                  "ScopusSearch": "/tmp/pybliometrics/scopus_search"
-              })
 
-# === Fetch metrics ===
-try:
-    author = AuthorRetrieval(AUTHOR_ID)
-    
-    metrics = {
-        "name": author.indexed_name,
-        "affiliation": author.affiliation_current[0].name if author.affiliation_current else "N/A",
-        "h_index": author.h_index,
-        "citation_count": author.citation_count,
-        "document_count": author.document_count,
-        "profile_url": f"https://www.scopus.com/authid/detail.uri?authorId={AUTHOR_ID}"
-    }
+def get_publication_data(publications, max_publications=5):
+    pub_data = []
+    for pub in sorted(publications, key=lambda p: p.get("num_citations", 0), reverse=True)[:max_publications]:
+        try:
+            # Add delay to avoid rate limiting
+            time.sleep(1)
+            
+            filled_pub = scholarly.fill(pub)
+            pub_data.append({
+                "title": filled_pub["bib"].get("title", "N/A"),
+                "year": filled_pub["bib"].get("pub_year", "N/A"),
+                "citations": filled_pub.get("num_citations", 0),
+                "venue": filled_pub["bib"].get("venue", "N/A"),
+                "url": filled_pub.get("pub_url", "")
+            })
+        except Exception as e:
+            print(f"Error processing publication: {e}")
+            continue
+            
+    return pub_data
 
+def save_to_json(data, filename):
     os.makedirs("_data", exist_ok=True)
-    with open("_data/scopus.json", "w") as f:
-        json.dump(metrics, f, indent=2)
+    with open(f"_data/{filename}", "w") as f:
+        json.dump(data, f, indent=2)
 
-    print("✅ Scopus metrics saved")
+def main():
+    author_id = "qOhxqbkAAAAJ"
+    
+    # Get author data
+    profile, publications = get_author_data(author_id)
+    if not profile:
+        print("Failed to fetch author profile")
+        return
+    
+    # Get publication data
+    pub_data = get_publication_data(publications)
+    
+    # Save data
+    save_to_json(profile, "scholar.json")
+    save_to_json(pub_data, "scholar_publications.json")
+    
+    print("✅ Google Scholar data saved successfully.")
+    print(f"• Profile: {profile['name']}")
+    print(f"• Publications processed: {len(pub_data)}")
 
-    # === Top publications ===
-    search = ScopusSearch(f"AU-ID({AUTHOR_ID})")
-    top_pubs = sorted(search.results, 
-                     key=lambda x: int(x.get("citedby_count", 0)), 
-                     reverse=True)[:5]
-
-    pubs = [{
-        "title": pub.get("title"),
-        "journal": pub.get("publicationName"),
-        "year": pub.get("coverDate", "")[:4],
-        "doi": pub.get("doi", ""),
-        "citations": pub.get("citedby_count", "0")
-    } for pub in top_pubs]
-
-    with open("_data/publications.json", "w") as f:
-        json.dump(pubs, f, indent=2)
-
-    print("✅ Top publications saved")
-
-except Exception as e:
-    print(f"❌ Error: {str(e)}")
-    raise
+if __name__ == "__main__":
+    main()
