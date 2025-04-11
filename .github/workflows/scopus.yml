@@ -1,4 +1,4 @@
-name: Update Scopus Metrics via Elsapy
+name: Update google scholar
 
 on:
   schedule:
@@ -19,12 +19,9 @@ jobs:
           python-version: '3.10'
 
       - name: Install dependencies
-        run: pip install elsapy==0.5.0
+        run: pip install scholarly
 
       - name: Fetch Scopus Metrics
-        env:
-          SCOPUS_API_KEY: ${{ secrets.SCOPUS_API_KEY }}
-          SCOPUS_INST_TOKEN: ${{ secrets.SCOPUS_INST_TOKEN }}
         run: python scripts/fetch_scopus_metrics.py
 
       - name: Commit and push changes
