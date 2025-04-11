@@ -1,15 +1,20 @@
 from pybliometrics.scopus import AuthorRetrieval, ScopusSearch
-from pybliometrics.scopus.utils import config
-import os, json
+from pybliometrics.scopus.utils import create_config
+import os
+import json
 
 # === CONFIG ===
 AUTHOR_ID = "57219532607"
 API_KEY = os.getenv("SCOPUS_API_KEY")
 
-# Directly configure Pybliometrics
-config['Authentication']['APIKey'] = API_KEY
-config['Directories']['AbstractRetrieval'] = '/tmp/pybliometrics/abstract_retrieval'
-# Add other directories as needed
+# Initialize configuration (works in GitHub Actions)
+create_config(keys=[API_KEY], 
+              path="/tmp/pybliometrics.cfg",
+              dirs={
+                  "AbstractRetrieval": "/tmp/pybliometrics/abstract_retrieval",
+                  "AuthorRetrieval": "/tmp/pybliometrics/author_retrieval",
+                  "ScopusSearch": "/tmp/pybliometrics/scopus_search"
+              })
 
 # === Fetch metrics ===
 try:
