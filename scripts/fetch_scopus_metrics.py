@@ -1,18 +1,33 @@
 from pybliometrics.scopus import AuthorRetrieval, ScopusSearch
-from pybliometrics.utils import create_config
 import os, json
 
-# Get API key from GitHub secret
-API_KEY = os.getenv("SCOPUS_API_KEY")
 AUTHOR_ID = "57219532607"
+API_KEY = os.getenv("SCOPUS_API_KEY")
 
-# Create pybliometrics config the official way
-create_config()
+# 1. Write config file for pybliometrics
+config_dir = os.path.expanduser("~/.config")
+os.makedirs(config_dir, exist_ok=True)
 
-# Make _data folder
+with open(os.path.join(config_dir, "pybliometrics.cfg"), "w") as f:
+    f.write(f"""[Authentication]
+APIKey = {API_KEY}
+InstToken =
+
+[Directories]
+AbstractRetrieval = /tmp/pybliometrics/abstract_retrieval
+AffiliationRetrieval = /tmp/pybliometrics/affiliation_retrieval
+AuthorRetrieval = /tmp/pybliometrics/author_retrieval
+CitationOverview = /tmp/pybliometrics/citation_overview
+ScopusSearch = /tmp/pybliometrics/scopus_search
+SerialTitle = /tmp/pybliometrics/serial_title
+SubjectClassifications = /tmp/pybliometrics/subject_classifications
+DownloadFolder = /tmp/pybliometrics/download
+""")
+
+# 2. Create _data folder for Jekyll
 os.makedirs("_data", exist_ok=True)
 
-# Retrieve author metrics
+# 3. Fetch Scopus author metrics
 author = AuthorRetrieval(AUTHOR_ID)
 
 metrics = {
@@ -27,9 +42,9 @@ metrics = {
 with open("_data/scopus.json", "w") as f:
     json.dump(metrics, f, indent=2)
 
-print("✅ Scopus metrics saved to _data/scopus.json")
+print("✅ Metrics saved to _data/scopus.json")
 
-# Retrieve top 5 cited publications
+# 4. Fetch top 5 cited publications
 search = ScopusSearch(f"AU-ID({AUTHOR_ID})")
 results = search.results
 
