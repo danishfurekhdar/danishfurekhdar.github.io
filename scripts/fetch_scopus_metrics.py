@@ -4,6 +4,9 @@ import os, json
 AUTHOR_ID = "57219532607"
 API_KEY = os.getenv("SCOPUS_API_KEY")
 
+with open(os.path.expanduser("~/.config/pybliometrics.cfg"), "w") as f:
+    f.write(f"""[Authentication]
+
 # 1. Write config file for pybliometrics
 config_dir = os.path.expanduser("~/.config")
 os.makedirs(config_dir, exist_ok=True)
