@@ -1,35 +1,21 @@
 from pybliometrics.scopus import AuthorRetrieval, ScopusSearch
+from pybliometrics.scopus.utils import create_config
 import os, json
 
-# Scopus Author ID
+# Set up config properly on GitHub Action runner
+api_key = os.getenv("SCOPUS_API_KEY")
+create_config(api_key)
+
+# Your Scopus Author ID
 AUTHOR_ID = "57219532607"
 
-# Setup config for pybliometrics
-os.makedirs(os.path.expanduser("~/.pybliometrics"), exist_ok=True)
-with open(os.path.expanduser("~/.pybliometrics/config.ini"), "w") as f:
-    f.write(f"""
-[Authentication]
-APIKey = {os.getenv("SCOPUS_API_KEY")}
-InstToken =
-
-[Directories]
-AbstractRetrieval = ./pybliometrics/abstract_retrieval
-AffiliationRetrieval = ./pybliometrics/affiliation_retrieval
-AuthorRetrieval = ./pybliometrics/author_retrieval
-CitationOverview = ./pybliometrics/citation_overview
-ScopusSearch = ./pybliometrics/scopus_search
-SerialTitle = ./pybliometrics/serial_title
-SubjectClassifications = ./pybliometrics/subject_classifications
-DownloadFolder = ./pybliometrics/download
-""")
-
-# Create _data dir
+# Make _data dir
 os.makedirs("_data", exist_ok=True)
 
-# Fetch author info
+# Fetch author metrics
 author = AuthorRetrieval(AUTHOR_ID)
 
-data = {
+metrics = {
     "name": author.indexed_name,
     "affiliation": author.affiliation_current[0].name if author.affiliation_current else "N/A",
     "h_index": author.h_index,
@@ -39,11 +25,11 @@ data = {
 }
 
 with open("_data/scopus.json", "w") as f:
-    json.dump(data, f, indent=2)
+    json.dump(metrics, f, indent=2)
 
-print("✅ Scopus metrics saved to _data/scopus.json")
+print("✅ Saved Scopus metrics to _data/scopus.json")
 
-# Fetch top 5 publications
+# Get top 5 publications
 search = ScopusSearch(f"AU-ID({AUTHOR_ID})")
 results = search.results
 
@@ -62,4 +48,4 @@ for pub in top_pubs:
 with open("_data/publications.json", "w") as f:
     json.dump(pubs, f, indent=2)
 
-print("✅ Publications saved to _data/publications.json")
+print("✅ Saved top publications to _data/publications.json")
