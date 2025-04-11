@@ -88,13 +88,14 @@ permalink: /research/
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script>
     const ctx = document.getElementById('citChart');
+
     const chart = new Chart(ctx, {
       type: 'bar',
       data: {
-        labels: ['2020', '2021', '2022', '2023', '2024'], // update if needed
+        labels: [{% for year in site.data.scholar_citations %}"{{ year }}"{% if forloop.last == false %}, {% endif %}{% endfor %}],
         datasets: [{
           label: 'Citations per Year',
-          data: [4, 22, 34, 45, 19], // replace with actual data if available
+          data: [{% for year in site.data.scholar_citations %}{{ site.data.scholar_citations[year] }}{% if forloop.last == false %}, {% endif %}{% endfor %}],
           backgroundColor: 'rgba(0, 123, 255, 0.6)',
           borderColor: 'rgba(0, 123, 255, 1)',
           borderWidth: 1
@@ -115,3 +116,4 @@ permalink: /research/
     });
   </script>
 </div>
+
