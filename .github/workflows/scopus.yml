@@ -2,8 +2,8 @@ name: Update Scopus Metrics
 
 on:
   schedule:
-    - cron: '0 0 * * 0'  # every Sunday at midnight
-  workflow_dispatch:     # allows manual trigger
+    - cron: '0 0 * * 0'  # every Sunday at midnight UTC
+  workflow_dispatch:     # allows manual trigger from GitHub UI
 
 jobs:
   update-scopus:
@@ -16,20 +16,20 @@ jobs:
     - name: Set up Python
       uses: actions/setup-python@v4
       with:
-        python-version: 3.10
+        python-version: '3.10'  # ✅ Use supported version
 
-    - name: Install requests
+    - name: Install dependencies
       run: pip install requests
 
-    - name: Run Scopus fetch script
+    - name: Fetch Scopus Metrics
       env:
         SCOPUS_API_KEY: ${{ secrets.SCOPUS_API_KEY }}
       run: python scripts/fetch_scopus_metrics.py
 
-    - name: Commit and push changes
+    - name: Commit and push updated data
       run: |
         git config user.name "github-actions"
-        git config user.email "github-actions@github.com"
+        git config user.email "actions@github.com"
         git add _data/scopus.json
         git commit -m "📊 Update Scopus metrics" || echo "No changes to commit"
         git push
