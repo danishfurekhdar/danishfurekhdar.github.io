@@ -1,0 +1,35 @@
+name: Update Scopus Metrics via Pybliometrics
+
+on:
+  schedule:
+    - cron: '0 0 * * 0'  # every Sunday
+  workflow_dispatch:
+
+jobs:
+  update-scopus:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+
+      - name: Install pybliometrics
+        run: pip install pybliometrics
+
+      - name: Run script to fetch metrics
+        env:
+          SCOPUS_API_KEY: ${{ secrets.SCOPUS_API_KEY }}
+        run: python scripts/fetch_scopus_metrics.py
+
+      - name: Commit and push updates
+        run: |
+          git config user.name "github-actions"
+          git config user.email "actions@github.com"
+          git add _data/*.json
+          git commit -m "📊 Update Scopus metrics (pybliometrics)" || echo "No changes to commit"
+          git push
