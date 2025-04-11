@@ -7,7 +7,7 @@ API_KEY = os.getenv("SCOPUS_API_KEY")
 AUTHOR_ID = "57219532607"
 
 # Create pybliometrics config the official way
-create_config(api_key=API_KEY, inst_token="", view="STANDARD")
+create_config()
 
 # Make _data folder
 os.makedirs("_data", exist_ok=True)
