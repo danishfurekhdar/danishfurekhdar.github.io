@@ -24,9 +24,7 @@ jobs:
         pip install scholarly==1.7.2
         
     - name: Run scholar script
-      run: |
-        cd scripts
-        python scholar_update.py
+      run: python scripts/scholar_update.py
         
     - name: Commit and push changes
       run: |
