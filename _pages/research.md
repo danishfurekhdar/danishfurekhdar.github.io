@@ -11,7 +11,7 @@ permalink: /research/
   </header>
 
   <section class="intro-section">
-    <p>My research develops theoretical frameworks to understand how atoms and molecules behave in ultra-intense laser fields (10<sup>14</sup>-10<sup>18</sup> W/cm<sup>2</sup>). By combining analytical strong-field approximations with numerical solutions to the time-dependent Schrödinger equation, I explore phenomena where traditional perturbation theory breaks down.</p>
+    <p>My research develops theoretical frameworks to understand how atoms and molecules behave in ultra-intense laser fields (10<sup>13</sup>-10<sup>18</sup> W/cm<sup>2</sup>). By combining analytical strong-field approximations with numerical solutions to the time-dependent Schrödinger equation, I explore phenomena where traditional perturbation theory breaks down.</p>
   </section>
 
   <div class="research-theme">
@@ -52,7 +52,7 @@ permalink: /research/
     
     <figure class="theme-visual">
       <img src="/assets/img/saddlepoint.png" alt="Saddle Point Analysis"/>
-      <figcaption>Dominant quantum trajectories in complex time plane</figcaption>
+      <figcaption>Saddle points on complex time plane with deformed integration contour</figcaption>
     </figure>
   </div>
 
@@ -73,7 +73,7 @@ permalink: /research/
     
     <figure class="theme-visual">
       <img src="/assets/img/pulse.png" alt="Twisted Laser Pulse"/>
-      <figcaption>Spatial profile of a twisted laser pulse (l=2)</figcaption>
+      <figcaption>Spatial profile of a few-cycle laser pulse</figcaption>
     </figure>
   </div>
 
@@ -96,7 +96,7 @@ permalink: /research/
   </section>
 
   <section class="collaboration-note">
-    <p>I welcome discussions about my research and potential collaborations. <a href="/contact/">Contact me</a> to explore these topics further.</p>
+    <p>I welcome discussions about my research and potential collaborations. [Contact me](mailto:danish.dar@uni-jena.de) to explore these topics further.</p>
   </section>
 </div>
 
