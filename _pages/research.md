@@ -35,7 +35,7 @@ permalink: /research/
 
   <div class="focus-block">
     <h2>Visualizing Laser Pulses</h2>
-    <img src="/assets/img/research/pulse.png" alt="Laser Envelope" class="research-img"/>
+    <img src="/assets/img/pulse.png" alt="Laser Envelope" class="research-img"/>
     <p class="img-caption">Temporal envelope of a two-cycle sine-squared laser pulse.</p>
   </div>
 
