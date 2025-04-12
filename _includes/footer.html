@@ -10,15 +10,9 @@
     <!-- ✅ Replaced sitemap with visitor count -->
     <li>
       <i class="fas fa-user" aria-hidden="true"></i>
-      Visitor Count: <span id="visitor-count">Loading...</span>
+      <a href="https://www.freecounterstat.com" title="page counter"><img src="https://counter4.optistats.ovh/private/freecounterstat.php?c=w485pqag9h91t5zx7b6htwu33gsztshc" border="0" title="page counter" alt="page counter"></a>
     </li>
-    <script>
-      fetch('https://api.countapi.xyz/update/danishfurekhdar.me/visits/?amount=1')
-        .then(res => res.json())
-        .then(data => {
-          document.getElementById('visitor-count').innerText = data.value;
-        });
-    </script>
+    
   </ul>
 </div>
 {% endif %}
