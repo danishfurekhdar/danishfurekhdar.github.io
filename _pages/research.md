@@ -110,63 +110,63 @@ permalink: /research/
   line-height: 1.7;
 }
 
-.research-header {
+.research-page .research-header {
   text-align: center;
   margin-bottom: 3rem;
   padding-bottom: 1.5rem;
   border-bottom: 1px solid #eaeaea;
 }
 
-.research-header h1 {
+.research-page .research-header h1 {
   font-size: 2.6rem;
   color: #222;
   margin-bottom: 0.8rem;
   font-weight: 600;
 }
 
-.research-subtitle {
+.research-page .research-subtitle {
   font-size: 1.3rem;
   color: #555;
   font-weight: 300;
 }
 
-.intro-section {
+.research-page .intro-section {
   margin: 0 auto 4rem;
   max-width: 800px;
   font-size: 1.1rem;
   text-align: center;
 }
 
-.research-theme {
+.research-page .research-theme {
   display: flex;
   gap: 3rem;
   margin-bottom: 5rem;
   align-items: center;
 }
 
-.reversed {
+.research-page .reversed {
   flex-direction: row-reverse;
 }
 
-.theme-description {
+.research-page .theme-description {
   flex: 1;
   min-width: 50%;
 }
 
-.theme-visual {
+.research-page .theme-visual {
   flex: 1;
   min-width: 40%;
   margin: 0;
 }
 
-.theme-visual img {
+.research-page .theme-visual img {
   width: 100%;
   border-radius: 8px;
   box-shadow: 0 10px 30px rgba(0,0,0,0.08);
   border: 1px solid #eee;
 }
 
-figcaption {
+.research-page figcaption {
   font-size: 0.9rem;
   color: #666;
   text-align: center;
@@ -174,44 +174,44 @@ figcaption {
   line-height: 1.5;
 }
 
-h2 {
+.research-page h2 {
   color: #2c5282;
   font-size: 1.8rem;
   margin-bottom: 1.5rem;
   font-weight: 500;
 }
 
-h3 {
+.research-page h3 {
   color: #4a5568;
   font-size: 1.3rem;
   margin: 2rem 0 1rem;
   font-weight: 500;
 }
 
-ul {
+.research-page ul {
   padding-left: 1.5rem;
   margin: 1.5rem 0;
 }
 
-li {
+.research-page li {
   margin-bottom: 0.8rem;
   position: relative;
   padding-left: 1rem;
 }
 
-li:before {
+.research-page li:before {
   content: "•";
   position: absolute;
   left: 0;
   color: #4a5568;
 }
 
-.current-work {
+.research-page .current-work {
   margin: 6rem 0 4rem;
   text-align: center;
 }
 
-.project-showcase {
+.research-page .project-showcase {
   display: flex;
   gap: 2rem;
   margin-top: 3rem;
@@ -219,7 +219,7 @@ li:before {
   flex-wrap: wrap;
 }
 
-.project-card {
+.research-page .project-card {
   flex: 1;
   min-width: 280px;
   max-width: 350px;
@@ -231,16 +231,16 @@ li:before {
   transition: transform 0.2s ease;
 }
 
-.project-card:hover {
+.research-page .project-card:hover {
   transform: translateY(-5px);
 }
 
-.project-card h3 {
+.research-page .project-card h3 {
   color: #2b6cb0;
   margin-top: 0;
 }
 
-.collaboration-note {
+.research-page .collaboration-note {
   max-width: 700px;
   margin: 5rem auto;
   padding: 2rem;
@@ -250,7 +250,7 @@ li:before {
   font-size: 1.1rem;
 }
 
-.collaboration-note a {
+.research-page .collaboration-note a {
   color: #2b6cb0;
   font-weight: 500;
   text-decoration: none;
@@ -262,33 +262,33 @@ li:before {
     padding: 2rem;
   }
   
-  .research-theme,
-  .reversed {
+  .research-page .research-theme,
+  .research-page .reversed {
     flex-direction: column;
     gap: 2rem;
   }
   
-  .theme-visual {
+  .research-page .theme-visual {
     width: 100%;
     max-width: 600px;
     margin: 0 auto;
   }
   
-  .project-card {
+  .research-page .project-card {
     min-width: 100%;
   }
 }
 
 @media (max-width: 600px) {
-  .research-header h1 {
+  .research-page .research-header h1 {
     font-size: 2rem;
   }
   
-  .research-subtitle {
+  .research-page .research-subtitle {
     font-size: 1.1rem;
   }
   
-  h2 {
+  .research-page h2 {
     font-size: 1.6rem;
   }
 }
