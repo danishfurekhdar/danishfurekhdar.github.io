@@ -4,8 +4,32 @@ title: Visitor Map
 permalink: /visitor-map/
 ---
 
-<div style="width: 100%; height: 80vh; margin: 0 auto;">
-  <script type="text/javascript" src="//rf.revolvermaps.com/0/0/8.js?i=5zvn3w8hx5x&amp;m=0&amp;c=ff0000&amp;cr1=50000&amp;f=arial&amp;l=33" async="async"></script>
-</div>
+<h2>Visitor Map</h2>
+<div id="map" style="height: 500px;"></div>
 
-<p style="text-align: center;">This map shows visitor locations from around the world</p>
+<!-- Leaflet -->
+<link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
+<script>
+const map = L.map('map').setView([20, 0], 2);
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+  attribution: '&copy; OpenStreetMap contributors'
+}).addTo(map);
+
+// Load visitor data from your Sheet (published as JSON)
+fetch('https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/gviz/tq?tqx=out:json')
+  .then(res => res.text())
+  .then(text => {
+    const json = JSON.parse(text.substr(47).slice(0, -2));
+    const rows = json.table.rows;
+
+    rows.forEach(row => {
+      const loc = row.c[2].v.split(","); // Assuming loc = "lat,lng"
+      const country = row.c[3].v;
+      L.marker([parseFloat(loc[0]), parseFloat(loc[1])])
+        .addTo(map)
+        .bindPopup(`Visitor from ${country}`);
+    });
+  });
+</script>
