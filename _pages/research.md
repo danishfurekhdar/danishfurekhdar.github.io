@@ -17,7 +17,7 @@ permalink: /research/
       <li><strong>Twisted Laser Pulses:</strong> Impact of orbital angular momentum on ionization.</li>
       <li><strong>Non-Dipole Effects:</strong> Exploring relativistic light-matter dynamics.</li>
     </ul>
-    <img src="/assets/img/research/pmd_bessel.png" alt="PMD with Bessel Pulse" class="research-img"/>
+    <img src="/assets/img/pmd.png" alt="PMD with Bessel Pulse" class="research-img"/>
     <p class="img-caption">Photoelectron momentum distribution generated using a Bessel beam.</p>
   </div>
 
@@ -29,7 +29,7 @@ permalink: /research/
       <li>Saddle-point dynamics vs. full-path integral analysis</li>
       <li>AI-assisted clustering of quantum trajectories</li>
     </ul>
-    <img src="/assets/img/research/saddle_paths.png" alt="Saddle Point Paths" class="research-img"/>
+    <img src="/assets/img/saddlepoint.png" alt="Saddle Point Paths" class="research-img"/>
     <p class="img-caption">Quantum paths in complex time using saddle-point analysis.</p>
   </div>
 
