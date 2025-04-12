@@ -83,4 +83,4 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 </script>
 
-<p>This map shows visitors to our website from around the world.</p>
+<script type="text/javascript" id="mapmyvisitors" src="//mapmyvisitors.com/map.js?d=FSxM0mk0BF9vywHVRs3hBn7aDCBvU1bmxIWnkLrM8KI&cl=ffffff&w=a"></script>
