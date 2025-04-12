@@ -1,12 +1,5 @@
 [
   {
-    "ip": "1.2.3.4",
-    "country": "IN",
-    "city": "Srinagar",
-    "loc": "34.08,74.79",
-    "timestamp": "2025-04-12T22:44:46.988Z"
-  },
-  {
     "ip": "77.11.197.241",
     "country": "DE",
     "city": "Hamburg",
