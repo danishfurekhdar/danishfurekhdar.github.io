@@ -11,7 +11,7 @@ redirect_from:
 
 ### 👋 Hey there, I'm Danish Furekh Dar
 
-I'm a physicist, dreamer, and passionate explorer of the unknown — currently pursuing a PhD in **strong-field ionization and quantum dynamics** at **Friedrich Schiller University Jena** and the **Helmholtz Institute** in Germany.
+I'm a physicist and passionate explorer of the unknown — currently pursuing a PhD in **strong-field ionization and quantum dynamics** at **Friedrich Schiller University Jena** and the **Helmholtz Institute** in Germany.
 
 Born and raised in the heart of **Kashmir**, I grew up surrounded by nature's serenity and philosophical wonder. Those early experiences sparked my lifelong curiosity about the universe and our place within it. From the peaks of the Himalayas to the precision of quantum mechanics, I’ve always been drawn to beauty — whether in landscapes or equations.
 
