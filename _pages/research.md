@@ -96,7 +96,7 @@ permalink: /research/
   </section>
 
   <section class="collaboration-note">
-    <p>I welcome discussions about my research and potential collaborations. <a href="mailto:your@email.com">Contact me</a> to explore these topics further.</p>
+    <p>I welcome discussions about my research and potential collaborations. <a href="mailto:danish.dar@uni-jena.de">Contact me</a> to explore these topics further.</p>
   </section>
 </div>
 
