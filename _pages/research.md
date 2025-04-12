@@ -4,255 +4,292 @@ title: "Research"
 permalink: /research/
 ---
 
-<div class="research-container">
-  <div class="research-header">
+<div class="research-page">
+  <header class="research-header">
     <h1>Strong-Field Quantum Dynamics</h1>
-    <p class="research-subtitle">Theoretical investigations of light-matter interactions in extreme conditions</p>
-  </div>
+    <p class="research-subtitle">Theoretical investigations of light-matter interactions in intense laser fields</p>
+  </header>
 
-  <div class="intro-section">
+  <section class="intro-section">
     <p>My research develops theoretical frameworks to understand how atoms and molecules behave in ultra-intense laser fields (10<sup>14</sup>-10<sup>18</sup> W/cm<sup>2</sup>). By combining analytical strong-field approximations with numerical solutions to the time-dependent Schrödinger equation, I explore phenomena where traditional perturbation theory breaks down.</p>
-  </div>
+  </section>
 
   <div class="research-theme">
-    <div class="theme-content">
+    <div class="theme-description">
       <h2>Strong-Field Ionization Dynamics</h2>
-      <div class="theme-text">
-        <p>When atoms interact with intense laser pulses, electrons can absorb many more photons than required for ionization, creating complex interference patterns in their momentum distributions.</p>
-        
-        <h3>Key Investigations:</h3>
+      <p>When atoms interact with intense laser pulses, electrons can absorb many more photons than required for ionization, creating complex interference patterns in their momentum distributions.</p>
+      
+      <div class="research-details">
+        <h3>Key Contributions:</h3>
         <ul>
-          <li><strong>Quantum Trajectory Interference:</strong> Developed models explaining holographic patterns in photoelectron spectra through interfering ionization pathways</li>
-          <li><strong>Non-Dipole Effects:</strong> Formulated corrections to the strong-field approximation accounting for magnetic field effects in high-intensity regimes</li>
-          <li><strong>Carrier-Envelope Phase Control:</strong> Demonstrated how sub-cycle pulse structure determines electron emission directionality</li>
+          <li>Developed models explaining holographic patterns in photoelectron spectra through interfering ionization pathways</li>
+          <li>Formulated corrections to the strong-field approximation accounting for magnetic field effects</li>
+          <li>Demonstrated how sub-cycle pulse structure determines electron emission directionality</li>
         </ul>
-        
-        <p>My work on generalized strong-field approximations has provided new tools for interpreting attosecond-scale electron dynamics.</p>
-      </div>
-      <div class="theme-image">
-        <img src="/assets/img/pmd.png" alt="Photoelectron Momentum Distribution"/>
-        <p class="img-caption">Calculated photoelectron momentum distribution showing characteristic interference structures</p>
       </div>
     </div>
+    
+    <figure class="theme-visual">
+      <img src="/assets/img/pmd.png" alt="Photoelectron Momentum Distribution"/>
+      <figcaption>Calculated photoelectron momentum distribution showing characteristic interference structures</figcaption>
+    </figure>
   </div>
 
-  <div class="research-theme">
-    <div class="theme-content">
-      <h2>Saddle-Point Methods in Strong-Field Physics</h2>
-      <div class="theme-text">
-        <p>The saddle-point approximation provides deep physical insight by revealing dominant quantum paths in complex time.</p>
-        
+  <div class="research-theme reversed">
+    <div class="theme-description">
+      <h2>Saddle-Point Methods</h2>
+      <p>The saddle-point approximation provides deep physical insight by revealing dominant quantum paths in complex time.</p>
+      
+      <div class="research-details">
         <h3>Methodological Advances:</h3>
         <ul>
-          <li><strong>Complex-Time Dynamics:</strong> Extended standard approaches to include non-adiabatic effects in tunneling ionization</li>
-          <li><strong>Interference Conditions:</strong> Derived phase-matching conditions explaining spectral oscillations in ATI spectra</li>
-          <li><strong>Attosecond Resolution:</strong> Developed visualization techniques for sub-cycle electron dynamics</li>
+          <li>Extended standard approaches to include non-adiabatic effects in tunneling ionization</li>
+          <li>Derived phase-matching conditions explaining spectral oscillations in ATI spectra</li>
+          <li>Developed visualization techniques for sub-cycle electron dynamics</li>
         </ul>
-        
-        <p>These techniques have enabled more efficient calculations while maintaining physical interpretability.</p>
-      </div>
-      <div class="theme-image">
-        <img src="/assets/img/saddlepoint.png" alt="Saddle Point Analysis"/>
-        <p class="img-caption">Dominant quantum trajectories in complex time plane for different final momenta</p>
       </div>
     </div>
+    
+    <figure class="theme-visual">
+      <img src="/assets/img/saddlepoint.png" alt="Saddle Point Analysis"/>
+      <figcaption>Dominant quantum trajectories in complex time plane</figcaption>
+    </figure>
   </div>
 
   <div class="research-theme">
-    <div class="theme-content">
-      <h2>Twisted Light-Matter Interactions</h2>
-      <div class="theme-text">
-        <p>Vortex laser beams carrying orbital angular momentum create novel ionization dynamics with unique symmetry properties.</p>
-        
-        <h3>Findings:</h3>
+    <div class="theme-description">
+      <h2>Twisted Light Interactions</h2>
+      <p>Vortex laser beams carrying orbital angular momentum create novel ionization dynamics with unique symmetry properties.</p>
+      
+      <div class="research-details">
+        <h3>Research Findings:</h3>
         <ul>
-          <li><strong>OAM Transfer Mechanisms:</strong> Identified selection rules governing angular momentum transfer to photoelectrons</li>
-          <li><strong>Spatio-Temporal Coupling:</strong> Characterized how pulse vorticity affects sub-cycle ionization dynamics</li>
-          <li><strong>Experimental Collaborations:</strong> Worked with experimental groups to verify theoretical predictions</li>
+          <li>Identified selection rules governing angular momentum transfer to photoelectrons</li>
+          <li>Characterized how pulse vorticity affects sub-cycle ionization dynamics</li>
+          <li>Theoretical predictions verified through experimental collaborations</li>
         </ul>
-        
-        <p>This research opens new possibilities for controlling electron wavepackets with structured light.</p>
-      </div>
-      <div class="theme-image">
-        <img src="/assets/img/pulse.png" alt="Twisted Laser Pulse"/>
-        <p class="img-caption">Spatial profile of a twisted laser pulse with topological charge l=2</p>
       </div>
     </div>
+    
+    <figure class="theme-visual">
+      <img src="/assets/img/pulse.png" alt="Twisted Laser Pulse"/>
+      <figcaption>Spatial profile of a twisted laser pulse (l=2)</figcaption>
+    </figure>
   </div>
 
-  <div class="current-projects">
-    <h2>Current Research Directions</h2>
-    <div class="project-grid">
-      <div class="project-card">
+  <section class="current-work">
+    <h2>Ongoing Investigations</h2>
+    <div class="project-showcase">
+      <article class="project-card">
         <h3>Few-Cycle Vortex Pulses</h3>
-        <p>Investigating how extreme bandwidth affects orbital angular momentum transfer during ionization</p>
-      </div>
-      <div class="project-card">
+        <p>Examining orbital angular momentum transfer with ultra-short pulses</p>
+      </article>
+      <article class="project-card">
         <h3>Relativistic Corrections</h3>
-        <p>Developing models that include both magnetic field and relativistic mass shift effects</p>
-      </div>
-      <div class="project-card">
+        <p>Developing models incorporating magnetic field and mass shift effects</p>
+      </article>
+      <article class="project-card">
         <h3>Computational Methods</h3>
-        <p>Implementing efficient numerical techniques for solving strong-field problems</p>
-      </div>
+        <p>Implementing efficient numerical techniques for strong-field problems</p>
+      </article>
     </div>
-  </div>
+  </section>
 
-  <div class="collaboration">
-    <p>I welcome discussions about my research and potential collaborations. <a href="/contact/">Contact me</a> if you're interested in these topics or have related questions.</p>
-  </div>
+  <section class="collaboration-note">
+    <p>I welcome discussions about my research and potential collaborations. <a href="/contact/">Contact me</a> to explore these topics further.</p>
+  </section>
 </div>
 
 <style>
-.research-container {
-  max-width: 1100px;
+.research-page {
+  max-width: 1200px;
   margin: 0 auto;
-  padding: 2rem;
+  padding: 2rem 3rem;
   font-family: 'Helvetica Neue', Arial, sans-serif;
   color: #333;
-  line-height: 1.6;
+  line-height: 1.7;
 }
 
 .research-header {
   text-align: center;
-  margin-bottom: 2.5rem;
-  padding-bottom: 1rem;
+  margin-bottom: 3rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid #eaeaea;
 }
 
 .research-header h1 {
-  font-size: 2.4rem;
-  color: #2c3e50;
-  margin-bottom: 0.5rem;
+  font-size: 2.6rem;
+  color: #222;
+  margin-bottom: 0.8rem;
+  font-weight: 600;
 }
 
 .research-subtitle {
-  font-size: 1.2rem;
-  color: #7f8c8d;
+  font-size: 1.3rem;
+  color: #555;
   font-weight: 300;
 }
 
 .intro-section {
-  margin-bottom: 3rem;
+  margin: 0 auto 4rem;
+  max-width: 800px;
   font-size: 1.1rem;
-  text-align: justify;
-  padding: 0 1rem;
+  text-align: center;
 }
 
 .research-theme {
-  margin-bottom: 3.5rem;
-}
-
-.theme-content {
   display: flex;
-  gap: 2rem;
-  align-items: flex-start;
+  gap: 3rem;
+  margin-bottom: 5rem;
+  align-items: center;
 }
 
-.theme-text {
-  flex: 1.5;
+.reversed {
+  flex-direction: row-reverse;
 }
 
-.theme-image {
+.theme-description {
   flex: 1;
-  min-width: 300px;
-  margin-top: 0.5rem;
+  min-width: 50%;
 }
 
-.theme-image img {
+.theme-visual {
+  flex: 1;
+  min-width: 40%;
+  margin: 0;
+}
+
+.theme-visual img {
   width: 100%;
-  border-radius: 6px;
-  box-shadow: 0 5px 20px rgba(0,0,0,0.08);
-  transition: transform 0.3s ease;
+  border-radius: 8px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+  border: 1px solid #eee;
 }
 
-.theme-image img:hover {
-  transform: scale(1.02);
-}
-
-.img-caption {
-  font-size: 0.85rem;
+figcaption {
+  font-size: 0.9rem;
   color: #666;
   text-align: center;
-  margin-top: 0.5rem;
+  margin-top: 1rem;
+  line-height: 1.5;
 }
 
 h2 {
-  color: #2980b9;
-  font-size: 1.6rem;
-  margin-top: 2rem;
-  margin-bottom: 1rem;
-  padding-bottom: 0.3rem;
-  border-bottom: 1px solid #eee;
+  color: #2c5282;
+  font-size: 1.8rem;
+  margin-bottom: 1.5rem;
+  font-weight: 500;
 }
 
 h3 {
-  color: #3498db;
-  font-size: 1.2rem;
-  margin-top: 1.2rem;
-  margin-bottom: 0.5rem;
+  color: #4a5568;
+  font-size: 1.3rem;
+  margin: 2rem 0 1rem;
+  font-weight: 500;
 }
 
 ul {
-  padding-left: 1.3rem;
+  padding-left: 1.5rem;
+  margin: 1.5rem 0;
 }
 
 li {
-  margin-bottom: 0.6rem;
+  margin-bottom: 0.8rem;
+  position: relative;
+  padding-left: 1rem;
 }
 
-.current-projects {
-  margin: 4rem 0;
+li:before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  color: #4a5568;
 }
 
-.project-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 1.5rem;
-  margin-top: 1.5rem;
+.current-work {
+  margin: 6rem 0 4rem;
+  text-align: center;
+}
+
+.project-showcase {
+  display: flex;
+  gap: 2rem;
+  margin-top: 3rem;
+  justify-content: center;
+  flex-wrap: wrap;
 }
 
 .project-card {
-  background: #f8f9fa;
-  padding: 1.3rem;
-  border-radius: 6px;
-  border-left: 3px solid #3498db;
+  flex: 1;
+  min-width: 280px;
+  max-width: 350px;
+  padding: 2rem;
+  background: #f8fafc;
+  border-radius: 8px;
+  border-top: 3px solid #4299e1;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.03);
+  transition: transform 0.2s ease;
+}
+
+.project-card:hover {
+  transform: translateY(-5px);
 }
 
 .project-card h3 {
+  color: #2b6cb0;
   margin-top: 0;
 }
 
-.collaboration {
-  margin-top: 3rem;
-  padding: 1.5rem;
+.collaboration-note {
+  max-width: 700px;
+  margin: 5rem auto;
+  padding: 2rem;
   text-align: center;
-  background: #f0f7fc;
-  border-radius: 6px;
-  font-size: 1.05rem;
+  background: #ebf8ff;
+  border-radius: 8px;
+  font-size: 1.1rem;
 }
 
-.collaboration a {
-  color: #2980b9;
+.collaboration-note a {
+  color: #2b6cb0;
   font-weight: 500;
   text-decoration: none;
+  border-bottom: 1px dotted currentColor;
 }
 
-.collaboration a:hover {
-  text-decoration: underline;
-}
-
-@media (max-width: 768px) {
-  .theme-content {
+@media (max-width: 900px) {
+  .research-page {
+    padding: 2rem;
+  }
+  
+  .research-theme,
+  .reversed {
     flex-direction: column;
+    gap: 2rem;
   }
   
-  .theme-image {
-    margin-top: 1.5rem;
+  .theme-visual {
     width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
   }
   
-  .project-grid {
-    grid-template-columns: 1fr;
+  .project-card {
+    min-width: 100%;
+  }
+}
+
+@media (max-width: 600px) {
+  .research-header h1 {
+    font-size: 2rem;
+  }
+  
+  .research-subtitle {
+    font-size: 1.1rem;
+  }
+  
+  h2 {
+    font-size: 1.6rem;
   }
 }
 </style>
