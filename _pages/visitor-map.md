@@ -11,11 +11,15 @@ permalink: /visitor-map/
 ### 📊 Visitor Distribution
 
 {% assign countries = site.data.visitors | group_by: "country" %}
-```mermaid
+{% capture pie_chart %}
 pie title Visitors by Country
 {% for country in countries %}
-    "{{ country.name }}" : {{ country.size }}
+"{{ country.name }}" : {{ country.size }}
 {% endfor %}
+{% endcapture %}
+
+```mermaid
+{{ pie_chart }}
 ```
 
 ### 🏙 Visitor Locations
