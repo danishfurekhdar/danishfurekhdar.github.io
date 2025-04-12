@@ -4,11 +4,8 @@ title: Visitor Map
 permalink: /visitor-map/
 ---
 
-<link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
-<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
-
 <div style="font-family: 'Segoe UI', sans-serif; max-width: 1000px; margin: 0 auto; padding: 20px;">
-  <h1>🌍 Visitor Map</h1>
+  <h1>🌍 Visitor Map (Google Maps)</h1>
   <div id="map" style="height: 500px; border-radius: 8px; margin-bottom: 30px;"></div>
 
   <h2>📈 Statistics</h2>
@@ -17,30 +14,47 @@ permalink: /visitor-map/
 </div>
 
 <script>
-  var map = L.map('map').setView([20, 0], 2);
-  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    maxZoom: 6,
-    attribution: '&copy; OpenStreetMap contributors'
-  }).addTo(map);
+  function initMap() {
+    const map = new google.maps.Map(document.getElementById("map"), {
+      zoom: 2,
+      center: { lat: 20, lng: 0 },
+    });
 
-  // Group by city+loc for aggregated counts
-  const rawData = {{ site.data.visitors | jsonify }};
-  const grouped = {};
+    const data = {{ site.data.visitors | jsonify }};
+    const grouped = {};
 
-  rawData.forEach(entry => {
-    const key = entry.city + '|' + entry.loc + '|' + entry.country;
-    if (!grouped[key]) {
-      grouped[key] = { count: 0, loc: entry.loc, city: entry.city, country: entry.country };
-    }
-    grouped[key].count += 1;
-  });
+    data.forEach(entry => {
+      if (!entry.loc || !entry.city || !entry.country) return;
+      const key = `${entry.city}|${entry.country}|${entry.loc}`;
+      if (!grouped[key]) {
+        grouped[key] = { count: 0, loc: entry.loc, city: entry.city, country: entry.country };
+      }
+      grouped[key].count += 1;
+    });
 
-  for (const key in grouped) {
-    const group = grouped[key];
-    const [lat, lon] = group.loc.split(',').map(parseFloat);
-    if (!isNaN(lat) && !isNaN(lon)) {
-      L.marker([lat, lon]).addTo(map)
-        .bindPopup(`${group.city}, ${group.country}<br>Visits: ${group.count}`);
+    for (const key in grouped) {
+      const item = grouped[key];
+      const [lat, lon] = item.loc.split(',').map(Number);
+      if (isNaN(lat) || isNaN(lon)) continue;
+
+      const marker = new google.maps.Marker({
+        position: { lat, lng: lon },
+        map,
+        title: `${item.city}, ${item.country}`,
+      });
+
+      const infoWindow = new google.maps.InfoWindow({
+        content: `<strong>${item.city}, ${item.country}</strong><br>Visits: ${item.count}`
+      });
+
+      marker.addListener("click", () => {
+        infoWindow.open(map, marker);
+      });
     }
   }
+</script>
+
+<!-- Replace YOUR_API_KEY below with your actual API key -->
+<script async
+  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAT67_M0K-_BKk8hXRfFIA1ewg6_2WxlCU&callback=initMap">
 </script>
