@@ -12,7 +12,7 @@ permalink: /visitor-map/
   <div id="map" style="height: 500px; border-radius: 8px; margin-bottom: 30px;"></div>
 
   <h2>📈 Statistics</h2>
-  <p>Total visits: <strong>{{ site.data.visitors.size }}</strong></p>
+  <p>Total visits: <strong>{{ site.data.visitors | size }}</strong></p>
   <p>Unique visitors: <strong>{{ site.data.visitors | group_by: "ip" | size }}</strong></p>
 </div>
 
@@ -23,12 +23,24 @@ permalink: /visitor-map/
     attribution: '&copy; OpenStreetMap contributors'
   }).addTo(map);
 
-  {% assign grouped = site.data.visitors | group_by_exp: "item", "item.city | append: ',' | append: item.country" %}
-  {% for group in grouped %}
-    {% assign visitor = group.items[0] %}
-    {% if visitor.lat and visitor.lon %}
-      L.marker([{{ visitor.lat }}, {{ visitor.lon }}]).addTo(map)
-        .bindPopup("{{ visitor.city }}, {{ visitor.country }}<br>Visits: {{ group.size }}");
-    {% endif %}
-  {% endfor %}
+  // Group by city+loc for aggregated counts
+  const rawData = {{ site.data.visitors | jsonify }};
+  const grouped = {};
+
+  rawData.forEach(entry => {
+    const key = entry.city + '|' + entry.loc + '|' + entry.country;
+    if (!grouped[key]) {
+      grouped[key] = { count: 0, loc: entry.loc, city: entry.city, country: entry.country };
+    }
+    grouped[key].count += 1;
+  });
+
+  for (const key in grouped) {
+    const group = grouped[key];
+    const [lat, lon] = group.loc.split(',').map(parseFloat);
+    if (!isNaN(lat) && !isNaN(lon)) {
+      L.marker([lat, lon]).addTo(map)
+        .bindPopup(`${group.city}, ${group.country}<br>Visits: ${group.count}`);
+    }
+  }
 </script>
