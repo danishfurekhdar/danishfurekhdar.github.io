@@ -15,7 +15,7 @@ permalink: /visitor-map/
       <div id="map" class="visitor-map"></div>
       <div id="map-error" class="map-error-message" style="display:none;">
         <i class="fas fa-exclamation-triangle"></i>
-        <p>Map failed to load. Please check your internet connection.</p>
+        <p>Map failed to load. Please check your internet connection or API key.</p>
       </div>
     </div>
 
@@ -92,17 +92,14 @@ permalink: /visitor-map/
 
   .map-error-message {
     position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
+    top: 0; left: 0; right: 0; bottom: 0;
     background: #f8d7da;
     color: #721c24;
     border-radius: 12px;
-    display: flex;
-    flex-direction: column;
+    display: none;
     align-items: center;
     justify-content: center;
+    flex-direction: column;
     text-align: center;
     padding: 20px;
   }
@@ -122,161 +119,99 @@ permalink: /visitor-map/
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
   }
 
-  /* ... (rest of your existing CSS remains the same) ... */
+  .stat-card {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 20px;
+  }
+
+  .stat-icon i {
+    font-size: 24px;
+    color: #3498db;
+  }
+
+  .stat-content .stat-label {
+    font-size: 0.9em;
+    color: #888;
+  }
+
+  .stat-content .stat-value {
+    font-size: 1.3em;
+    font-weight: bold;
+  }
 </style>
 
 <script>
-// Secure API key handling - should be set in your site's configuration
-const MAPS_API_KEY = 'AIzaSyAT67_M0K-_BKk8hXRfFIA1ewg6_2WxlCU';
+  const MAPS_API_KEY = 'AIzaSyAT67_M0K-_BKk8hXRfFIA1ewg6_2WxlCU'; // Replace this manually or via GitHub Actions
 
-// Fallback for development
-const localApiKey = (function() {
-  try {
-    return 'YOUR_LOCAL_DEV_KEY'; // Only for local testing - never commit this!
-  } catch (e) {
-    return '';
-  }
-})();
-
-function initMap() {
-  try {
-    console.log('[Map] Initialization started');
-    
+  function initMap() {
     const mapElement = document.getElementById('map');
-    if (!mapElement) {
-      throw new Error('Map container element not found');
-    }
+    if (!mapElement) return showMapError();
 
-    const center = new google.maps.LatLng(20, 0);
-    const mapOptions = {
+    const map = new google.maps.Map(mapElement, {
+      center: { lat: 20, lng: 0 },
       zoom: 2,
-      center: center,
       styles: [
         { featureType: "water", elementType: "geometry", stylers: [{ color: "#d4e6f4" }] },
         { featureType: "landscape", elementType: "geometry", stylers: [{ color: "#f5f5f5" }] }
       ]
-    };
-
-    const map = new google.maps.Map(mapElement, mapOptions);
-    console.log('[Map] Created successfully');
-
-    // Test marker to verify functionality
-    new google.maps.Marker({
-      position: center,
-      map: map,
-      title: "World Center",
-      icon: {
-        path: google.maps.SymbolPath.CIRCLE,
-        scale: 8,
-        fillColor: "#3498db",
-        fillOpacity: 0.9,
-        strokeColor: "#2980b9",
-        strokeWeight: 2
-      }
     });
 
-    // Process visitor data if available
-    try {
-      const data = {{ site.data.visitors | jsonify }};
-      if (data && Array.isArray(data)) {
-        processVisitorData(map, data);
+    const visitors = {{ site.data.visitors | jsonify }};
+    const locations = {};
+
+    visitors.forEach(entry => {
+      if (!entry.loc || !entry.city || !entry.country) return;
+      const [lat, lon] = entry.loc.split(',').map(Number);
+      if (isNaN(lat) || isNaN(lon)) return;
+
+      const key = `${entry.city}|${entry.country}|${lat.toFixed(2)},${lon.toFixed(2)}`;
+      if (!locations[key]) {
+        locations[key] = { city: entry.city, country: entry.country, lat, lon, count: 0 };
       }
-    } catch (e) {
-      console.warn('[Map] Error processing visitor data:', e);
-    }
-
-  } catch (error) {
-    console.error('[Map] Initialization failed:', error);
-    showMapError();
-  }
-}
-
-function processVisitorData(map, data) {
-  const locations = {};
-  let validEntries = 0;
-
-  data.forEach(entry => {
-    if (!entry.loc || !entry.city || !entry.country) return;
-    
-    const [latStr, lngStr] = entry.loc.split(',');
-    const lat = parseFloat(latStr);
-    const lng = parseFloat(lngStr);
-    
-    if (isNaN(lat) || isNaN(lng)) return;
-    
-    const locationKey = `${lat.toFixed(2)},${lng.toFixed(2)}`;
-    if (!locations[locationKey]) {
-      locations[locationKey] = {
-        position: { lat, lng },
-        city: entry.city,
-        country: entry.country,
-        count: 0
-      };
-    }
-    locations[locationKey].count++;
-    validEntries++;
-  });
-
-  console.log(`[Map] Processed ${validEntries} valid locations from ${data.length} entries`);
-
-  Object.values(locations).forEach(location => {
-    const markerSize = Math.min(5 + Math.log(location.count) * 3, 15);
-    
-    new google.maps.Marker({
-      position: location.position,
-      map: map,
-      title: `${location.city}, ${location.country} (${location.count} visits)`,
-      icon: {
-        path: google.maps.SymbolPath.CIRCLE,
-        scale: markerSize,
-        fillColor: "#e74c3c",
-        fillOpacity: 0.7,
-        strokeColor: "#c0392b",
-        strokeWeight: 1
-      }
+      locations[key].count++;
     });
-  });
-}
 
-function showMapError() {
-  const errorElement = document.getElementById('map-error');
-  if (errorElement) {
-    errorElement.style.display = 'flex';
-  }
-}
-
-function checkGoogleMapsLoaded() {
-  if (typeof google === 'undefined' || typeof google.maps === 'undefined') {
-    showMapError();
-    return false;
-  }
-  return true;
-}
-
-// Load the API safely
-function loadGoogleMaps() {
-  const apiKey = MAPS_API_KEY || localApiKey;
-  if (!apiKey) {
-    console.error('Google Maps API key not configured');
-    showMapError();
-    return;
+    Object.values(locations).forEach(loc => {
+      new google.maps.Marker({
+        position: { lat: loc.lat, lng: loc.lon },
+        map,
+        title: `${loc.city}, ${loc.country} (${loc.count} visits)`,
+        icon: {
+          path: google.maps.SymbolPath.CIRCLE,
+          scale: Math.min(5 + Math.log(loc.count) * 3, 15),
+          fillColor: "#e74c3c",
+          fillOpacity: 0.7,
+          strokeColor: "#c0392b",
+          strokeWeight: 1
+        }
+      });
+    });
   }
 
-  const script = document.createElement('script');
-  script.src = `https://maps.googleapis.com/maps/api/js?key=${apiKey}&callback=initMap`;
-  script.async = true;
-  script.defer = true;
-  script.onerror = showMapError;
-  document.head.appendChild(script);
-}
+  window.initMap = initMap;
 
-// Initialize
-document.addEventListener('DOMContentLoaded', function() {
-  if (!checkGoogleMapsLoaded()) {
-    loadGoogleMaps();
+  function showMapError() {
+    const el = document.getElementById('map-error');
+    if (el) el.style.display = 'flex';
   }
-});
+
+  function loadGoogleMaps() {
+    if (!MAPS_API_KEY) {
+      console.error('Google Maps API key is missing.');
+      return showMapError();
+    }
+
+    const script = document.createElement('script');
+    script.src = `https://maps.googleapis.com/maps/api/js?key=${MAPS_API_KEY}&callback=initMap`;
+    script.async = true;
+    script.defer = true;
+    script.onerror = showMapError;
+    document.head.appendChild(script);
+  }
+
+  document.addEventListener('DOMContentLoaded', loadGoogleMaps);
 </script>
 
-<!-- Load Font Awesome -->
+<!-- Font Awesome -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
