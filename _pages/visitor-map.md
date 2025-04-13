@@ -127,7 +127,7 @@ permalink: /visitor-map/
 
 <script>
 // Secure API key handling - should be set in your site's configuration
-const MAPS_API_KEY = '%%GOOGLE_MAPS_API_KEY%%';
+const MAPS_API_KEY = 'AIzaSyAT67_M0K-_BKk8hXRfFIA1ewg6_2WxlCU';
 
 // Fallback for development
 const localApiKey = (function() {
