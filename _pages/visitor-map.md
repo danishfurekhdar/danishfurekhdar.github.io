@@ -5,17 +5,9 @@ permalink: /visitor-map/
 ---
 
 <div class="visitor-map-container">
-  <div class="visitor-map-header">
-    <div id="map"></div>
-  </div>
-
   <div class="map-stats-container">
     <div class="map-wrapper">
-      <div id="map" class="visitor-map"></div>
-      <div id="map-error" class="map-error-message" style="display:none;">
-        <i class="fas fa-exclamation-triangle"></i>
-        <p>Map failed to load. Please check your internet connection or API key.</p>
-      </div>
+      <div id="map"></div>
     </div>
 
     <div class="stats-panel">
@@ -180,77 +172,7 @@ permalink: /visitor-map/
     }
   }
 </script>
-<script>
-  const MAPS_API_KEY = 'AIzaSyAT67_M0K-_BKk8hXRfFIA1ewg6_2WxlCU'; // Replace this manually or via GitHub Actions
 
-  function initMap() {
-    const mapElement = document.getElementById('map');
-    if (!mapElement) return showMapError();
-
-    const map = new google.maps.Map(mapElement, {
-      center: { lat: 20, lng: 0 },
-      zoom: 2,
-      styles: [
-        { featureType: "water", elementType: "geometry", stylers: [{ color: "#d4e6f4" }] },
-        { featureType: "landscape", elementType: "geometry", stylers: [{ color: "#f5f5f5" }] }
-      ]
-    });
-
-    const visitors = {{ site.data.visitors | jsonify }};
-    const locations = {};
-
-    visitors.forEach(entry => {
-      if (!entry.loc || !entry.city || !entry.country) return;
-      const [lat, lon] = entry.loc.split(',').map(Number);
-      if (isNaN(lat) || isNaN(lon)) return;
-
-      const key = `${entry.city}|${entry.country}|${lat.toFixed(2)},${lon.toFixed(2)}`;
-      if (!locations[key]) {
-        locations[key] = { city: entry.city, country: entry.country, lat, lon, count: 0 };
-      }
-      locations[key].count++;
-    });
-
-    Object.values(locations).forEach(loc => {
-      new google.maps.Marker({
-        position: { lat: loc.lat, lng: loc.lon },
-        map,
-        title: `${loc.city}, ${loc.country} (${loc.count} visits)`,
-        icon: {
-          path: google.maps.SymbolPath.CIRCLE,
-          scale: Math.min(5 + Math.log(loc.count) * 3, 15),
-          fillColor: "#e74c3c",
-          fillOpacity: 0.7,
-          strokeColor: "#c0392b",
-          strokeWeight: 1
-        }
-      });
-    });
-  }
-
-  window.initMap = initMap;
-
-  function showMapError() {
-    const el = document.getElementById('map-error');
-    if (el) el.style.display = 'flex';
-  }
-
-  function loadGoogleMaps() {
-    if (!MAPS_API_KEY) {
-      console.error('Google Maps API key is missing.');
-      return showMapError();
-    }
-
-    const script = document.createElement('script');
-    script.src = `https://maps.googleapis.com/maps/api/js?key=${MAPS_API_KEY}&callback=initMap`;
-    script.async = true;
-    script.defer = true;
-    script.onerror = showMapError;
-    document.head.appendChild(script);
-  }
-
-  document.addEventListener('DOMContentLoaded', loadGoogleMaps);
-</script>
 <script async
   src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAT67_M0K-_BKk8hXRfFIA1ewg6_2WxlCU&callback=initMap">
 </script>
