@@ -25,10 +25,7 @@ jobs:
         
     - name: Run scholar script
       run: |
-          echo "▶️ Starting script..."
-          python -v scripts/scholar_update.py 2>&1 | tee output.log
-          echo "ℹ️ Script exit code: $?"
-          cat output.log
+          run: python scripts/scholar_update.py | grep -v "code object from"  # Filter noisy lines
         
     - name: Commit and push changes
       run: |
