@@ -24,7 +24,11 @@ jobs:
         pip install scholarly==1.7.2
         
     - name: Run scholar script
-      run: python scripts/scholar_update.py
+      run: |
+          echo "▶️ Starting script..."
+          python -v scripts/scholar_update.py 2>&1 | tee output.log
+          echo "ℹ️ Script exit code: $?"
+          cat output.log
         
     - name: Commit and push changes
       run: |
