@@ -11,7 +11,7 @@
     "title": "Nondipole strong-field approximation for above-threshold ionization in a few-cycle pulse",
     "authors": "Danish Furekh Dar and Bj\u00f6rn Minneker and Stephan Fritzsche",
     "year": 2023,
-    "citations": 7,
+    "citations": 9,
     "venue": "Physical Review A",
     "url": "https://journals.aps.org/pra/abstract/10.1103/PhysRevA.107.053102"
   },
@@ -19,9 +19,17 @@
     "title": "Nonlinear interference and electron dynamics: Probing photoelectron momentum distributions in strong-field ionization",
     "authors": "Danish Furekh Dar and Stephan Fritzsche",
     "year": 2024,
-    "citations": 0,
+    "citations": 2,
     "venue": "Physical Review A",
     "url": "https://journals.aps.org/pra/abstract/10.1103/PhysRevA.109.L041101"
+  },
+  {
+    "title": "Photoionization dynamics in intense few-cycle twisted laser pulses",
+    "authors": "Danish Furekh Dar and Anne Weber and Shreyas Ramakrishna and Stephan Fritzsche",
+    "year": 2025,
+    "citations": 0,
+    "venue": "Physical Review A",
+    "url": "https://journals.aps.org/pra/abstract/10.1103/PhysRevA.111.053113"
   },
   {
     "title": "Pulse Cycle Dependent Nondipole Effects in Above-Threshold Ionization",
