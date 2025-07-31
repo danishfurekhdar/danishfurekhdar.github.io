@@ -20,7 +20,7 @@ After completing my M.Sc. in Physics from **Guru Nanak Dev University**, I set o
 But I’m more than just a physicist:  
 - 🌿 A lover of **Rumi’s poetry**, mysticism, and meaning  
 - 🔭 An **astronomy enthusiast** with a fascination for deep space  
-- 🎮 Casual **gamer** (yep, I play *Honor of Kings*)  
+- 🎮 Casual **gamer**  
 - 💭 Deep thinker who enjoys long conversations over chai  
 - 🌍 A traveler, merging cultures and collecting stories  
 
