@@ -1,0 +1,20 @@
+# _data/posts.yml
+- id: 1
+  author: "your_username"
+  content: "Just launched my new blog! Excited to share my thoughts with the world."
+  date: "2023-11-15T10:30:00Z"
+  likes: 42
+  comments:
+    - author: "fan123"
+      content: "Congrats on the launch!"
+      date: "2023-11-15T11:05:00Z"
+    - author: "dev_guru"
+      content: "Looking forward to your content."
+      date: "2023-11-15T12:20:00Z"
+
+- id: 2
+  author: "your_username"
+  content: "Working on a new project. Can't wait to reveal it next week! #coding #webdev"
+  date: "2023-11-16T09:15:00Z"
+  likes: 87
+  comments: []
