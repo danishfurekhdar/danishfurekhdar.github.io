@@ -1,4 +1,4 @@
-- id: 1
+a- id: 1
   author: "danishfurekh"
   name: "Danish F. Dar"
   avatar: "/assets/images/avatars/danish.jpg"
@@ -21,7 +21,7 @@
   avatar: "/assets/images/avatars/danish.jpg"
   date: "2024-04-10T11:15:00Z"
   content: "Honored to receive the RS-APS Graduate Scholarship for my PhD work on strong-field ionization dynamics at Helmholtz Institute Jena. #AcademicLife #Physics"
-  image: "/assets/images/posts/scholarship.jpg"
+  image: "/assets/images/posts/hijena.jpg"
 
 - id: 4
   author: "danishfurekh"
