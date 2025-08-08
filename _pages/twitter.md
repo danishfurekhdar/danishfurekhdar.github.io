@@ -1,7 +1,6 @@
 ---
 layout: archive
 title: Tweets
-stylesheet: tweets.css
 permalink: /twitter/
 ---
 
