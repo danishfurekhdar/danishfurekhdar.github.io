@@ -5,29 +5,25 @@ description: Thoughts and ideas worth sharing
 permalink: /blog/
 ---
 
-{% raw %}
 {% assign post = site.data.post_data.current_post %}
-{% endraw %}
 
-# {{ page.title }}
-
-![Featured Image]({% raw %}{{ post.feature_image }}{% endraw %})  
-*Caption: {% raw %}{{ post.image_caption }}{% endraw %}*
+![Featured Image]({{ post.feature_image }})  
+*Caption: {{ post.image_caption }}*
 
 ## Dynamic Statistics
 
 <div class="post-stats">
   <div class="stat-item">
-    <span class="stat-value" id="viewCount">{% raw %}{{ post.stats.views }}{% endraw %}</span>
+    <span class="stat-value" id="viewCount">{{ post.stats.views }}</span>
     <span class="stat-label">Views</span>
   </div>
   <div class="stat-item">
-    <span class="stat-value" id="likeCount">{% raw %}{{ post.stats.likes }}{% endraw %}</span>
+    <span class="stat-value" id="likeCount">{{ post.stats.likes }}</span>
     <span class="stat-label">Likes</span>
     <button class="like-button" onclick="incrementLike()">❤️ Like</button>
   </div>
   <div class="stat-item">
-    <span class="stat-value">{% raw %}{{ post.stats.shares }}{% endraw %}</span>
+    <span class="stat-value">{{ post.stats.shares }}</span>
     <span class="stat-label">Shares</span>
   </div>
 </div>
@@ -39,13 +35,13 @@ permalink: /blog/
 </div>
 
 <div class="comments-section">
-  {% raw %}{% for comment in post.comments %}{% endraw %}
+  {% for comment in post.comments %}
   <div class="comment">
-    <strong>{% raw %}{{ comment.author }}{% endraw %}</strong>
-    <small>{% raw %}{{ comment.date }}{% endraw %}</small>
-    <p>{% raw %}{{ comment.text }}{% endraw %}</p>
+    <strong>{{ comment.author }}</strong>
+    <small>{{ comment.date }}</small>
+    <p>{{ comment.text }}</p>
   </div>
-  {% raw %}{% endfor %}{% endraw %}
+  {% endfor %}
 </div>
 
 ## Engagement Chart
@@ -88,11 +84,7 @@ document.addEventListener('DOMContentLoaded', function() {
       labels: ['Views', 'Likes', 'Shares'],
       datasets: [{
         label: 'Post Engagement',
-        data: [
-          {% raw %}{{ post.stats.views }}{% endraw %}, 
-          {% raw %}{{ post.stats.likes }}{% endraw %}, 
-          {% raw %}{{ post.stats.shares }}{% endraw %}
-        ],
+        data: [{{ post.stats.views }}, {{ post.stats.likes }}, {{ post.stats.shares }}],
         backgroundColor: [
           'rgba(54, 162, 235, 0.6)',
           'rgba(255, 99, 132, 0.6)',
