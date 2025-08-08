@@ -20,8 +20,8 @@ main:
 #  - title: "Portfolio"
 #    url: /portfolio/
         
-  - title: "Blog Posts"
-    url: /blog/
+  - title: "Tweets"
+    url: /twitter/
 
   - title: "Poetry"
     url: "/poetry/"
