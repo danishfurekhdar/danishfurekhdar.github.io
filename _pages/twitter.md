@@ -80,7 +80,7 @@ permalink: /twitter/
 <!-- Pagination Controls -->
 <div class="pagination">
   <button id="prev-page" disabled>← Newer</button>
-  <span id="page-indicator">Page 1 of {{ site.data.posts.size | divided_by: 5.0 | ceil }}</span>
+  <span id="page-indicator">Page 1 of {{ site.data.tweets.size | divided_by: 5.0 | ceil }}</span>
   <button id="next-page">Older →</button>
 </div>
 
@@ -112,9 +112,9 @@ document.addEventListener('DOMContentLoaded', function() {
   const prevBtn = document.getElementById('prev-page');
   const nextBtn = document.getElementById('next-page');
   const pageIndicator = document.getElementById('page-indicator');
-  const postsPerPage = 5;
+  const tweetsPerPage = 5;
   let currentPage = 1;
-  const totalPages = Math.ceil(tweets.length / postsPerPage);
+  const totalPages = Math.ceil(tweets.length / tweetsPerPage);
 
   function updatePage() {
     // Hide all tweets
@@ -123,8 +123,8 @@ document.addEventListener('DOMContentLoaded', function() {
     });
     
     // Show tweets for current page
-    const startIdx = (currentPage - 1) * postsPerPage;
-    const endIdx = startIdx + postsPerPage;
+    const startIdx = (currentPage - 1) * tweetsPerPage;
+    const endIdx = startIdx + tweetsPerPage;
     
     for (let i = startIdx; i < endIdx && i < tweets.length; i++) {
       tweets[i].style.display = 'block';
