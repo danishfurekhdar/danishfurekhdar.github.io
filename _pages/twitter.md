@@ -3,13 +3,6 @@ layout: archive
 title: Tweets
 stylesheet: tweets.css
 permalink: /twitter/
-pagination:
-  enabled: true
-  collection: all
-  per_page: 5
-  permalink: '/page/:num/'
-  sort_field: 'date'
-  sort_reverse: true
 ---
 
 <style>
@@ -76,32 +69,102 @@ pagination:
 }
 </style>
 
-{% assign posts = site.data.tweets | sort: 'date' | reverse %}
-
 <div class="tweet-feed">
-  {% for post in posts limit: paginator.per_page offset: paginator.offset %}
-    {% include tweet.html post=post %}
+  {% for post in site.data.tweets %}
+    <div class="tweet" data-page="{{ forloop.index0 | divided_by: 5 | plus: 1 }}">
+      {% include tweet.html post=post %}
+    </div>
   {% endfor %}
 </div>
 
-{% include pagination.html %}
+<!-- Pagination Controls -->
+<div class="pagination">
+  <button id="prev-page" disabled>← Newer</button>
+  <span id="page-indicator">Page 1 of {{ site.data.posts.size | divided_by: 5.0 | ceil }}</span>
+  <button id="next-page">Older →</button>
+</div>
+
+<style>
+  .tweet { display: none; }
+  .tweet[data-page="1"] { display: block; } /* Show first page by default */
+  
+  .pagination {
+    text-align: center;
+    margin: 20px 0;
+  }
+  .pagination button {
+    background: #1da1f2;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 20px;
+    cursor: pointer;
+  }
+  .pagination button:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+  }
+</style>
 
 <script>
-// Client-side pagination fallback
 document.addEventListener('DOMContentLoaded', function() {
-  const urlParams = new URLSearchParams(window.location.search);
-  const page = parseInt(urlParams.get('page')) || 1;
-  
-  if(page > 1) {
-    const posts = document.querySelectorAll('.tweet');
-    const postsPerPage = 5;
-    const startIdx = (page - 1) * postsPerPage;
-    
-    posts.forEach((post, idx) => {
-      if(idx < startIdx || idx >= startIdx + postsPerPage) {
-        post.style.display = 'none';
-      }
+  const tweets = document.querySelectorAll('.tweet');
+  const prevBtn = document.getElementById('prev-page');
+  const nextBtn = document.getElementById('next-page');
+  const pageIndicator = document.getElementById('page-indicator');
+  const postsPerPage = 5;
+  let currentPage = 1;
+  const totalPages = Math.ceil(tweets.length / postsPerPage);
+
+  function updatePage() {
+    // Hide all tweets
+    tweets.forEach(tweet => {
+      tweet.style.display = 'none';
     });
+    
+    // Show tweets for current page
+    const startIdx = (currentPage - 1) * postsPerPage;
+    const endIdx = startIdx + postsPerPage;
+    
+    for (let i = startIdx; i < endIdx && i < tweets.length; i++) {
+      tweets[i].style.display = 'block';
+    }
+    
+    // Update pagination controls
+    pageIndicator.textContent = `Page ${currentPage} of ${totalPages}`;
+    prevBtn.disabled = currentPage === 1;
+    nextBtn.disabled = currentPage === totalPages;
+    
+    // Update URL without reload
+    history.pushState(null, '', `?page=${currentPage}`);
   }
+
+  // Initial load
+  updatePage();
+
+  // Button events
+  prevBtn.addEventListener('click', () => {
+    if (currentPage > 1) {
+      currentPage--;
+      updatePage();
+    }
+  });
+
+  nextBtn.addEventListener('click', () => {
+    if (currentPage < totalPages) {
+      currentPage++;
+      updatePage();
+    }
+  });
+
+  // Handle browser back/forward
+  window.addEventListener('popstate', function() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const page = parseInt(urlParams.get('page')) || 1;
+    if (page !== currentPage) {
+      currentPage = page;
+      updatePage();
+    }
+  });
 });
 </script>
