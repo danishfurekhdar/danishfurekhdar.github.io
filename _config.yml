@@ -281,6 +281,9 @@ sass:
   sass_dir: _sass
   style: compressed # http://sass-lang.com/documentation/file.SASS_REFERENCE.html#output_style
 
+# _config.yml
+paginate: 5
+paginate_path: "/twitter/page:num/"
 
 # Outputting
 permalink: /:categories/:title/
