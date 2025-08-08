@@ -1,0 +1,26 @@
+- id: 1
+  author: 
+    handle: "elonmusk"
+    name: "Elon Musk"
+    avatar: "/assets/images/avatars/elon.jpg"
+  content: "Humanity will reach Mars in your lifetime"
+  date: "2023-11-15T10:30:00Z"
+  image: "/assets/images/tweet-images/mars.jpg"
+  likes: 124500
+  retweets: 18200
+  replies: 8900
+  views: "5.2M"
+  verified: true
+
+- id: 2
+  author: 
+    handle: "you"
+    name: "Your Name"
+    avatar: "/assets/images/avatars/you.jpg"
+  content: "Just implemented Twitter-like posts in my Jekyll blog! #webdev #jekyll"
+  date: "2023-11-16T09:15:00Z"
+  likes: 42
+  retweets: 3
+  replies: 5
+  views: "1.2K"
+  verified: false
