@@ -1,5 +1,5 @@
 <!-- _includes/posts.html -->
-<div class="post">
+<div class="post" data-post-id="{{ include.post.id }}">
   <div class="post-header">
     <span class="post-author">@{{ include.post.author }}</span>
     <span class="post-date">{{ include.post.date | date: "%b %d, %Y %H:%M" }}</span>
@@ -8,10 +8,14 @@
     {{ include.post.content | newline_to_br }}
   </div>
   <div class="post-actions">
-    <button onclick="likePost({{ include.post.id }})">❤️ {{ include.post.likes }}</button>
-    <button onclick="showCommentBox({{ include.post.id }})">💬 Comment</button>
+    <button class="like-button" data-post-id="{{ include.post.id }}">
+      ❤️ <span class="like-count">{{ include.post.likes }}</span>
+    </button>
+    <button class="comment-toggle" data-post-id="{{ include.post.id }}">
+      💬 Comment
+    </button>
   </div>
-  <div id="comments-{{ include.post.id }}" class="comments">
+  <div class="comments" id="comments-{{ include.post.id }}">
     {% for comment in include.post.comments %}
       <div class="comment">
         <strong>@{{ comment.author }}</strong>
@@ -20,8 +24,8 @@
       </div>
     {% endfor %}
   </div>
-  <div id="comment-form-{{ include.post.id }}" style="display: none; margin-top: 10px;">
-    <textarea id="comment-input-{{ include.post.id }}" placeholder="Write a comment..."></textarea>
-    <button onclick="addComment({{ include.post.id }})">Post Comment</button>
+  <div class="comment-form" id="comment-form-{{ include.post.id }}" style="display: none;">
+    <textarea class="comment-input" placeholder="Write a comment..."></textarea>
+    <button class="comment-submit">Post Comment</button>
   </div>
 </div>
