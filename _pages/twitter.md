@@ -74,15 +74,3 @@ permalink: /twitter/
     {% include tweet.html post=post %}
   {% endfor %}
 </div>
-
-<!-- Optional: New post form for demonstration -->
-<div class="tweet" style="background: #f5f8fa;">
-  <div class="tweet-header">
-    <img class="tweet-avatar" src="/assets/images/avatars/you.jpg" alt="Your name">
-    <div style="flex: 1;">
-      <textarea placeholder="What's happening?" style="width: 100%; border: none; background: transparent; resize: none; font-size: 1.1em; padding: 10px 0; min-height: 60px;"></textarea>
-    </div>
-  </div>
-  <button style="float: right; background: #1da1f2; color: white; border: none; padding: 8px 16px; border-radius: 20px; font-weight: bold;">Post</button>
-  <div style="clear: both;"></div>
-</div>
