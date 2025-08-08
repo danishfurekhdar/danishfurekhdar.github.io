@@ -5,11 +5,6 @@ stylesheet: tweets.css
 permalink: /twitter/
 ---
 
----
-layout: default
-title: My Microblog
----
-
 <style>
 .tweet {
   max-width: 600px;
