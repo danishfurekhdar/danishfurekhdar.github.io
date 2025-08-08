@@ -1,20 +1,54 @@
-# Simple Twitter-style posts
-- author: "johndoe"
-  name: "John Doe"
+- id: 1
+  author: "danishfurekh"
+  name: "Danish F. Dar"
   avatar: "/assets/images/avatars/danish.jpg"
-  date: "2023-11-20T08:45:00Z"
-  content: "Just published my new article about static site generators. Check it out!"
-  image: "/assets/images/posts/ssg-article.jpg"
+  date: "2025-05-30T09:00:00Z"
+  content: "New preprint alert! Our comparison between Jacobi-Anger and saddle point methods for treating above-threshold ionization is now on arXiv. #QuantumPhysics #StrongFieldPhysics"
+  image: "/assets/images/posts/arxiv-paper.jpg"
+  link: "https://arxiv.org/abs/2505.14390"
 
-- author: "techwriter"
-  name: "Sarah Smith"
-  avatar: "/assets/images/avatars/sarah.jpg"
-  date: "2023-11-18T12:30:00Z"
-  content: "Beautiful day for coding outdoors ☀️ #developerlife"
-  
-- author: "webdev"
-  name: "Alex Chen"
-  avatar: "/assets/images/avatars/alex.jpg"
-  date: "2023-11-15T16:20:00Z"
-  content: "Just implemented dark mode on my blog. What do you think?"
-  image: "/assets/images/posts/dark-mode.jpg"
+- id: 2
+  author: "danishfurekh"
+  name: "Danish F. Dar"
+  avatar: "/assets/images/avatars/danish.jpg"
+  date: "2025-05-15T14:30:00Z"
+  content: "Excited to share our latest publication in Physical Review A on photoionization dynamics in intense few-cycle twisted laser pulses! Grateful to work with such a great team. #Photonics #AtomicPhysics"
+  link: "https://link.aps.org/doi/10.1103/PhysRevA.111.053113"
+
+- id: 3
+  author: "danishfurekh"
+  name: "Danish F. Dar"
+  avatar: "/assets/images/avatars/danish.jpg"
+  date: "2024-04-10T11:15:00Z"
+  content: "Honored to receive the RS-APS Graduate Scholarship for my PhD work on strong-field ionization dynamics at Helmholtz Institute Jena. #AcademicLife #Physics"
+  image: "/assets/images/posts/scholarship.jpg"
+
+- id: 4
+  author: "danishfurekh"
+  name: "Danish F. Dar"
+  avatar: "/assets/images/avatars/danish.jpg"
+  date: "2024-03-22T16:45:00Z"
+  content: "Presenting our work on nonlinear interference and electron dynamics at the DPG Spring Meeting in Freiburg. Great discussions with fellow researchers! #ConferenceSeason #SAMOP"
+
+- id: 5
+  author: "danishfurekh"
+  name: "Danish F. Dar"
+  avatar: "/assets/images/avatars/danish.jpg"
+  date: "2023-06-05T10:20:00Z"
+  content: "Our paper on pulse cycle dependent nondipole effects in above-threshold ionization has been published in Atoms! #OpenAccess #LaserPhysics"
+  link: "https://www.mdpi.com/2218-2004/11/6/97"
+
+- id: 6
+  author: "danishfurekh"
+  name: "Danish F. Dar"
+  avatar: "/assets/images/avatars/danish.jpg"
+  date: "2023-05-18T13:00:00Z"
+  content: "Just wrapped up teaching Advanced Quantum Mechanics at Friedrich Schiller University. Always rewarding to engage with bright students! #Teaching #QuantumMechanics"
+
+- id: 8
+  author: "danishfurekh"
+  name: "Danish F. Dar"
+  avatar: "/assets/images/avatars/danish.jpg"
+  date: "2020-12-15T12:00:00Z"
+  content: "Our collaborative work on radiative transitions of alkaline earth ions published in Atomic Data and Nuclear Data Tables. Important reference data for atomic physics! #Spectroscopy #AtomicPhysics"
+  link: "https://www.sciencedirect.com/science/article/pii/S0092640X20300449"
