@@ -76,7 +76,7 @@ pagination:
 }
 </style>
 
-{% assign posts = site.data.posts | sort: 'date' | reverse %}
+{% assign posts = site.data.tweets | sort: 'date' | reverse %}
 
 <div class="tweet-feed">
   {% for post in posts limit: paginator.per_page offset: paginator.offset %}
