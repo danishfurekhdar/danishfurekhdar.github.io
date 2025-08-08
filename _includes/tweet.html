@@ -8,9 +8,10 @@
     <span class="tweet-date">{{ include.post.date | date: "%b %d, %Y" }}</span>
   </div>
   
-<div class="tweet-content" style="background: yellow;">
-  {{ include.post.content | escape }}
+<div class="tweet-content">
+  {{ include.post.content | newline_to_br }}
 </div>
+
 
   
   {% if include.post.image %}
