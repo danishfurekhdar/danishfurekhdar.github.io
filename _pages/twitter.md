@@ -72,6 +72,7 @@ permalink: /twitter/
   <!-- Debug: First check if tweets exist -->
   {% if site.data.tweets.size > 0 %}
     {% for post in site.data.tweets %}
+    <pre>{{ post | inspect }}</pre>
       <div class="tweet" style="display:none; border:1px solid #ddd; padding:15px; margin-bottom:20px;">
         <strong>@{{ post.author }}</strong> · {{ post.date | date: "%b %d, %Y" }}
         <p>{{ post.content }}</p>
