@@ -1,26 +1,20 @@
-- id: 1
-  author: 
-    handle: "elonmusk"
-    name: "Elon Musk"
-    avatar: "/assets/images/avatars/elon.jpg"
-  content: "Humanity will reach Mars in your lifetime"
-  date: "2023-11-15T10:30:00Z"
-  image: "/assets/images/tweet-images/mars.jpg"
-  likes: 124500
-  retweets: 18200
-  replies: 8900
-  views: "5.2M"
-  verified: true
+# Simple Twitter-style posts
+- author: "johndoe"
+  name: "John Doe"
+  avatar: "/assets/images/avatars/john.jpg"
+  date: "2023-11-20T08:45:00Z"
+  content: "Just published my new article about static site generators. Check it out!"
+  image: "/assets/images/posts/ssg-article.jpg"
 
-- id: 2
-  author: 
-    handle: "you"
-    name: "Your Name"
-    avatar: "/assets/images/avatars/you.jpg"
-  content: "Just implemented Twitter-like posts in my Jekyll blog! #webdev #jekyll"
-  date: "2023-11-16T09:15:00Z"
-  likes: 42
-  retweets: 3
-  replies: 5
-  views: "1.2K"
-  verified: false
+- author: "techwriter"
+  name: "Sarah Smith"
+  avatar: "/assets/images/avatars/sarah.jpg"
+  date: "2023-11-18T12:30:00Z"
+  content: "Beautiful day for coding outdoors ☀️ #developerlife"
+  
+- author: "webdev"
+  name: "Alex Chen"
+  avatar: "/assets/images/avatars/alex.jpg"
+  date: "2023-11-15T16:20:00Z"
+  content: "Just implemented dark mode on my blog. What do you think?"
+  image: "/assets/images/posts/dark-mode.jpg"
