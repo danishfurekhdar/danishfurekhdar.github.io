@@ -1,7 +1,7 @@
 # Simple Twitter-style posts
 - author: "johndoe"
   name: "John Doe"
-  avatar: "/assets/images/avatars/john.jpg"
+  avatar: "/assets/images/avatars/danish.jpg"
   date: "2023-11-20T08:45:00Z"
   content: "Just published my new article about static site generators. Check it out!"
   image: "/assets/images/posts/ssg-article.jpg"
