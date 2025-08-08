@@ -5,8 +5,9 @@ stylesheet: tweets.css
 permalink: /twitter/
 pagination:
   enabled: true
-  collection: posts
+  collection: all
   per_page: 5
+  permalink: '/page/:num/'
   sort_field: 'date'
   sort_reverse: true
 ---
@@ -75,42 +76,32 @@ pagination:
 }
 </style>
 
+{% assign posts = site.data.posts | sort: 'date' | reverse %}
+
 <div class="tweet-feed">
-  {% for post in paginator.posts %}
+  {% for post in posts limit: paginator.per_page offset: paginator.offset %}
     {% include tweet.html post=post %}
   {% endfor %}
 </div>
 
-<!-- Pagination controls -->
-<div class="pagination">
-  {% if paginator.previous_page %}
-    <a href="{{ paginator.previous_page_path }}" class="previous">← Newer</a>
-  {% endif %}
+{% include pagination.html %}
+
+<script>
+// Client-side pagination fallback
+document.addEventListener('DOMContentLoaded', function() {
+  const urlParams = new URLSearchParams(window.location.search);
+  const page = parseInt(urlParams.get('page')) || 1;
   
-  <span class="page-number">
-    Page {{ paginator.page }} of {{ paginator.total_pages }}
-  </span>
-  
-  {% if paginator.next_page %}
-    <a href="{{ paginator.next_page_path }}" class="next">Older →</a>
-  {% endif %}
-</div>
-
-<!-- Optional: Add some styling for pagination -->
-<style>
-.pagination {
-  text-align: center;
-  margin: 30px 0;
-  font-size: 1.1em;
-}
-
-.pagination a, .page-number {
-  margin: 0 10px;
-  text-decoration: none;
-  color: #1da1f2;
-}
-
-.pagination a:hover {
-  text-decoration: underline;
-}
-</style>
+  if(page > 1) {
+    const posts = document.querySelectorAll('.tweet');
+    const postsPerPage = 5;
+    const startIdx = (page - 1) * postsPerPage;
+    
+    posts.forEach((post, idx) => {
+      if(idx < startIdx || idx >= startIdx + postsPerPage) {
+        post.style.display = 'none';
+      }
+    });
+  }
+});
+</script>
