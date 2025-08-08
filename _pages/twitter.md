@@ -71,6 +71,7 @@ permalink: /twitter/
 
 <div class="tweet-feed">
   {% for post in site.data.tweets %}
+  <pre>{{ post | inspect }}</pre>
     <div class="tweet" data-page="{{ forloop.index0 | divided_by: 5 | plus: 1 }}">
       {% include tweet.html post=post %}
     </div>
