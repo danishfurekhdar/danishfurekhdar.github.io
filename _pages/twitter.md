@@ -3,6 +3,12 @@ layout: archive
 title: Tweets
 stylesheet: tweets.css
 permalink: /twitter/
+pagination:
+  enabled: true
+  collection: posts
+  per_page: 5
+  sort_field: 'date'
+  sort_reverse: true
 ---
 
 <style>
@@ -70,7 +76,41 @@ permalink: /twitter/
 </style>
 
 <div class="tweet-feed">
-  {% for post in site.data.tweets %}
+  {% for post in paginator.posts %}
     {% include tweet.html post=post %}
   {% endfor %}
 </div>
+
+<!-- Pagination controls -->
+<div class="pagination">
+  {% if paginator.previous_page %}
+    <a href="{{ paginator.previous_page_path }}" class="previous">← Newer</a>
+  {% endif %}
+  
+  <span class="page-number">
+    Page {{ paginator.page }} of {{ paginator.total_pages }}
+  </span>
+  
+  {% if paginator.next_page %}
+    <a href="{{ paginator.next_page_path }}" class="next">Older →</a>
+  {% endif %}
+</div>
+
+<!-- Optional: Add some styling for pagination -->
+<style>
+.pagination {
+  text-align: center;
+  margin: 30px 0;
+  font-size: 1.1em;
+}
+
+.pagination a, .page-number {
+  margin: 0 10px;
+  text-decoration: none;
+  color: #1da1f2;
+}
+
+.pagination a:hover {
+  text-decoration: underline;
+}
+</style>
