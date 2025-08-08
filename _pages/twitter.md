@@ -1,6 +1,6 @@
 ---
-layout: default
-title: Twitter-like Posts
+layout: archive
+title: Tweets
 stylesheet: tweets.css
 ---
 
