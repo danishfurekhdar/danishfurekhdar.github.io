@@ -69,10 +69,15 @@ permalink: /twitter/
 }
 </style>
 
-<div class="tweet-feed">
+<div class="tweet-feed" id="tweet-container">
   {% for post in site.data.tweets %}
-    <div class="tweet" data-page="{{ forloop.index0 | divided_by: 5 | plus: 1 }}">
-      {% include tweet.html post=post %}
+    <div class="tweet">
+      <h3>{{ post.name }}</h3>
+      <p>{{ post.date | date: "%b %d, %Y" }}</p>
+      <div class="content">{{ post.content }}</div>
+      {% if post.image %}
+        <img src="{{ post.image }}" alt="Post image" style="max-width: 100%">
+      {% endif %}
     </div>
   {% endfor %}
 </div>
