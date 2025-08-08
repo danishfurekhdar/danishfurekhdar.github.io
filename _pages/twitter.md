@@ -82,72 +82,75 @@ permalink: /twitter/
   {% endfor %}
 </div>
 
-<!-- Pagination Controls -->
 <div class="pagination">
-  <button id="prev-page" disabled>← Newer</button>
-  <span id="page-indicator">Page 1 of {{ site.data.tweets.size | divided_by: 5.0 | ceil }}</span>
-  <button id="next-page">Older →</button>
+  <button id="prev-btn" disabled>← Newer</button>
+  <span id="page-info">Page 1</span>
+  <button id="next-btn">Older →</button>
 </div>
 
 <style>
-  .tweet { display: none; }
-  .tweet[data-page="1"] { display: block; } /* Show first page by default */
+  .tweet {
+    border: 1px solid #ddd;
+    padding: 15px;
+    margin-bottom: 20px;
+    display: none; /* Hidden by default */
+  }
   
   .pagination {
     text-align: center;
-    margin: 20px 0;
+    margin: 30px 0;
   }
+  
   .pagination button {
-    background: #1da1f2;
-    color: white;
-    border: none;
     padding: 8px 16px;
-    border-radius: 20px;
+    margin: 0 10px;
     cursor: pointer;
-  }
-  .pagination button:disabled {
-    background: #ccc;
-    cursor: not-allowed;
   }
 </style>
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-  const tweets = document.querySelectorAll('.tweet');
-  const prevBtn = document.getElementById('prev-page');
-  const nextBtn = document.getElementById('next-page');
-  const pageIndicator = document.getElementById('page-indicator');
+  // Debugging: Verify posts are loaded
+  console.log("Total posts found:", {{ site.data.tweets.size }});
+  
   const postsPerPage = 5;
+  const allPosts = document.querySelectorAll('.tweet');
+  const totalPages = Math.ceil(allPosts.length / postsPerPage);
   let currentPage = 1;
   
-  // Calculate total pages (fix for decimal values)
-  const totalPages = Math.max(1, Math.ceil(tweets.length / postsPerPage));
-
-  function updatePage() {
-    // Show/hide tweets
-    tweets.forEach((tweet, index) => {
-      tweet.style.display = 
-        (index >= (currentPage-1)*postsPerPage && index < currentPage*postsPerPage) 
-        ? 'block' 
-        : 'none';
-    });
-
-    // Update controls
-    pageIndicator.textContent = `Page ${currentPage} of ${totalPages}`;
-    prevBtn.disabled = currentPage === 1;
-    nextBtn.disabled = currentPage === totalPages;
+  // Initialize pagination
+  function showPage(page) {
+    // Hide all posts
+    allPosts.forEach(post => post.style.display = 'none');
+    
+    // Calculate range
+    const start = (page - 1) * postsPerPage;
+    const end = start + postsPerPage;
+    
+    // Show current page posts
+    for (let i = start; i < end && i < allPosts.length; i++) {
+      allPosts[i].style.display = 'block';
+    }
+    
+    // Update pagination controls
+    document.getElementById('page-info').textContent = `Page ${page} of ${totalPages}`;
+    document.getElementById('prev-btn').disabled = page <= 1;
+    document.getElementById('next-btn').disabled = page >= totalPages;
   }
-
-  // Initial load
-  updatePage();
-
-  // Button events
-  prevBtn.addEventListener('click', () => {
-    if (currentPage > 1) updatePage(--currentPage);
+  
+  // Event listeners
+  document.getElementById('prev-btn').addEventListener('click', () => {
+    if (currentPage > 1) showPage(--currentPage);
   });
-
-  nextBtn.addEventListener('click', () => {
-    if (currentPage < totalPages) updatePage(++currentPage);
+  
+  document.getElementById('next-btn').addEventListener('click', () => {
+    if (currentPage < totalPages) showPage(++currentPage);
   });
+  
+  // Show first page initially
+  showPage(1);
+  
+  // Debug: Verify posts are selectable
+  console.log("Posts in DOM:", document.querySelectorAll('.tweet').length);
 });
 </script>
