@@ -68,102 +68,72 @@ permalink: /twitter/
 }
 </style>
 
-<div class="tweet-feed">
-  {% for post in site.data.tweets %}
-    <div class="tweet" data-page="{{ forloop.index0 | divided_by: 5 | plus: 1 }}">
-      {% include tweet.html post=post %}
-    </div>
-  {% endfor %}
+<div id="tweet-container">
+  <!-- Debug: First check if tweets exist -->
+  {% if site.data.tweets.size > 0 %}
+    {% for post in site.data.tweets %}
+      <div class="tweet" style="display:none; border:1px solid #ddd; padding:15px; margin-bottom:20px;">
+        <strong>@{{ post.author }}</strong> · {{ post.date | date: "%b %d, %Y" }}
+        <p>{{ post.content }}</p>
+        {% if post.image %}
+          <img src="{{ post.image }}" style="max-width:100%; border-radius:15px;">
+        {% endif %}
+      </div>
+    {% endfor %}
+  {% else %}
+    <p>No tweets found. Check _data/tweets.yml</p>
+  {% endif %}
 </div>
 
-<!-- Pagination Controls -->
-<div class="pagination">
-  <button id="prev-page" disabled>← Newer</button>
-  <span id="page-indicator">Page 1 of {{ site.data.tweets.size | divided_by: 5.0 | ceil }}</span>
-  <button id="next-page">Older →</button>
+<div class="pagination" style="text-align:center; margin:30px 0;">
+  <button id="prev-btn" disabled style="background:#1da1f2; color:white; border:none; padding:8px 16px; border-radius:20px;">← Newer</button>
+  <span id="page-info" style="margin:0 15px;">Page 1</span>
+  <button id="next-btn" style="background:#1da1f2; color:white; border:none; padding:8px 16px; border-radius:20px;">Older →</button>
 </div>
-
-<style>
-  .tweet { display: none; }
-  .tweet[data-page="1"] { display: block; } /* Show first page by default */
-  
-  .pagination {
-    text-align: center;
-    margin: 20px 0;
-  }
-  .pagination button {
-    background: #1da1f2;
-    color: white;
-    border: none;
-    padding: 8px 16px;
-    border-radius: 20px;
-    cursor: pointer;
-  }
-  .pagination button:disabled {
-    background: #ccc;
-    cursor: not-allowed;
-  }
-</style>
 
 <script>
+// Simple debug check
+console.log("Total tweets:", {{ site.data.tweets.size }});
+
 document.addEventListener('DOMContentLoaded', function() {
   const tweets = document.querySelectorAll('.tweet');
-  const prevBtn = document.getElementById('prev-page');
-  const nextBtn = document.getElementById('next-page');
-  const pageIndicator = document.getElementById('page-indicator');
-  const postsPerPage = 5;
+  const tweetsPerPage = 5;
   let currentPage = 1;
-  const totalPages = Math.ceil(tweets.length / postsPerPage);
-
-  function updatePage() {
-    // Hide all tweets
-    tweets.forEach(tweet => {
-      tweet.style.display = 'none';
-    });
+  
+  function showPage(page) {
+    // First verify we have tweets
+    if(tweets.length === 0) {
+      console.error("No tweets found in DOM");
+      return;
+    }
     
-    // Show tweets for current page
-    const startIdx = (currentPage - 1) * postsPerPage;
-    const endIdx = startIdx + postsPerPage;
+    // Hide all
+    tweets.forEach(post => post.style.display = 'none');
     
-    for (let i = startIdx; i < endIdx && i < tweets.length; i++) {
+    // Show current page
+    const start = (page - 1) * tweetsPerPage;
+    const end = start + tweetsPerPage;
+    for(let i = start; i < end && i < tweets.length; i++) {
       tweets[i].style.display = 'block';
     }
     
-    // Update pagination controls
-    pageIndicator.textContent = `Page ${currentPage} of ${totalPages}`;
-    prevBtn.disabled = currentPage === 1;
-    nextBtn.disabled = currentPage === totalPages;
-    
-    // Update URL without reload
-    history.pushState(null, '', `?page=${currentPage}`);
+    // Update UI
+    document.getElementById('page-info').textContent = 
+      `Page ${page} of ${Math.ceil(tweets.length / tweetsPerPage)}`;
+    document.getElementById('prev-btn').disabled = page <= 1;
+    document.getElementById('next-btn').disabled = page >= Math.ceil(tweets.length / tweetsPerPage);
   }
 
+  // Button handlers
+  document.getElementById('prev-btn').addEventListener('click', () => {
+    if(currentPage > 1) showPage(--currentPage);
+  });
+  
+  document.getElementById('next-btn').addEventListener('click', () => {
+    if(currentPage < Math.ceil(tweets.length / tweetsPerPage)) showPage(++currentPage);
+  });
+
   // Initial load
-  updatePage();
-
-  // Button events
-  prevBtn.addEventListener('click', () => {
-    if (currentPage > 1) {
-      currentPage--;
-      updatePage();
-    }
-  });
-
-  nextBtn.addEventListener('click', () => {
-    if (currentPage < totalPages) {
-      currentPage++;
-      updatePage();
-    }
-  });
-
-  // Handle browser back/forward
-  window.addEventListener('popstate', function() {
-    const urlParams = new URLSearchParams(window.location.search);
-    const page = parseInt(urlParams.get('page')) || 1;
-    if (page !== currentPage) {
-      currentPage = page;
-      updatePage();
-    }
-  });
+  showPage(1);
 });
 </script>
