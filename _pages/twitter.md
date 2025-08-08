@@ -112,31 +112,25 @@ document.addEventListener('DOMContentLoaded', function() {
   const prevBtn = document.getElementById('prev-page');
   const nextBtn = document.getElementById('next-page');
   const pageIndicator = document.getElementById('page-indicator');
-  const tweetsPerPage = 5;
+  const postsPerPage = 5;
   let currentPage = 1;
-  const totalPages = Math.ceil(tweets.length / tweetsPerPage);
+  
+  // Calculate total pages (fix for decimal values)
+  const totalPages = Math.max(1, Math.ceil(tweets.length / postsPerPage));
 
   function updatePage() {
-    // Hide all tweets
-    tweets.forEach(tweet => {
-      tweet.style.display = 'none';
+    // Show/hide tweets
+    tweets.forEach((tweet, index) => {
+      tweet.style.display = 
+        (index >= (currentPage-1)*postsPerPage && index < currentPage*postsPerPage) 
+        ? 'block' 
+        : 'none';
     });
-    
-    // Show tweets for current page
-    const startIdx = (currentPage - 1) * tweetsPerPage;
-    const endIdx = startIdx + tweetsPerPage;
-    
-    for (let i = startIdx; i < endIdx && i < tweets.length; i++) {
-      tweets[i].style.display = 'block';
-    }
-    
-    // Update pagination controls
+
+    // Update controls
     pageIndicator.textContent = `Page ${currentPage} of ${totalPages}`;
     prevBtn.disabled = currentPage === 1;
     nextBtn.disabled = currentPage === totalPages;
-    
-    // Update URL without reload
-    history.pushState(null, '', `?page=${currentPage}`);
   }
 
   // Initial load
@@ -144,27 +138,11 @@ document.addEventListener('DOMContentLoaded', function() {
 
   // Button events
   prevBtn.addEventListener('click', () => {
-    if (currentPage > 1) {
-      currentPage--;
-      updatePage();
-    }
+    if (currentPage > 1) updatePage(--currentPage);
   });
 
   nextBtn.addEventListener('click', () => {
-    if (currentPage < totalPages) {
-      currentPage++;
-      updatePage();
-    }
-  });
-
-  // Handle browser back/forward
-  window.addEventListener('popstate', function() {
-    const urlParams = new URLSearchParams(window.location.search);
-    const page = parseInt(urlParams.get('page')) || 1;
-    if (page !== currentPage) {
-      currentPage = page;
-      updatePage();
-    }
+    if (currentPage < totalPages) updatePage(++currentPage);
   });
 });
 </script>
