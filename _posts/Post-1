@@ -1,0 +1,9 @@
+---
+layout: post
+title: "Your Post Title"
+date: 2023-01-01
+categories: [general]
+tags: [tag1, tag2]
+image: /assets/images/post-image.jpg
+excerpt: "Short excerpt of your post"
+---
