@@ -90,49 +90,54 @@ If it’s already a list, | values is a no-op.
 </noscript>
 
 <script>
-(function() {
-  // Liquid-safe count (becomes a number at build time; falls back to 0 if missing)
-  var TWEET_COUNT = {{ tweets.size | default: 0 }};
-  console.log("Total tweets:", TWEET_COUNT);
-
+document.addEventListener('DOMContentLoaded', function () {
   var container = document.getElementById('tweet-container');
+  if (!container) return;
+
   var tweets = Array.prototype.slice.call(container.querySelectorAll('.tweet'));
   if (!tweets.length) return;
 
-  var tweetsPerPage = 5;
+  var tweetsPerPage = 4; // ← show four per page
   var currentPage = 1;
   var totalPages = Math.max(1, Math.ceil(tweets.length / tweetsPerPage));
 
+  var prevBtn = document.getElementById('prev-btn');
+  var nextBtn = document.getElementById('next-btn');
+  var pageInfo = document.getElementById('page-info');
+
   function showPage(page) {
-    // Clamp page
     page = Math.max(1, Math.min(totalPages, page));
 
     // Hide all
-    tweets.forEach(function(el) { el.classList.add('is-hidden'); });
+    tweets.forEach(function (el) { el.style.display = 'none'; });
 
-    // Show current slice
+    // Show slice
     var start = (page - 1) * tweetsPerPage;
     var end = Math.min(start + tweetsPerPage, tweets.length);
     for (var i = start; i < end; i++) {
-      tweets[i].classList.remove('is-hidden');
+      tweets[i].style.display = 'block';
     }
 
     // Update UI
-    document.getElementById('page-info').textContent = 'Page ' + page + ' of ' + totalPages;
-    document.getElementById('prev-btn').disabled = (page <= 1);
-    document.getElementById('next-btn').disabled = (page >= totalPages);
+    if (pageInfo) pageInfo.textContent = 'Page ' + page + ' of ' + totalPages;
+    if (prevBtn) prevBtn.disabled = (page <= 1);
+    if (nextBtn) nextBtn.disabled = (page >= totalPages);
 
     currentPage = page;
   }
 
-  document.getElementById('prev-btn').addEventListener('click', function() {
-    showPage(currentPage - 1);
-  });
-  document.getElementById('next-btn').addEventListener('click', function() {
-    showPage(currentPage + 1);
-  });
+  // Wire buttons
+  if (prevBtn) prevBtn.addEventListener('click', function () { showPage(currentPage - 1); });
+  if (nextBtn) nextBtn.addEventListener('click', function () { showPage(currentPage + 1); });
 
-  // Initial render: if JS runs, paginate; otherwise all tweets are visible.
+  // Hide pagination entirely if only one page
+  var pagination = document.querySelector('.pagination');
+  if (pagination && totalPages <= 1) {
+    pagination.style.display = 'none';
+  }
+
+  // Initial render
   showPage(1);
-})();
+});
 </script>
+
