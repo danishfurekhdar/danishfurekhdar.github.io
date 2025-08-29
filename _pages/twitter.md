@@ -13,14 +13,12 @@ permalink: /twitter/
   border-radius: 10px;
   background: white;
 }
-
 .tweet-header {
   display: flex;
   align-items: center;
   margin-bottom: 10px;
   position: relative;
 }
-
 .tweet-avatar {
   width: 48px;
   height: 48px;
@@ -28,61 +26,56 @@ permalink: /twitter/
   margin-right: 12px;
   object-fit: cover;
 }
+.tweet-author { flex: 1; }
+.tweet-name { font-weight: bold; display: block; }
+.tweet-handle, .tweet-date { color: #657786; font-size: 0.9em; }
+.tweet-content { margin: 10px 0; line-height: 1.4; font-size: 1.1em; }
+.tweet-media { margin-top: 15px; border-radius: 15px; overflow: hidden; border: 1px solid #e1e8ed; }
+.tweet-media img { width: 100%; height: auto; display: block; }
 
-.tweet-author {
-  flex: 1;
-}
-
-.tweet-name {
-  font-weight: bold;
-  display: block;
-}
-
-.tweet-handle {
-  color: #657786;
-  font-size: 0.9em;
-}
-
-.tweet-date {
-  color: #657786;
-  font-size: 0.9em;
-}
-
-.tweet-content {
-  margin: 10px 0;
-  line-height: 1.4;
-  font-size: 1.1em;
-}
-
-.tweet-media {
-  margin-top: 15px;
-  border-radius: 15px;
-  overflow: hidden;
-  border: 1px solid #e1e8ed;
-}
-
-.tweet-media img {
-  width: 100%;
-  height: auto;
-  display: block;
-}
+/* Hidden class used by JS pagination */
+.is-hidden { display: none !important; }
 </style>
 
+{% assign tweets_src = site.data.tweets | default: empty %}
+{% comment %}
+If _data/tweets.yml is a map (key: {...}), convert to an array of values.
+If it’s already a list, | values is a no-op.
+{% endcomment %}
+{% assign tweets = tweets_src | values %}
+
 <div id="tweet-container">
-  <!-- Debug: First check if tweets exist -->
-  {% if site.data.tweets.size > 0 %}
-    {% for post in site.data.tweets %}
-    <pre>{{ post | inspect }}</pre>
-      <div class="tweet" style="display:none; border:1px solid #ddd; padding:15px; margin-bottom:20px;">
-        <strong>@{{ post.author }}</strong> · {{ post.date | date: "%b %d, %Y" }}
-        <p>{{ post.content }}</p>
+  {% if tweets and tweets.size > 0 %}
+    {% for post in tweets %}
+      <div class="tweet">
+        <div class="tweet-header">
+          {% if post.avatar %}
+            <img class="tweet-avatar" src="{{ post.avatar }}" alt="{{ post.author | default: post.handle | default: 'Author' }} avatar">
+          {% endif %}
+          <div class="tweet-author">
+            <span class="tweet-name">{{ post.name | default: post.author | default: post.handle | default: 'Unknown' }}</span>
+            {% if post.handle %}
+              <span class="tweet-handle">@{{ post.handle }}</span>
+            {% endif %}
+          </div>
+          {% if post.date %}
+            <div class="tweet-date">{{ post.date | date: "%b %d, %Y" }}</div>
+          {% endif %}
+        </div>
+
+        {% if post.content %}
+          <div class="tweet-content">{{ post.content }}</div>
+        {% endif %}
+
         {% if post.image %}
-          <img src="{{ post.image }}" style="max-width:100%; border-radius:15px;">
+          <div class="tweet-media">
+            <img src="{{ post.image }}" alt="Tweet media">
+          </div>
         {% endif %}
       </div>
     {% endfor %}
   {% else %}
-    <p>No tweets found. Check _data/tweets.yml</p>
+    <p>No tweets found. Make sure you have <code>_data/tweets.yml</code> with a list (or map) of tweets.</p>
   {% endif %}
 </div>
 
@@ -92,49 +85,54 @@ permalink: /twitter/
   <button id="next-btn" style="background:#1da1f2; color:white; border:none; padding:8px 16px; border-radius:20px;">Older →</button>
 </div>
 
-<script>
-// Simple debug check
-console.log("Total tweets:", {{ site.data.tweets.size }});
+<noscript>
+  <p style="text-align:center;color:#657786;">Pagination requires JavaScript. All tweets are shown above.</p>
+</noscript>
 
-document.addEventListener('DOMContentLoaded', function() {
-  const tweets = document.querySelectorAll('.tweet');
-  const tweetsPerPage = 5;
-  let currentPage = 1;
-  
+<script>
+(function() {
+  // Liquid-safe count (becomes a number at build time; falls back to 0 if missing)
+  var TWEET_COUNT = {{ tweets.size | default: 0 }};
+  console.log("Total tweets:", TWEET_COUNT);
+
+  var container = document.getElementById('tweet-container');
+  var tweets = Array.prototype.slice.call(container.querySelectorAll('.tweet'));
+  if (!tweets.length) return;
+
+  var tweetsPerPage = 5;
+  var currentPage = 1;
+  var totalPages = Math.max(1, Math.ceil(tweets.length / tweetsPerPage));
+
   function showPage(page) {
-    // First verify we have tweets
-    if(tweets.length === 0) {
-      console.error("No tweets found in DOM");
-      return;
-    }
-    
+    // Clamp page
+    page = Math.max(1, Math.min(totalPages, page));
+
     // Hide all
-    tweets.forEach(post => post.style.display = 'none');
-    
-    // Show current page
-    const start = (page - 1) * tweetsPerPage;
-    const end = start + tweetsPerPage;
-    for(let i = start; i < end && i < tweets.length; i++) {
-      tweets[i].style.display = 'block';
+    tweets.forEach(function(el) { el.classList.add('is-hidden'); });
+
+    // Show current slice
+    var start = (page - 1) * tweetsPerPage;
+    var end = Math.min(start + tweetsPerPage, tweets.length);
+    for (var i = start; i < end; i++) {
+      tweets[i].classList.remove('is-hidden');
     }
-    
+
     // Update UI
-    document.getElementById('page-info').textContent = 
-      `Page ${page} of ${Math.ceil(tweets.length / tweetsPerPage)}`;
-    document.getElementById('prev-btn').disabled = page <= 1;
-    document.getElementById('next-btn').disabled = page >= Math.ceil(tweets.length / tweetsPerPage);
+    document.getElementById('page-info').textContent = 'Page ' + page + ' of ' + totalPages;
+    document.getElementById('prev-btn').disabled = (page <= 1);
+    document.getElementById('next-btn').disabled = (page >= totalPages);
+
+    currentPage = page;
   }
 
-  // Button handlers
-  document.getElementById('prev-btn').addEventListener('click', () => {
-    if(currentPage > 1) showPage(--currentPage);
+  document.getElementById('prev-btn').addEventListener('click', function() {
+    showPage(currentPage - 1);
   });
-  
-  document.getElementById('next-btn').addEventListener('click', () => {
-    if(currentPage < Math.ceil(tweets.length / tweetsPerPage)) showPage(++currentPage);
+  document.getElementById('next-btn').addEventListener('click', function() {
+    showPage(currentPage + 1);
   });
 
-  // Initial load
+  // Initial render: if JS runs, paginate; otherwise all tweets are visible.
   showPage(1);
-});
+})();
 </script>
