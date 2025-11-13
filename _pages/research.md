@@ -6,97 +6,156 @@ permalink: /research/
 
 <div class="research-page">
   <header class="research-header">
-    <h1>Strong-Field Quantum Dynamics</h1>
-    <p class="research-subtitle">Theoretical investigations of light-matter interactions in intense laser fields</p>
+    <h1>Strong-Field Ionization & Quantum Dynamics</h1>
+    <p class="research-subtitle">Theory of Above-Threshold Ionization, Nondipole Effects, and Twisted-Light Interactions</p>
   </header>
 
   <section class="intro-section">
-    <p>My research develops theoretical frameworks to understand how atoms and molecules behave in ultra-intense laser fields (10<sup>13</sup>-10<sup>18</sup> W/cm<sup>2</sup>). By combining analytical strong-field approximations with numerical solutions to the time-dependent Schrödinger equation, I explore phenomena where traditional perturbation theory breaks down.</p>
+    <p>
+      My research focuses on the theoretical description of how atoms interact with
+      ultra-intense laser fields ranging from 10<sup>13</sup>–10<sup>18</sup> W/cm<sup>2</sup>.
+      Using analytical methods—such as the strong-field approximation (SFA),
+      saddle-point techniques in complex time, Jacobi–Anger expansions—and
+      comparisons with numerical solutions of the time-dependent Schrödinger
+      equation, I study how electrons absorb multiple photons, tunnel through distorted
+      Coulomb barriers, and form rich interference structures in momentum space.
+    </p>
   </section>
 
+  <!-- ------------------------ THEME 1 ------------------------ -->
   <div class="research-theme">
     <div class="theme-description">
-      <h2>Strong-Field Ionization Dynamics</h2>
-      <p>When atoms interact with intense laser pulses, electrons can absorb many more photons than required for ionization, creating complex interference patterns in their momentum distributions.</p>
-      
+      <h2>Above-Threshold Ionization (ATI)</h2>
+      <p>
+        In strong fields, an electron can absorb more photons than needed to escape,
+        producing characteristic ATI peaks and complex fringe patterns in the
+        photoelectron momentum distribution (PMD).
+      </p>
+
       <div class="research-details">
-        <h3>Key Contributions:</h3>
+        <h3>Major Contributions:</h3>
         <ul>
-          <li>Developed models explaining holographic patterns in photoelectron spectra through interfering ionization pathways</li>
-          <li>Formulated corrections to the strong-field approximation accounting for magnetic field effects</li>
-          <li>Demonstrated how sub-cycle pulse structure determines electron emission directionality</li>
+          <li>Developed analytical models for ATI using both the Jacobi–Anger expansion and saddle-point SFA.</li>
+          <li>Explained how few-cycle pulses modify ATI peak spacing and suppress even/odd photon channels.</li>
+          <li>Demonstrated how pulse duration and carrier-envelope phase (CEP) shape sub-cycle emission timing.</li>
+          <li>Provided accurate predictions of ATI shifts by incorporating nondipole (magnetic field) effects.</li>
         </ul>
       </div>
     </div>
-    
+
     <figure class="theme-visual">
       <img src="/assets/img/pmd.png" alt="Photoelectron Momentum Distribution"/>
-      <figcaption>Calculated photoelectron momentum distribution showing characteristic interference structures</figcaption>
+      <figcaption>PMD from two-color and twisted beams, showing ATI rings and interference fringes.</figcaption>
     </figure>
   </div>
 
+  <!-- ------------------------ THEME 2 ------------------------ -->
   <div class="research-theme reversed">
     <div class="theme-description">
-      <h2>Saddle-Point Methods</h2>
-      <p>The saddle-point approximation provides deep physical insight by revealing dominant quantum paths in complex time.</p>
-      
+      <h2>Saddle-Point Methods & Complex-Time Trajectories</h2>
+      <p>
+        The saddle-point approximation reveals quantum trajectories in the
+        complex-time plane—each corresponding to a physical ionization pathway.
+      </p>
+
       <div class="research-details">
-        <h3>Methodological Advances:</h3>
+        <h3>Methodological Developments:</h3>
         <ul>
-          <li>Extended standard approaches to include non-adiabatic effects in tunneling ionization</li>
-          <li>Derived phase-matching conditions explaining spectral oscillations in ATI spectra</li>
-          <li>Developed visualization techniques for sub-cycle electron dynamics</li>
+          <li>Extended saddle-point SFA to short pulses where the standard stationary-phase approach fails.</li>
+          <li>Identified the origin of sub-cycle interference through competing complex-time ionization paths.</li>
+          <li>Compared saddle-point solutions with full Jacobi–Anger expansions, showing when each method is accurate.</li>
+          <li>Mapped the deformation of integration contours around branch cuts for nondipole strong-field ionization.</li>
         </ul>
       </div>
     </div>
-    
+
     <figure class="theme-visual">
       <img src="/assets/img/saddlepoint.png" alt="Saddle Point Analysis"/>
-      <figcaption>Saddle points on complex time plane with deformed integration contour</figcaption>
+      <figcaption>
+        Complex saddle points and steepest-descent contours determining quantum interference.
+      </figcaption>
     </figure>
   </div>
 
+  <!-- ------------------------ THEME 3 ------------------------ -->
   <div class="research-theme">
     <div class="theme-description">
-      <h2>Twisted Light Interactions</h2>
-      <p>Vortex laser beams carrying orbital angular momentum create novel ionization dynamics with unique symmetry properties.</p>
-      
+      <h2>Nondipole & Relativistic Effects</h2>
+      <p>
+        At long wavelengths (e.g., 3200–4200 nm) and high intensities, the dipole
+        approximation breaks down. The magnetic field shifts the electron’s momentum
+        opposite to the laser propagation direction.
+      </p>
+
       <div class="research-details">
-        <h3>Research Findings:</h3>
+        <h3>Key Scientific Results:</h3>
         <ul>
-          <li>Identified selection rules governing angular momentum transfer to photoelectrons</li>
-          <li>Characterized how pulse vorticity affects sub-cycle ionization dynamics</li>
-          <li>Theoretical predictions verified through experimental collaborations</li>
+          <li>Formulated nondipole strong-field approximation (including <em>k · r</em> phase and magnetic drift).</li>
+          <li>Explained the forward–backward momentum asymmetry observed in mid-IR experiments.</li>
+          <li>Showed why few-cycle pulses match experiments better than monochromatic models.</li>
+          <li>Analyzed linear-photon-momentum partitioning between ion and electron during ATI.</li>
         </ul>
       </div>
     </div>
-    
+
     <figure class="theme-visual">
-      <img src="/assets/img/pulse.png" alt="Twisted Laser Pulse"/>
-      <figcaption>Spatial profile of a few-cycle laser pulse</figcaption>
+      <img src="/assets/img/nondipole.png" alt="Nondipole Effects"/>
+      <figcaption>Nondipole shift in the PMD for Argon at 3200 nm (2-cycle pulse).</figcaption>
     </figure>
   </div>
 
+  <!-- ------------------------ THEME 4 ------------------------ -->
+  <div class="research-theme reversed">
+    <div class="theme-description">
+      <h2>Twisted Light & Orbital Angular Momentum (OAM)</h2>
+      <p>
+        Vortex laser pulses carry orbital angular momentum, enabling structured
+        photoelectron emission patterns that cannot be produced by plane waves.
+      </p>
+
+      <div class="research-details">
+        <h3>Research Contributions:</h3>
+        <ul>
+          <li>Computed PMDs for few-cycle Bessel (twisted) beams in both dipole and nondipole regimes.</li>
+          <li>Demonstrated selection rules for OAM transfer to electrons in strong fields.</li>
+          <li>Analyzed saddle-point structures unique to vortex pulses, including ring-shaped field maxima.</li>
+          <li>Developed the SFA formalism for twisted beams using Jacobi–Anger and saddle-point approaches.</li>
+        </ul>
+      </div>
+    </div>
+
+    <figure class="theme-visual">
+      <img src="/assets/img/pulse.png" alt="Twisted Laser Pulse"/>
+      <figcaption>Field structure of a few-cycle Bessel beam used for OAM-dependent ionization.</figcaption>
+    </figure>
+  </div>
+
+  <!-- ------------------------ CURRENT WORK ------------------------ -->
   <section class="current-work">
-    <h2>Ongoing Investigations</h2>
+    <h2>Current & Future Directions</h2>
     <div class="project-showcase">
       <article class="project-card">
         <h3>Few-Cycle Vortex Pulses</h3>
-        <p>Examining orbital angular momentum transfer with ultra-short pulses</p>
+        <p>Study of OAM-dependent ATI using two-color and tightly focused pulses.</p>
       </article>
       <article class="project-card">
-        <h3>Relativistic Corrections</h3>
-        <p>Developing models incorporating magnetic field and mass shift effects</p>
+        <h3>Improved Strong-Field Models</h3>
+        <p>Incorporating Coulomb-distorted Volkov states to improve low-energy predictions.</p>
       </article>
       <article class="project-card">
-        <h3>Computational Methods</h3>
-        <p>Implementing efficient numerical techniques for strong-field problems</p>
+        <h3>Partial-Wave Expansion in Nondipole Regime</h3>
+        <p>Extending angular-momentum–resolved frameworks beyond dipole SFA.</p>
       </article>
     </div>
   </section>
 
+  <!-- ------------------------ CONTACT ------------------------ -->
   <section class="collaboration-note">
-    <p>I welcome discussions about my research and potential collaborations. <a href="mailto:danish.dar@uni-jena.de">Contact me</a> to explore these topics further.</p>
+    <p>
+      I am open to discussions and collaborations in strong-field physics,
+      quantum dynamics, and computational AMO theory.
+      <a href="mailto:danish.dar@uni-jena.de">Contact me</a>.
+    </p>
   </section>
 </div>
 
