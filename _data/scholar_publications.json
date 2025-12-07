@@ -3,7 +3,7 @@
     "title": "Radiative transition properties of singly charged magnesium, calcium, strontium and barium ions",
     "authors": "Mandeep Kaur and Danish Furekh Dar and BK Sahoo and Bindiya Arora",
     "year": 2021,
-    "citations": 15,
+    "citations": 16,
     "venue": "Atomic Data and Nuclear Data Tables",
     "url": "https://www.sciencedirect.com/science/article/pii/S0092640X20300449"
   },
@@ -32,11 +32,11 @@
     "url": "https://journals.aps.org/pra/abstract/10.1103/PhysRevA.111.053113"
   },
   {
-    "title": "Comparison between Jacobi\u2013Anger and saddle point methods to treat above-threshold ionization",
-    "authors": "Danish Furekh Dar Stephan Fritzsche",
+    "title": "Comparison between Jacobi-Anger and saddle point methods to treat Above-threshold ionization",
+    "authors": "Danish Furekh Dar and Stephan Fritzsche",
     "year": 2025,
     "citations": 0,
-    "venue": "Journal of Physics B: Atomic, Molecular and Optical Physics",
-    "url": ""
+    "venue": "arXiv preprint arXiv:2505.14390",
+    "url": "https://arxiv.org/abs/2505.14390"
   }
 ]
