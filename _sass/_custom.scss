@@ -349,11 +349,21 @@ body {
    =============================== */
 
 .academic-footer {
-  flex-shrink: 0;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+
   background: #1f2d3d;
   color: #e6edf3;
-  padding: 2.5rem 2rem 1.5rem;
+  padding: 1.5rem 2rem;
   font-size: 0.9rem;
+}
+
+/* Reserve space for fixed footer */
+#main {
+  padding-bottom: 180px; /* adjust if footer height changes */
 }
 
 .academic-footer__container {
@@ -392,6 +402,12 @@ body {
   font-size: 0.8rem;
   color: #b6c2cf;
   border-top: 1px solid rgba(255,255,255,0.15);
+}
+
+@media (max-width: 900px) {
+  #main {
+    padding-bottom: 260px;
+  }
 }
 
 /* Mobile */
