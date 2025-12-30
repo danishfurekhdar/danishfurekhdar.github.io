@@ -165,3 +165,46 @@
   margin-bottom: 0.4rem;
   text-align: center;
 }
+/* ===============================
+   MOBILE FIX — SIDEBAR & CARD
+   =============================== */
+
+@media (max-width: 900px) {
+
+  /* Stack layout vertically */
+  #main {
+    display: block !important;
+  }
+
+  /* Sidebar becomes top block */
+  .sidebar {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 auto 2rem auto;
+  }
+
+  /* Author card full width */
+  .sidebar [itemtype="http://schema.org/Person"] {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  /* Stop floating / fixed icons */
+  .author__urls,
+  .author__urls-wrapper {
+    position: static !important;
+  }
+
+  /* Icons wrap normally */
+  .author__urls {
+    justify-content: center;
+  }
+
+  /* Content full width */
+  .page,
+  .page__inner-wrap {
+    margin-left: 0 !important;
+    max-width: 100% !important;
+  }
+}
+
