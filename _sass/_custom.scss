@@ -165,3 +165,36 @@
   margin-bottom: 0.4rem;
   text-align: center;
 }
+/* ===============================
+   FIX SIDEBAR PUSHING CONTENT
+   =============================== */
+
+/* Reduce sidebar width */
+.sidebar {
+  width: 300px !important;
+  flex: 0 0 300px !important;
+}
+
+/* Let main content take remaining space */
+.page,
+.archive {
+  max-width: none !important;
+  width: auto !important;
+}
+
+/* Rebalance layout */
+#main {
+  display: flex;
+  align-items: flex-start;
+  gap: 3rem;
+}
+@media (max-width: 900px) {
+  #main {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    width: 100% !important;
+  }
+}
+
