@@ -305,3 +305,25 @@
     justify-content: center !important;
   }
 }
+/* ===============================
+   MOBILE SAFARI FIX — ICON BACKGROUND
+   =============================== */
+
+@media (max-width: 900px) {
+
+  /* Ensure icon wrapper is transparent */
+  .sidebar .author__urls-wrapper {
+    background: transparent !important;
+  }
+
+  /* Remove any inherited white background */
+  .sidebar .author__urls {
+    background: transparent !important;
+  }
+
+  /* Force icon button background */
+  .sidebar .author__urls li a i {
+    background-color: #1abc9c !important;
+  }
+}
+
