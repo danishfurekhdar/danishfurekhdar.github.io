@@ -1,4 +1,22 @@
 /* ===============================
+   STICKY FOOTER LAYOUT
+   =============================== */
+
+html, body {
+  height: 100%;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Main content expands to push footer down */
+#main {
+  flex: 1 0 auto;
+}
+
+/* ===============================
    FORCE FULL WIDTH (AcademicPages)
    =============================== */
 
@@ -327,32 +345,34 @@
   }
 }
 /* ===============================
-   ACADEMIC 3-COLUMN FOOTER
+   ACADEMIC STICKY FOOTER
    =============================== */
 
 .academic-footer {
+  flex-shrink: 0;
   background: #1f2d3d;
-  color: #d6dde5;
-  padding: 3rem 2rem 1.5rem;
+  color: #e6edf3;
+  padding: 2.5rem 2rem 1.5rem;
   font-size: 0.9rem;
 }
 
 .academic-footer__container {
-  max-width: 1400px;
+  max-width: 1200px;
   margin: 0 auto;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 3rem;
+  gap: 2.5rem;
 }
 
 .academic-footer__col h4 {
   color: #f1c40f;
   font-size: 1rem;
-  margin-bottom: 0.8rem;
+  margin-bottom: 0.6rem;
 }
 
 .academic-footer__col p {
-  margin: 0.4rem 0;
+  margin: 0.25rem 0;
+  line-height: 1.5;
 }
 
 .academic-footer a {
@@ -364,14 +384,14 @@
   text-decoration: underline;
 }
 
-/* Bottom line */
+/* Bottom copyright bar */
 .academic-footer__bottom {
-  text-align: center;
   margin-top: 2rem;
   padding-top: 1rem;
-  border-top: 1px solid rgba(255,255,255,0.15);
+  text-align: center;
   font-size: 0.8rem;
-  color: #aab7c4;
+  color: #b6c2cf;
+  border-top: 1px solid rgba(255,255,255,0.15);
 }
 
 /* Mobile */
@@ -381,5 +401,6 @@
     text-align: center;
   }
 }
+
 
 
