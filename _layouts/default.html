@@ -16,14 +16,15 @@ layout: compress
     {% include browser-upgrade.html %}
     {% include masthead.html %}
 
-    {{ content }}
+<main id="main" class="initial-content">
+  {{ content }}
+</main>
 
-    <div class="page__footer">
-      <footer>
-        {% include footer/custom.html %}
-        {% include footer.html %}
-      </footer>
-    </div>
+<footer class="page__footer">
+  {% include footer/custom.html %}
+  {% include footer.html %}
+</footer>
+
 
     {% include scripts.html %}
 
