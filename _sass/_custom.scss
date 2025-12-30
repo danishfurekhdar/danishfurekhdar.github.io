@@ -197,4 +197,18 @@
     width: 100% !important;
   }
 }
+/* ===============================
+   FIX ARCHIVE CONTENT OFFSET
+   =============================== */
+
+/* Remove artificial left offset added by archive layout */
+.layout--archive .page {
+  margin-left: 0 !important;
+}
+
+/* Ensure content uses available space */
+.layout--archive .page__inner-wrap {
+  max-width: 100% !important;
+}
+
 
