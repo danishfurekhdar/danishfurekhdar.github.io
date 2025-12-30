@@ -27,3 +27,34 @@
     padding-right: 4rem;
   }
 }
+
+/* ===============================
+   FULL-WIDTH HEADER / NAV
+   =============================== */
+
+/* Masthead wrapper */
+.masthead,
+.masthead__inner-wrap {
+  max-width: 100% !important;
+  width: 100% !important;
+}
+
+/* Navigation bar */
+.nav,
+.nav__list {
+  max-width: 100% !important;
+}
+
+/* Keep nav content aligned nicely */
+.masthead__inner-wrap {
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+
+/* Large screens */
+@media (min-width: 1400px) {
+  .masthead__inner-wrap {
+    padding-left: 4rem;
+    padding-right: 4rem;
+  }
+}
