@@ -270,3 +270,38 @@
   }
 }
 
+/* ===============================
+   MOBILE FIX — STACK CARD CONTENT
+   =============================== */
+
+@media (max-width: 900px) {
+
+  /* Stack avatar + content vertically */
+  .sidebar [itemtype="http://schema.org/Person"] {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    text-align: center !important;
+  }
+
+  /* Ensure avatar stays on top */
+  .sidebar .author__avatar {
+    margin-bottom: 1rem !important;
+  }
+
+  /* Content goes below image */
+  .sidebar .author__content {
+    width: 100% !important;
+    margin-left: 0 !important;
+  }
+
+  /* Icons must sit below text */
+  .sidebar .author__urls-wrapper {
+    width: 100% !important;
+    margin-top: 1rem !important;
+  }
+
+  .sidebar .author__urls {
+    justify-content: center !important;
+  }
+}
