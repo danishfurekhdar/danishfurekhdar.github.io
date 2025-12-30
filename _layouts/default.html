@@ -11,20 +11,20 @@ layout: compress
     {% include head/custom.html %}
   </head>
 
-  <body>
+  <body class="site-body">
 
     {% include browser-upgrade.html %}
     {% include masthead.html %}
 
-<main id="main" class="initial-content">
-  {{ content }}
-</main>
+    <!-- MAIN CONTENT -->
+    <main id="main" class="site-main initial-content">
+      {{ content }}
+    </main>
 
-<footer class="page__footer">
-  {% include footer/custom.html %}
-  {% include footer.html %}
-</footer>
-
+    <!-- FOOTER (NORMAL FLOW, STICKY LAYOUT) -->
+    <footer class="academic-footer">
+      {% include footer/custom.html %}
+    </footer>
 
     {% include scripts.html %}
 
