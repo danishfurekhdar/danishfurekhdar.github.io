@@ -1,17 +1,23 @@
-<footer class="custom-footer">
-  <div class="footer-container">
+{% include base_path %}
+
+<footer class="academic-footer">
+
+  <div class="academic-footer__container">
 
     <!-- Column 1 -->
-    <div class="footer-col">
+    <div class="academic-footer__col">
       <h4>Danish Furekh Dar</h4>
       <p>Postdoctoral Researcher (Theoretical Physics)</p>
       <p>Helmholtz Institute Jena, Germany</p>
-      <a href="mailto:furkhdanish@gmail.com">Contact via email</a><br>
-      <a href="https://github.com/danishfurekhdar">Site template / source</a>
+
+      <p>
+        <a href="mailto:furkhdanish@gmail.com">Contact via email</a><br>
+        <a href="https://github.com/danishfurekhdar">Site template / source</a>
+      </p>
     </div>
 
     <!-- Column 2 -->
-    <div class="footer-col">
+    <div class="academic-footer__col">
       <h4>Mailing address</h4>
       <p>
         Danish Furekh Dar<br>
@@ -22,7 +28,7 @@
     </div>
 
     <!-- Column 3 -->
-    <div class="footer-col">
+    <div class="academic-footer__col">
       <h4>Physical address</h4>
       <p>
         Helmholtz Institute Jena<br>
@@ -36,7 +42,10 @@
 
   </div>
 
-  <div class="footer-bottom">
-    © {{ site.time | date: "%Y" }} Danish Furekh Dar. All rights reserved.
+  <!-- Bottom bar -->
+  <div class="academic-footer__bottom">
+    &copy; {{ site.time | date: '%Y' }} {{ site.name | default: site.title }}.
+    All rights reserved.
   </div>
+
 </footer>
