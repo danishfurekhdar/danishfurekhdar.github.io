@@ -1,26 +1,29 @@
-/* ===============================
-   FULL WIDTH OVERRIDE
-   =============================== */
+/* FORCE FULL WIDTH — AcademicPages FIX */
 
-/* Main content container */
-.page__content,
+/* Main page wrapper */
 .page__inner-wrap,
+.page__content,
 .archive,
-.archive__item,
-.container {
+.archive__item {
   max-width: 100% !important;
-  width: 100% !important;
 }
 
-/* Reduce excessive side margins */
-.page__content {
+/* Kill Susy container constraint */
+.wrap,
+.wrapper,
+.container {
+  max-width: 100% !important;
+}
+
+/* Add readable padding */
+.page__inner-wrap {
   padding-left: 2rem;
   padding-right: 2rem;
 }
 
-/* Optional: large screens look clean */
+/* Large screens */
 @media (min-width: 1400px) {
-  .page__content {
+  .page__inner-wrap {
     padding-left: 4rem;
     padding-right: 4rem;
   }
