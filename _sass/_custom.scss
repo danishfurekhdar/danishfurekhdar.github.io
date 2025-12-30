@@ -1,29 +1,28 @@
-/* FORCE FULL WIDTH — AcademicPages FIX */
+/* ===============================
+   FORCE FULL WIDTH (AcademicPages)
+   =============================== */
 
-/* Main page wrapper */
+/* Override Susy container */
+#main {
+  max-width: 100% !important;
+}
+
+/* Inner page wrapper */
 .page__inner-wrap,
 .page__content,
-.archive,
-.archive__item {
+.page {
   max-width: 100% !important;
 }
 
-/* Kill Susy container constraint */
-.wrap,
-.wrapper,
-.container {
-  max-width: 100% !important;
-}
-
-/* Add readable padding */
-.page__inner-wrap {
+/* Optional padding for readability */
+#main {
   padding-left: 2rem;
   padding-right: 2rem;
 }
 
 /* Large screens */
 @media (min-width: 1400px) {
-  .page__inner-wrap {
+  #main {
     padding-left: 4rem;
     padding-right: 4rem;
   }
