@@ -148,3 +148,20 @@
   display: none;
 }
 
+/* Education block in author card */
+.author__education {
+  margin-top: 1rem;
+  font-size: 0.85rem;
+  color: #ddd;
+}
+
+.author__education ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.author__education li {
+  margin-bottom: 0.4rem;
+  text-align: center;
+}
