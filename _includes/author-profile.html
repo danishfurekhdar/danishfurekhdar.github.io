@@ -18,6 +18,15 @@
     <h3 class="author__name">{{ author.name }}</h3>
     {% if author.pronouns %}<p class="author__pronouns">{{ author.pronouns }}</p>{% endif %}
     {% if author.bio %}<p class="author__bio">{{ author.bio }}</p>{% endif %}
+    {% if author.education %}
+  <div class="author__education">
+    <ul>
+      {% for degree in author.education %}
+        <li>{{ degree }}</li>
+      {% endfor %}
+    </ul>
+  </div>
+{% endif %}
   </div>
 
   <div class="author__urls-wrapper">
