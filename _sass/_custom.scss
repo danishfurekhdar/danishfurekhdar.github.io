@@ -58,3 +58,93 @@
     padding-right: 4rem;
   }
 }
+
+/* ===============================
+   AUTHOR SIDEBAR → DARK CARD
+   =============================== */
+
+/* Sidebar container */
+.sidebar {
+  background: none;
+}
+
+/* The author block */
+.sidebar [itemtype="http://schema.org/Person"] {
+  background: #2b2b2b;
+  color: #fff;
+  border-radius: 18px;
+  padding: 1.5rem;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.35);
+}
+
+/* Avatar */
+.sidebar .author__avatar {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.sidebar .author__avatar img {
+  width: 170px;
+  height: 170px;
+  object-fit: cover;
+  border-radius: 14px;
+  border: none;
+}
+
+/* Name */
+.sidebar .author__name {
+  color: #fff;
+  text-align: center;
+  font-size: 1.25rem;
+  margin-bottom: 0.5rem;
+}
+
+/* Bio */
+.sidebar .author__bio {
+  color: #ddd;
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+/* Hide pronouns if any */
+.sidebar .author__pronouns {
+  display: none;
+}
+
+/* Remove Follow button */
+.sidebar .author__urls-wrapper .btn {
+  display: none;
+}
+
+/* Social links → icon grid */
+.sidebar .author__urls {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.6rem;
+  padding: 0;
+}
+
+/* Hide text labels */
+.sidebar .author__urls li a {
+  font-size: 0;
+}
+
+/* Icon buttons */
+.sidebar .author__urls li a i {
+  font-size: 1rem;
+  background: #1abc9c;
+  color: #000;
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Location & employer icons */
+.sidebar .author__desktop {
+  display: none;
+}
+
