@@ -25,11 +25,15 @@ author:
   avatar           : "danish.jpg"
   name             : "Danish Furekh Dar"
   pronouns         : "he/him"  
-  bio              : "I am a dedicated researcher specializing in strong field physics. My work revolves around investigating the profound effects and intricate dynamics that occur when matter interacts with intense laser fields. I am passionate about uncovering the fundamental principles underlying these phenomena and pushing the boundaries of our understanding."
+  bio              : #"I am a dedicated researcher specializing in strong field physics. My work revolves around investigating the profound effects and intricate dynamics that occur when matter interacts with intense laser fields. I am passionate about uncovering the fundamental principles underlying these phenomena and pushing the boundaries of our understanding."
   location         : "Jena, Germany"
   employer         : "Helmholtz Institute"
   uri              : # URL
-  email            : "furkhdanish@gmail.com" 
+  email            : "furkhdanish@gmail.com"
+  education:
+  - "Ph.D. Physics, Helmholtz Institute Jena & Friedrich Schiller University Jena (2025)"
+  - "M.Sc. Honors Physics, Guru Nanak Dev University Amritsar (2021)"
+  - "B.Sc. Honors Physics, Guru Nanak Dev University Amritsar (2019)"
 
   # Academic websites
   arxiv            : # URL - Update with the correct link to your profile
