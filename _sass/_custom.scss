@@ -245,4 +245,28 @@
     display: flex !important;
   }
 }
+/* ===============================
+   HARD MOBILE RESET — AUTHOR ICONS
+   =============================== */
+
+@media (max-width: 900px) {
+
+  .sidebar .author__urls-wrapper {
+    position: static !important;
+    top: auto !important;
+    right: auto !important;
+    left: auto !important;
+    bottom: auto !important;
+    transform: none !important;
+    width: 100% !important;
+    margin-top: 1rem !important;
+  }
+
+  .sidebar .author__urls {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    justify-content: center !important;
+    gap: 0.6rem !important;
+  }
+}
 
