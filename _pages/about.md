@@ -22,7 +22,10 @@ More details about my academic output, publications, and presentations can be fo
 Use the menu at the top to navigate through my publications, talks, and research activities.
 
 ---
+<div style="display: flex; gap: 3rem; flex-wrap: wrap;">
 
+<div style="flex: 1; min-width: 250px;">
+  
 ## Interests
 
 - Strong-Field and Laser–Matter Interaction  
@@ -32,7 +35,9 @@ Use the menu at the top to navigate through my publications, talks, and research
 - Scientific Computing and Numerical Methods    
 
 ---
+</div>
 
+<div style="flex: 1; min-width: 250px;">
 ## Education
 
 - **PhD in Physics**, 2025  
@@ -44,7 +49,8 @@ Use the menu at the top to navigate through my publications, talks, and research
 - **Bachelor of Science in Physics**, 2019  
   Guru Nanak Dev University Amritsar, India
 ---
-
+</div>
+</div>
 ### 🙏 **Thanks for Visiting**
 
 This website brings together my **scientific work**, **research updates**, and **personal reflections** as I move into the next chapter of my career.
