@@ -9,45 +9,41 @@ redirect_from:
 
 > “Behind every atom of this world hides an infinite Universe.” — Rumi
 
-### 👋 Hello, I'm **Danish Furekh Dar**
+## About
 
-I am a theoretical physicist who recently completed **PhD in Strong-Field Ionization and Quantum Dynamics** at the **Friedrich Schiller University Jena** and the **Helmholtz Institute Jena**, Germany.
+I am a theoretical physicist and doctoral researcher specializing in **strong-field and laser–matter interactions**, with a particular focus on **above-threshold ionization (ATI)** and **non-dipole effects** in intense laser fields. I completed my PhD at **Friedrich Schiller Universität Jena** and the **Helmholtz Institute**, where my research centered on understanding electron dynamics under high-intensity few-cycle laser pulses using analytical and semi-classical approaches.
 
-My work lies at the intersection of **laser physics**, **quantum mechanics**, and **computational theory**, where I study how electrons behave when atoms are exposed to **ultra-intense and ultrashort laser pulses**.  
+My work primarily employs the **strong-field approximation (SFA)**, **Jacobi–Anger expansion**, and the **saddle-point method**, alongside numerical and computational techniques, to investigate photoelectron momentum distributions and nonlinear interference effects. I have contributed to several peer-reviewed publications in leading journals, including *Physical Review A* and *Atoms*, exploring both dipole and non-dipole regimes of strong-field ionization.
 
-During my PhD, I investigated:
+Currently, my research interests extend to **strong-field QED** and **advanced laser–matter interaction theories**, with an emphasis on developing accurate theoretical models that bridge analytical insight and computational efficiency. I am also interested in interdisciplinary approaches, including the application of **machine learning** and **scientific computing** techniques to modern problems in atomic and molecular physics.
 
-- **Above-threshold ionization (ATI)**  
-- **Strong-field approximation (SFA)** in dipole and nondipole regimes  
-- **Complex-time saddle-point methods**  
-- **Jacobi–Anger expansion for few-cycle pulses**  
-- **Twisted (vortex) light with orbital angular momentum (OAM)**  
-- **Momentum shifts from magnetic-field (nondipole) corrections**  
+More details about my academic output, publications, and presentations can be found on my website.
 
-My research aimed to build a deeper theoretical understanding of quantum pathways, sub-cycle electron dynamics, and the role of light’s structure — including phase, vorticity, and wavelength — in shaping photoelectron spectra.
+Use the menu at the top to navigate through my publications, talks, and research activities.
 
 ---
 
-### 🌄 **From Kashmir to Quantum Physics**
+## Interests
 
-I was born and raised in the breathtaking valley of **Kashmir**, a place that naturally cultivates introspection and curiosity. Growing up between mountains, rivers, and poetry, I developed a fascination for both the **beauty of nature** and the **mystery of the universe**.
+- Strong-Field and Laser–Matter Interaction  
+- Above-Threshold Ionization (ATI)  
+- Non-Dipole and Relativistic Effects  
+- Theoretical Atomic and Molecular Physics  
+- Scientific Computing and Numerical Methods  
+- Machine Learning in Physics  
 
-That curiosity eventually led me from Kashmir to Germany, where I immersed myself in the world of strong-field physics — studying how intense laser light can bend, distort, and even free electrons from atoms.
+---
 
+## Education
 
-### 🌱 **Beyond Research**
+- **PhD in Physics**, 2025  
+  Friedrich Schiller Universität Jena & Helmholtz Institute, Germany  
 
-While physics is a big part of my life, it’s not the only part.  
-I am also:
+- **Master of Science in Physics**, 2021  
+  *(Thesis: Synthesis and characterization of Sb–Nd co-doped Lithium Lanthanum Zirconate)*  
 
-- 🌿 A lifelong admirer of **Rumi’s poetry**, mysticism, and philosophy  
-- 🔭 An **astronomy enthusiast**, especially drawn to the night sky and cosmic origins  
-- 🎮 A casual **gamer**, unwinding with Honor of Kings, Black myth Wukong 
-- ☕ Someone who loves long conversations over Kashmiri chai  
-- ✈️ A traveler navigating cultures, identities, and new experiences  
-
-I believe science is not just equations and simulations — it’s a way of seeing the world.
-
+- **Bachelor of Science in Physics**, 2019  
+  Panjab University, India  
 ---
 
 ### 🙏 **Thanks for Visiting**
