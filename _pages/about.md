@@ -21,36 +21,37 @@ More details about my academic output, publications, and presentations can be fo
 
 Use the menu at the top to navigate through my publications, talks, and research activities.
 
----
-<div style="display: flex; gap: 3rem; flex-wrap: wrap;">
+<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; margin-top: 2rem;">
 
-<div style="flex: 1; min-width: 250px;">
-  
+<div>
+
 ## Interests
 
 - Strong-Field and Laser–Matter Interaction  
 - Above-Threshold Ionization (ATI)  
 - Non-Dipole and Relativistic Effects  
 - Theoretical Atomic Physics  
-- Scientific Computing and Numerical Methods    
+- Scientific Computing and Numerical Methods  
 
----
 </div>
 
-<div style="flex: 1; min-width: 250px;">
+<div>
+
 ## Education
 
 - **PhD in Physics**, 2025  
   Friedrich Schiller Universität Jena & Helmholtz Institute, Germany  
 
 - **Master of Science in Physics**, 2021  
-  Guru Nanak Dev University Amritsar, India 
+  Guru Nanak Dev University, Amritsar, India  
 
 - **Bachelor of Science in Physics**, 2019  
-  Guru Nanak Dev University Amritsar, India
----
+  Guru Nanak Dev University, Amritsar, India  
+
 </div>
+
 </div>
+
 ### 🙏 **Thanks for Visiting**
 
 This website brings together my **scientific work**, **research updates**, and **personal reflections** as I move into the next chapter of my career.
