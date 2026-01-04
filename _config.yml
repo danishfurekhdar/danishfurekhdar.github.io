@@ -13,7 +13,7 @@ title                    : "Danish Furekh Dar"
 title_separator          : "-"
 name                     : &name "Danish"
 description              : &description "personal description"
-url                      : "https://www.danishfurekhdar.me"
+url                      : "https://www.dfdar.com"
 baseurl                  : ""
 repository               : "danishfurekhdar/Blog"
 
