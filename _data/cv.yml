@@ -1,0 +1,145 @@
+name: Danish F. Dar
+location: Anantnag, Jammu and Kashmir, India
+phone: "+91 8899398958"
+homepage: https://danishfurekhdar.github.io
+github: danishfurekhdar
+linkedin: danishfurekh
+scholar: Google Scholar
+
+profile: >
+  Theoretical AMO physicist specializing in strong-field ionization,
+  nonlinear interference effects, nondipole dynamics, and photoelectron
+  momentum distributions in intense laser fields. Experienced in
+  analytical and semi-classical approaches including the strong-field
+  approximation, saddle-point methods, and partial-wave expansions,
+  with recent work on few-cycle and twisted laser pulses.
+
+education:
+  - degree: Doctor of Philosophy (PhD) in Physics
+    institution: Helmholtz Institute & Friedrich Schiller Universität
+    location: Jena, Germany
+    years: April 2022 – Nov 2025
+    thesis: Theoretical Study of Atomic Ionization Under Intense Laser Pulses
+    advisor: Prof. Dr. Stephan Fritzsche
+    focus:
+      - Above-threshold ionization (ATI)
+      - Nonlinear interference and nondipole effects
+      - Strong-field approximation and saddle-point methods
+    techniques:
+      - Strong-field approximation
+      - Jacobi–Anger expansion
+      - Saddle-point approximation
+
+  - degree: Master of Science (Honours Physics)
+    institution: Guru Nanak Dev University
+    location: Amritsar, India
+    years: July 2019 – Sep 2021
+    thesis: Effect of Sb–Nd Co-Doping on the Ionic Conductivity of Li7La3Zr2O12
+    advisor: Prof. Dr. Atul Khanna
+    techniques:
+      - X-ray diffraction
+      - Raman spectroscopy
+      - DSC
+      - Photoluminescence spectroscopy
+      - UV–Vis spectroscopy
+      - Two-probe method
+    cgpa: 7.63/10
+
+appointments:
+  - title: Postdoctoral Researcher
+    institution: Shanghai Jiao Tong University
+    location: Shanghai, China
+    years: March 2026 – present
+    advisor: Assoc. Prof. Dr. Pei-Lun He
+    topic: Strong-Field QED and Laser–Matter Interaction
+
+  - title: Research Assistant
+    institution: Helmholtz Institute
+    location: Jena, Germany
+    years: Jan 2021 – March 2022
+    advisor: Prof. Dr. Stephan Fritzsche
+    topic: Partial-Wave Expansion to Strong-Field Ionization Processes
+
+publications:
+  - "Dar, D. F. & Fritzsche, S., Journal of Physics B 58, 215202 (2025)"
+  - "Dar, D. F., Weber, A., Ramakrishna, S., & Fritzsche, S., Phys. Rev. A 111, 053113 (2025)"
+  - "Dar, D. F. & Fritzsche, S., Phys. Rev. A 109, L041101 (2024)"
+  - "Dar, D. F. & Fritzsche, S., Atoms 11, 97 (2023)"
+  - "Dar, D. F., Minneker, B., & Fritzsche, S., Phys. Rev. A 107, 053102 (2023)"
+  - "Kaur, M., Dar, D. F., Sahoo, B. K., & Arora, B., ADNDT 137, 101381 (2021)"
+
+training:
+  - institution: SN Bose National Centre for Basic Sciences
+    location: Kolkata, India
+    years: May 2021 – Aug 2021
+    topic: Crystal Structure Identification using Machine Learning
+    advisor: Prof. Dr. Suman Chakrabarty
+
+  - institution: IISER Mohali
+    location: Mohali, India
+    years: May 2019 – July 2019
+    topic: Hidden Variables and the Violation of Bell’s Inequality
+    advisor: Prof. Dr. Arvind
+
+  - institution: Guru Nanak Dev University
+    location: Amritsar, India
+    years: Dec 2018 – Dec 2020
+    topic: Properties of Alkaline Earth Ions
+    advisor: Dr. Bindiya Arora
+
+skills:
+  languages:
+    - Kashmiri (Native)
+    - English (Fluent)
+    - Hindi (Fluent)
+    - Urdu (Fluent)
+    - Punjabi (Basic)
+  computing:
+    - Julia
+    - Python
+    - C++
+    - C
+    - Fortran
+    - MPI
+    - OpenMP
+    - HPC
+  software:
+    - Mathematica
+    - MATLAB
+    - Intel Parallel Studio
+    - Origin
+    - LaTeX
+    - SciDAVis
+  os:
+    - Linux
+    - Windows
+
+awards:
+  - RS-APS Graduate Scholarship, Helmholtz Institute (2022)
+  - HI-Jena Graduiertenschule Scholarship (2022)
+  - Indian Academy of Sciences Summer Fellowship (2020)
+  - 2nd Prize, National Science Day Poster (2020)
+  - IIT-JAM Qualified (2019)
+
+service:
+  - Peer reviewer for Journal of Physics B (IOP Publishing)
+
+teaching:
+  - course: Advanced Quantum Mechanics
+    role: Teaching Assistant
+    institution: Friedrich Schiller University Jena
+    years: Oct 2024 – Feb 2025
+  - course: Quantum Theory
+    role: Teaching Assistant
+    institution: Friedrich Schiller University Jena
+    years: Oct 2023 – Feb 2024
+
+talks:
+  - "Future of Ultracold and Ultrafast Dynamics, MPI Dresden (2024)"
+  - "DoKDoK 2024, FSU Jena (2024)"
+
+posters:
+  - "Photonics Meets AI, Jena (2024)"
+  - "DPG SAMOP, Freiburg (2024)"
+  - "ICPEAC, Ottawa (2023)"
+  - "ATOM23, MPI Dresden (2023)"
