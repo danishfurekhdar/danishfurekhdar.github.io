@@ -1,11 +1,10 @@
 ---
-layout: archive
-title: "CV"
+layout: single
+title: Curriculum Vitae
 permalink: /cv/
 author_profile: true
-redirect_from:
-  - /resume
 ---
+
 
 <link rel="stylesheet" href="{{ '/assets/css/cv.css' | relative_url }}">
 
