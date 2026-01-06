@@ -1,89 +1,131 @@
-/* ===============================
-   AUTHOR SIDEBAR CARD
-   =============================== */
+/* =========================================
+   AUTHOR PROFILE – ELEGANT DESKTOP CARD
+   Works with existing AcademicPages HTML
+   ========================================= */
 
-.author-card {
-  position: sticky;
-  top: 90px;
-  max-width: 300px;
-  padding: 1.6rem;
-  background: #ffffff;
-  border-radius: 16px;
-  box-shadow: 0 12px 30px rgba(0,0,0,0.08);
-}
-
-/* Avatar */
-.author-card__avatar {
+.author__avatar {
   display: flex;
   justify-content: center;
   margin-bottom: 1rem;
 }
 
-.author-card__avatar img {
+.author__avatar img {
   width: 160px;
   height: 160px;
-  border-radius: 50%;
   object-fit: cover;
-  border: 4px solid #f0f0f0;
+  border-radius: 50%;
+  border: 4px solid #f2f2f2;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+}
+
+/* Card container */
+.sidebar .author__content,
+.sidebar .author__urls-wrapper {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 1.4rem 1.5rem;
+  box-shadow: 0 12px 32px rgba(0,0,0,0.08);
+  margin-bottom: 1.2rem;
 }
 
 /* Name */
-.author-card__name {
+.author__name {
   text-align: center;
-  font-size: 1.25rem;
+  font-size: 1.35rem;
   font-weight: 700;
-  margin-bottom: 0.2rem;
+  margin-bottom: 0.25rem;
 }
 
 /* Pronouns */
-.author-card__pronouns {
+.author__pronouns {
   text-align: center;
   font-size: 0.9rem;
   color: #777;
+  margin-bottom: 0.8rem;
+}
+
+/* Bio */
+.author__bio {
+  font-size: 0.95rem;
+  line-height: 1.55;
+  color: #444;
+  text-align: center;
   margin-bottom: 1rem;
 }
 
 /* Education */
-.author-card__education {
-  font-size: 0.9rem;
-  padding-left: 1.2rem;
-  margin-bottom: 1.2rem;
-}
-
-.author-card__education li {
-  margin-bottom: 0.4rem;
-}
-
-/* Links */
-.author-card__links {
+.author__education ul {
   list-style: none;
-  padding: 0;
+  padding-left: 0;
   margin: 0;
 }
 
-.author-card__links li {
-  margin-bottom: 0.6rem;
-  font-size: 0.95rem;
+.author__education li {
+  font-size: 0.9rem;
+  color: #333;
+  margin-bottom: 0.5rem;
+  padding-left: 1.2rem;
+  position: relative;
 }
 
-.author-card__links a {
-  text-decoration: none;
-  color: inherit;
+.author__education li::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  color: #888;
 }
 
-.author-card__links i {
+/* Follow button */
+.author__urls-wrapper .btn {
+  width: 100%;
+  margin-bottom: 0.8rem;
+  border-radius: 999px;
+  font-size: 0.9rem;
+}
+
+/* Social / links list */
+.author__urls {
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+}
+
+.author__urls li {
+  font-size: 0.9rem;
+  margin-bottom: 0.45rem;
+  display: flex;
+  align-items: center;
+}
+
+.author__urls li i {
+  width: 20px;
   margin-right: 0.5rem;
-  color: #555;
+  color: #666;
 }
 
-/* ===============================
-   MOBILE FALLBACK
-   =============================== */
+/* Link hover effect */
+.author__urls a {
+  color: #333;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
 
+.author__urls a:hover {
+  color: #007acc;
+}
+
+/* Make sidebar feel premium on desktop */
+@media (min-width: 900px) {
+  .sidebar {
+    position: sticky;
+    top: 90px;
+  }
+}
+
+/* Mobile: keep it clean */
 @media (max-width: 900px) {
-  .author-card {
-    position: relative;
-    max-width: 100%;
-    margin-bottom: 2rem;
+  .author__avatar img {
+    width: 130px;
+    height: 130px;
   }
 }
