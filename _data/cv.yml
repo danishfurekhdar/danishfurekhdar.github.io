@@ -3,8 +3,6 @@ basics:
   location: Anantnag, Jammu and Kashmir, India
   phone: "+91 8899398958"
   email: your@email
-  homepage: https://your-site.github.io
-
   summary: >
     Theoretical AMO physicist with research expertise in strong-field ionization,
     focusing on nonlinear interference effects, nondipole dynamics, and electron
@@ -19,20 +17,20 @@ education:
     location: Jena, Germany
     years: April 2022 – Nov 2025
     details:
-      - "Thesis: Theoretical Study of Atomic Ionization Under Intense Laser Pulses"
-      - "Advisor: Prof. Dr. Stephan Fritzsche"
-      - "Research focus: ATI, nonlinear interference, nondipole effects"
-      - "Techniques: SFA, Jacobi–Anger expansion, saddle-point method"
+      - Thesis: Theoretical Study of Atomic Ionization Under Intense Laser Pulses
+      - Advisor: Prof. Dr. Stephan Fritzsche
+      - Focus: ATI, nonlinear interference, nondipole effects
+      - Techniques: SFA, Jacobi–Anger expansion, saddle-point approximation
 
   - degree: Master of Science (Honours Physics)
     institution: Guru Nanak Dev University
     location: Amritsar, India
     years: July 2019 – Sep 2021
     details:
-      - "Thesis: Sb–Nd co-doping in Li7La3Zr2O12 electrolyte"
-      - "Advisor: Prof. Dr. Atul Khanna"
-      - "Techniques: XRD, Raman, DSC, PL, UV–Vis, Two-probe method"
-      - "CGPA: 7.63 / 10"
+      - Thesis: Sb–Nd co-doping in Li7La3Zr2O12 electrolyte
+      - Advisor: Prof. Dr. Atul Khanna
+      - Techniques: XRD, Raman, DSC, PL, UV–Vis, Two-probe method
+      - CGPA: 7.63 / 10
 
 appointments:
   - title: Postdoctoral Researcher
@@ -101,14 +99,14 @@ skills:
     - Windows
 
 awards:
-  - "RS-APS Graduate Scholarship, Helmholtz Institute Jena (2022)"
-  - "HI-Jena Graduiertenschule Scholarship, FAIR/GSI (2022)"
-  - "Indian Academy of Sciences Summer Research Fellowship (2020)"
-  - "2nd Prize, National Science Day Poster, GNDU (2020)"
-  - "Qualified IIT-JAM (2019)"
+  - RS-APS Graduate Scholarship, Helmholtz Institute Jena (2022)
+  - HI-Jena Graduiertenschule Scholarship, FAIR/GSI (2022)
+  - Indian Academy of Sciences Summer Research Fellowship (2020)
+  - 2nd Prize, National Science Day Poster, GNDU (2020)
+  - Qualified IIT-JAM (2019)
 
 service:
-  - "Peer reviewer, Journal of Physics B (IOP Publishing)"
+  - Peer reviewer, Journal of Physics B (IOP Publishing)
 
 teaching:
   - course: Advanced Quantum Mechanics
@@ -122,9 +120,9 @@ teaching:
     years: Oct 2023 – Feb 2024
 
 activities:
-  - "Talk: Future of Ultracold and Ultrafast Dynamics, MPI Dresden (2024)"
-  - "Talk: DoKDoK 2024, FSU Jena (2024)"
-  - "Poster: Photonics Meets AI, Jena (2024)"
-  - "Poster: DPG SAMOP, Freiburg (2024)"
-  - "Poster: ICPEAC, Ottawa (2023)"
-  - "Poster: ATOM23, MPI Dresden (2023)"
+  - Talk: Future of Ultracold and Ultrafast Dynamics, MPI Dresden (2024)
+  - Talk: DoKDoK 2024, Friedrich Schiller University (2024)
+  - Poster: Photonics Meets AI, Jena (2024)
+  - Poster: DPG SAMOP, Freiburg (2024)
+  - Poster: ICPEAC, Ottawa (2023)
+  - Poster: ATOM23, MPI Dresden (2023)
