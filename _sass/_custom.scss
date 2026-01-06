@@ -1,0 +1,89 @@
+/* ===============================
+   AUTHOR SIDEBAR CARD
+   =============================== */
+
+.author-card {
+  position: sticky;
+  top: 90px;
+  max-width: 300px;
+  padding: 1.6rem;
+  background: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.08);
+}
+
+/* Avatar */
+.author-card__avatar {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+.author-card__avatar img {
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid #f0f0f0;
+}
+
+/* Name */
+.author-card__name {
+  text-align: center;
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-bottom: 0.2rem;
+}
+
+/* Pronouns */
+.author-card__pronouns {
+  text-align: center;
+  font-size: 0.9rem;
+  color: #777;
+  margin-bottom: 1rem;
+}
+
+/* Education */
+.author-card__education {
+  font-size: 0.9rem;
+  padding-left: 1.2rem;
+  margin-bottom: 1.2rem;
+}
+
+.author-card__education li {
+  margin-bottom: 0.4rem;
+}
+
+/* Links */
+.author-card__links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.author-card__links li {
+  margin-bottom: 0.6rem;
+  font-size: 0.95rem;
+}
+
+.author-card__links a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.author-card__links i {
+  margin-right: 0.5rem;
+  color: #555;
+}
+
+/* ===============================
+   MOBILE FALLBACK
+   =============================== */
+
+@media (max-width: 900px) {
+  .author-card {
+    position: relative;
+    max-width: 100%;
+    margin-bottom: 2rem;
+  }
+}
