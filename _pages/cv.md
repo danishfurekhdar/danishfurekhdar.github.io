@@ -8,73 +8,101 @@ author_profile: true
 
 <link rel="stylesheet" href="{{ '/assets/css/cv.css' | relative_url }}">
 
+# {{ site.data.cv.basics.name }}
+
+**{{ site.data.cv.basics.location }}**  
+📞 {{ site.data.cv.basics.phone }} · ✉️ {{ site.data.cv.basics.email }}
+
+---
+
 ## Research Profile
-{{ site.data.cv.profile }}
+
+{{ site.data.cv.basics.summary }}
+
+---
 
 ## Education
+
 {% for edu in site.data.cv.education %}
-**{{ edu.degree }}**  
-{{ edu.institution }}, {{ edu.location }}  
-*{{ edu.years }}*  
+### {{ edu.degree }}
+**{{ edu.institution }}, {{ edu.location }}**  
+*{{ edu.years }}*
 
-- **Thesis:** {{ edu.thesis }}
-- **Advisor:** {{ edu.advisor }}
-
-{% if edu.focus %}
-**Research Focus:**  
-{% for f in edu.focus %}- {{ f }}{% endfor %}
-{% endif %}
+{% for d in edu.details %}
+- {{ d }}
+{% endfor %}
 
 {% endfor %}
+
+---
 
 ## Academic Appointments
+
 {% for job in site.data.cv.appointments %}
-**{{ job.title }}**, {{ job.institution }}  
-{{ job.location }} — *{{ job.years }}*  
-Advisor: {{ job.advisor }}  
-{{ job.topic }}
+### {{ job.title }}
+**{{ job.institution }}, {{ job.location }}**  
+*{{ job.years }}*  
+
+- {{ job.description }}
+- Advisor: {{ job.advisor }}
 
 {% endfor %}
 
-## Publications
-<ul>
-{% for pub in site.data.cv.publications %}
-<li>{{ pub }}</li>
-{% endfor %}
-</ul>
+---
 
 ## Research Training & Internships
+
 {% for t in site.data.cv.training %}
-**{{ t.institution }}**, {{ t.location }}  
+### {{ t.title }}
+**{{ t.institution }}, {{ t.location }}**  
 *{{ t.years }}*  
-{{ t.topic }}  
-Advisor: {{ t.advisor }}
+
+- {{ t.topic }}
+- Advisor: {{ t.advisor }}
 
 {% endfor %}
+
+---
 
 ## Skills
-**Languages:** {{ site.data.cv.skills.languages | join: ", " }}  
-**Scientific Computing:** {{ site.data.cv.skills.computing | join: ", " }}  
-**Software:** {{ site.data.cv.skills.software | join: ", " }}  
+
+**Languages:** {{ site.data.cv.skills.languages | join: ", " }}
+
+**Scientific Computing:** {{ site.data.cv.skills.computing | join: ", " }}
+
+**Software:** {{ site.data.cv.skills.software | join: ", " }}
+
 **Operating Systems:** {{ site.data.cv.skills.os | join: ", " }}
 
+---
+
 ## Honors & Awards
-<ul>
+
 {% for a in site.data.cv.awards %}
-<li>{{ a }}</li>
+- {{ a }}
 {% endfor %}
-</ul>
+
+---
 
 ## Professional Service
-<ul>
+
 {% for s in site.data.cv.service %}
-<li>{{ s }}</li>
+- {{ s }}
 {% endfor %}
-</ul>
 
-## Teaching
+---
+
+## Teaching Experience
+
 {% for t in site.data.cv.teaching %}
-**{{ t.course }}**, {{ t.role }}  
-{{ t.institution }} — *{{ t.years }}*
+- **{{ t.course }}**, {{ t.role }}  
+  {{ t.institution }} ({{ t.years }})
+{% endfor %}
 
+---
+
+## Research Activities
+
+{% for act in site.data.cv.activities %}
+- {{ act }}
 {% endfor %}
